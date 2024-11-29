@@ -66,7 +66,7 @@ export default function ConfigPage() {
             />
           )}
         />
-        <div className="bg-background p-3 rounded-md flex flex-col gap-2 justify-center items-center">
+        <div className="bg-content1 p-3 rounded-md flex flex-col gap-2 justify-center items-center">
           <div className="flex-shrink-0 w-full">背景图</div>
           <div className="flex gap-2 items-center">
             <Input

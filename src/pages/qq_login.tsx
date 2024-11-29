@@ -36,15 +36,14 @@ export default function QQLoginPage() {
     setIsLoading(true)
     try {
       await QQManager.setQuickLogin(uinValue)
-
-      toast.success('QQ登录成功')
-      navigate('/', { replace: true })
     } catch (error) {
       const msg = (error as Error).message
 
       toast.error(`快速登录QQ失败: ${msg}`)
     } finally {
-      setIsLoading(false)
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 1000)
     }
   }
 

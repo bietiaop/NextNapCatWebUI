@@ -13,6 +13,7 @@ import QQManager from '@/controllers/qq_manager'
 import QuickLogin from '@/components/quick_login'
 import QrCodeLogin from '@/components/qr_code_login'
 import logo from '@/assets/images/logo.png'
+import { Button } from '@nextui-org/button'
 
 export interface QQItem {
   uin: string
@@ -107,7 +108,7 @@ export default function QQLoginPage() {
 
   return (
     <PureLayout>
-      <div className="w-[608px] max-w-full p-8 overflow-hidden">
+      <div className="w-[608px] max-w-full py-8 px-2 md:px-8 overflow-hidden">
         <HoverEffectCard
           className="items-center gap-4 pt-0 pb-6 bg-default-50"
           maxXRotation={3}
@@ -122,7 +123,7 @@ export default function QQLoginPage() {
             <ThemeSwitch className="absolute right-4 top-4" />
           </CardHeader>
 
-          <CardBody className="flex gap-10 p-10 pt-0">
+          <CardBody className="flex gap-5 p-10 pt-0">
             <Tabs
               fullWidth
               classNames={{
@@ -146,6 +147,18 @@ export default function QQLoginPage() {
                 <QrCodeLogin qrcode={qrcode} />
               </Tab>
             </Tabs>
+            <Button
+              className="w-fit mx-auto"
+              variant="light"
+              color="primary"
+              onClick={() => {
+                navigate('/web_login', {
+                  replace: true
+                })
+              }}
+            >
+              返回 Web Login
+            </Button>
           </CardBody>
         </HoverEffectCard>
       </div>

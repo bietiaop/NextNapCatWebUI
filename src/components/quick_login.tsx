@@ -43,6 +43,7 @@ const QuickLogin: React.FC<QuickLoginProps> = ({
           classNames={{
             popoverContent: 'bg-opacity-50 backdrop-blur'
           }}
+          aria-label="QQ Login"
           isDisabled={refresh}
           items={qqList}
           placeholder="请选择QQ"

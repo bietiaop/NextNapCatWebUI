@@ -9,6 +9,7 @@ import useConfig from '@/hooks/use-config'
 import SwitchCard from '@/components/switch_card'
 import { useLocalStorage } from '@uidotdev/usehooks'
 import { Image } from '@nextui-org/image'
+import key from '@/const/key'
 export default function ConfigPage() {
   const { config, mergeConfig, refreshConfig } = useConfig()
   const { control, handleSubmit, formState, setValue } = useForm<OneBotConfig>({
@@ -18,7 +19,7 @@ export default function ConfigPage() {
       parseMultMsg: false
     }
   })
-  const [b64img, setB64img] = useLocalStorage('background-image', '')
+  const [b64img, setB64img] = useLocalStorage(key.backgroundImage, '')
   const reset = () => {
     setValue('musicSignUrl', config.musicSignUrl)
     setValue('enableLocalFile2Url', config.enableLocalFile2Url)

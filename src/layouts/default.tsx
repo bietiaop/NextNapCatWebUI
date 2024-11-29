@@ -13,6 +13,7 @@ import SideBar from '@/components/sidebar'
 import errorFallbackRender from '@/components/error_fallback'
 import { siteConfig } from '@/config/site'
 import { useLocalStorage } from '@uidotdev/usehooks'
+import key from '@/const/key'
 
 const menus: MenuItem[] = siteConfig.navItems
 
@@ -40,7 +41,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation()
   const contentRef = React.useRef<HTMLDivElement>(null)
   const [openSideBar, setOpenSideBar] = React.useState(true)
-  const [b64img] = useLocalStorage('background-image', '')
+  const [b64img] = useLocalStorage(key.backgroundImage, '')
   React.useEffect(() => {
     contentRef?.current?.scrollTo?.({
       top: 0,

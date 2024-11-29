@@ -1,13 +1,7 @@
+import key from '@/const/key'
 import axios from 'axios'
 
-let _storeURL = localStorage.getItem('storeURL') ?? '"http://localhost:3000"'
-
-_storeURL = JSON.parse(_storeURL)
-
-const baseURL = _storeURL + '/api'
-
 export const serverRequest = axios.create({
-  baseURL: baseURL,
   timeout: 5000
 })
 
@@ -16,7 +10,16 @@ export const request = axios.create({
 })
 
 serverRequest.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
+  let _storeURL =
+    localStorage.getItem(key.storeURL) ?? '"http://localhost:6099"'
+
+  _storeURL = JSON.parse(_storeURL)
+
+  const baseURL = _storeURL + '/api'
+
+  config.baseURL = baseURL
+
+  const token = localStorage.getItem(key.token)
 
   if (token) {
     config.headers['Authorization'] = `Bearer ${JSON.parse(token)}`
@@ -28,9 +31,9 @@ serverRequest.interceptors.request.use((config) => {
 serverRequest.interceptors.response.use((response) => {
   if (response.data.code !== 0) {
     if (response.data.message === 'Unauthorized') {
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem(key.token)
       if (token && JSON.parse(token)) {
-        localStorage.removeItem('token')
+        localStorage.removeItem(key.token)
         window.location.reload()
       }
     }

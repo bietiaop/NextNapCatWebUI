@@ -9,23 +9,47 @@ import LogsPage from './dashboard/logs'
 
 import useAuth from '@/hooks/auth'
 import DefaultLayout from '@/layouts/default'
+import { useLocalStorage } from '@uidotdev/usehooks'
+import key from '@/const/key'
+import QQManager from '@/controllers/qq_manager'
 
 export default function IndexPage() {
   const { isAuth } = useAuth()
+  const [storeURL] = useLocalStorage(key.storeURL)
   const navigate = useNavigate()
 
+  const isStoreURLInvalid =
+    !!storeURL && storeURL !== 'http://' && storeURL !== 'https://'
+
+  const checkIsQQLogin = async () => {
+    try {
+      const result = await QQManager.checkQQLoginStatus()
+      if (!result.isLogin) {
+        if (isAuth) {
+          navigate('/qq_login', { replace: true })
+        } else {
+          navigate('/web_login', { replace: true })
+        }
+      }
+    } catch (error) {
+      navigate('/web_login', { replace: true })
+    }
+  }
+
   useEffect(() => {
-    if (!isAuth) {
+    if (!isAuth || !isStoreURLInvalid) {
       const search = new URLSearchParams(window.location.search)
       const token = search.get('token')
       let url = '/web_login'
 
-      if (token) {
+      if (token && isStoreURLInvalid) {
         url += `?token=${token}`
       }
-      navigate(url)
+      navigate(url, { replace: true })
+    } else {
+      checkIsQQLogin()
     }
-  }, [isAuth, navigate])
+  }, [isAuth, storeURL, navigate])
 
   return (
     <DefaultLayout>

@@ -7,6 +7,7 @@ import { FaChevronDown } from 'react-icons/fa6'
 import { matchPath, useLocation, useNavigate } from 'react-router-dom'
 
 import { useLocalStorage } from '@uidotdev/usehooks'
+import key from '@/const/key'
 
 const renderItems = (items: MenuItem[], children = false) => {
   return items?.map((item) => {
@@ -17,7 +18,7 @@ const renderItems = (items: MenuItem[], children = false) => {
       () => item.items && item.items.length > 0,
       [item.items]
     )
-    const [b64img] = useLocalStorage('background-image', '')
+    const [b64img] = useLocalStorage(key.backgroundImage, '')
     const isActive = React.useMemo(() => {
       if (item.href) {
         return !!matchPath(item.href, locate.pathname)

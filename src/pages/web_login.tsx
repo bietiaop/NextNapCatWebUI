@@ -14,6 +14,8 @@ import HoverEffectCard from '@/components/effect_card'
 import PureLayout from '@/layouts/pure'
 import { ThemeSwitch } from '@/components/theme-switch'
 import WebUIManager from '@/controllers/webui_manager'
+import WebConfig from '@/components/web_config'
+import key from '@/const/key'
 
 export default function WebLoginPage() {
   const urlSearchParams = new URLSearchParams(window.location.search)
@@ -21,7 +23,8 @@ export default function WebLoginPage() {
   const navigate = useNavigate()
   const [tokenValue, setTokenValue] = useState<string>(token || '')
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [, setLocalToken] = useLocalStorage<string>('token', '')
+  const [, setLocalToken] = useLocalStorage<string>(key.token, '')
+
   const onSubmit = async () => {
     if (!tokenValue) {
       toast.error('请输入token')
@@ -45,7 +48,7 @@ export default function WebLoginPage() {
 
   return (
     <PureLayout>
-      <div className="w-[608px] max-w-full p-8 overflow-hidden">
+      <div className="w-[608px] max-w-full py-8 px-2 md:px-8 overflow-hidden">
         <HoverEffectCard
           className="items-center gap-4 pt-0 pb-6 bg-default-50"
           maxXRotation={3}
@@ -60,7 +63,9 @@ export default function WebLoginPage() {
             <ThemeSwitch className="absolute right-4 top-4" />
           </CardHeader>
 
-          <CardBody className="flex gap-10 p-10">
+          <CardBody className="flex gap-5 py-5 px-5 md:px-10">
+            <WebConfig />
+
             <Input
               isClearable
               classNames={{

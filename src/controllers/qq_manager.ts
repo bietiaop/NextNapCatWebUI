@@ -16,9 +16,12 @@ export default class QQManager {
   }
 
   public static async checkQQLoginStatus() {
-    const data = await serverRequest.post<ServerResponse<boolean>>(
-      '/QQLogin/CheckLoginStatus'
-    )
+    const data = await serverRequest.post<
+      ServerResponse<{
+        isLogin: string
+        qrcodeurl: string
+      }>
+    >('/QQLogin/CheckLoginStatus')
 
     return data.data.data
   }

@@ -16,4 +16,19 @@ export default class WebUIManager {
 
     return data.data.data.Credential
   }
+
+  public static async getLogList() {
+    const data =
+      await serverRequest.get<ServerResponse<string[]>>('/Log/GetLogList')
+
+    return data.data.data
+  }
+
+  public static async getLogContent(logName: string) {
+    const data = await serverRequest.get<ServerResponse<string>>(
+      `/Log/GetLog?id=${logName}`
+    )
+
+    return data.data.data
+  }
 }

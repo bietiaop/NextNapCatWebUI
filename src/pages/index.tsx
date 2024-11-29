@@ -40,10 +40,14 @@ export default function IndexPage() {
     if (!isAuth || !isStoreURLInvalid) {
       const search = new URLSearchParams(window.location.search)
       const token = search.get('token')
+      const back = search.get('back') || ''
       let url = '/web_login'
 
       if (token && isStoreURLInvalid) {
         url += `?token=${token}`
+      }
+      if (back) {
+        url += `&back=${back}`
       }
       navigate(url, { replace: true })
     } else {

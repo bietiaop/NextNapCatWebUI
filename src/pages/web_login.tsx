@@ -20,6 +20,7 @@ import key from '@/const/key'
 export default function WebLoginPage() {
   const urlSearchParams = new URLSearchParams(window.location.search)
   const token = urlSearchParams.get('token')
+  const back = urlSearchParams.get('back') ?? ''
   const navigate = useNavigate()
   const [tokenValue, setTokenValue] = useState<string>(token || '')
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -64,7 +65,7 @@ export default function WebLoginPage() {
           </CardHeader>
 
           <CardBody className="flex gap-5 py-5 px-5 md:px-10">
-            <WebConfig />
+            <WebConfig queryURL={back} />
 
             <Input
               isClearable

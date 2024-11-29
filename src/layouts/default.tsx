@@ -69,7 +69,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           b64img && 'bg-opacity-50 backdrop-blur-none'
         )}
       >
-        <div className="h-10 flex items-center font-bold text-xl sticky top-0 left-0 backdrop-blur-lg z-20 shadow-sm bg-opacity-30 bg-background dark:bg-background shadow-danger-50 dark:shadow-danger-100">
+        <div className="h-10 flex items-center hm-medium text-xl sticky top-0 left-0 backdrop-blur-lg z-20 shadow-sm bg-opacity-30 bg-background dark:bg-background shadow-danger-50 dark:shadow-danger-100">
           <Button
             isIconOnly
             className="mr-1"

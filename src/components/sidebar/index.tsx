@@ -34,7 +34,7 @@ const SideBar: React.FC<SideBarProps> = (props) => {
           <Image className="-mt-3" height={80} src={logo} />
           <div
             className={clsx(
-              'flex items-center font-bold',
+              'flex items-center hm-medium',
               title({
                 shadow: true,
                 color: isDark ? 'violet' : 'pink'

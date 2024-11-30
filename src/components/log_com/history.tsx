@@ -36,7 +36,8 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
       return
     }
     Xterm.current.clear()
-    Xterm.current.write(logContent)
+    const _logContent = logContent.replace(/\n/g, '\r\n')
+    Xterm.current.write(_logContent)
     Xterm.current.write('\nnapcat@webui:~$ ')
   }, [logContent])
 

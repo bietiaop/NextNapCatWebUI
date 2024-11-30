@@ -31,4 +31,16 @@ export default class WebUIManager {
 
     return data.data.data
   }
+
+  public static async getRealTimeLogs(writer: (data: string) => void) {
+    serverRequest.get('/Log/GetLogRealTime', {
+      timeout: 0,
+      onDownloadProgress: (progressEvent) => {
+        const data = progressEvent?.event?.target?.responseText
+        if (data) {
+          writer(data)
+        }
+      }
+    })
+  }
 }

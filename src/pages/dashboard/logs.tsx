@@ -50,7 +50,7 @@ export default function LogsPage() {
         aria-label="Logs"
         className="max-w-full overflow-hidden"
         classNames={{
-          panel: 'max-w-full w-[900px]'
+          panel: 'max-w-full w-[900px] h-[calc(100vh_-_210px)] max-h-full'
         }}
       >
         <Tab title="实时日志">

@@ -5,6 +5,7 @@ import { Select, SelectItem } from '@nextui-org/select'
 import { Button } from '@nextui-org/button'
 import { useEffect, useRef } from 'react'
 import PageLoading from '../page_loading'
+import { colorizeLogLevel } from '@/utils/terminal'
 
 export interface HistoryLogsProps {
   list: string[]
@@ -36,13 +37,17 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
       return
     }
     Xterm.current.clear()
-    const _logContent = logContent.replace(/\n/g, '\r\n')
+    const logs = logContent.split('\n').map((line) => {
+      const colored = colorizeLogLevel(line)
+      return colored.content
+    })
+    const _logContent = logs.join('\r\n')
     Xterm.current.write(_logContent)
-    Xterm.current.write('\nnapcat@webui:~$ ')
+    Xterm.current.write('\r\nnapcat@webui:~$ ')
   }, [logContent])
 
   return (
-    <Card className="max-w-full">
+    <Card className="max-w-full h-full">
       <CardHeader className="flex-row justify-start gap-3">
         <Select
           label="选择日志"
@@ -77,7 +82,7 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
       </CardHeader>
       <CardBody className="relative">
         <PageLoading loading={logLoading} />
-        <XTerm className="w-full" ref={Xterm} />
+        <XTerm className="w-full h-full" ref={Xterm} />
       </CardBody>
     </Card>
   )

@@ -12,6 +12,9 @@ import Menus from './menus'
 
 import logo from '@/assets/images/logo.png'
 import { useTheme } from '@/hooks/use-theme'
+import useAuth from '@/hooks/auth'
+import useDialog from '@/hooks/use-dialog'
+import { IoMdLogOut } from 'react-icons/io'
 
 interface SideBarProps {
   open: boolean
@@ -21,7 +24,15 @@ interface SideBarProps {
 const SideBar: React.FC<SideBarProps> = (props) => {
   const { open, items } = props
   const { toggleTheme, isDark } = useTheme()
-
+  const { revokeAuth } = useAuth()
+  const dialog = useDialog()
+  const onRevokeAuth = () => {
+    dialog.confirm({
+      title: '退出登录',
+      content: '确定要退出登录吗？',
+      onConfirm: revokeAuth
+    })
+  }
   return (
     <div
       className={clsx(
@@ -49,14 +60,26 @@ const SideBar: React.FC<SideBarProps> = (props) => {
           <Menus items={items} />
           <div className="mt-auto">
             <Button
-              className="w-full mb-2"
+              className="w-full"
               color="danger"
               radius="full"
               variant="light"
               onClick={toggleTheme}
+              startContent={
+                !isDark ? <MdLightMode size={16} /> : <MdDarkMode size={16} />
+              }
             >
-              {!isDark ? <MdLightMode size={16} /> : <MdDarkMode size={16} />}
               切换主题
+            </Button>
+            <Button
+              className="w-full mb-2"
+              color="danger"
+              radius="full"
+              variant="light"
+              onClick={onRevokeAuth}
+              startContent={<IoMdLogOut size={16} />}
+            >
+              退出登录
             </Button>
           </div>
         </div>

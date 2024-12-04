@@ -56,8 +56,10 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
       resizeObserver.observe(domRef.current)
 
       return () => {
-        terminal.dispose()
         resizeObserver.disconnect()
+        setTimeout(() => {
+          terminal.dispose()
+        }, 0)
       }
     }, [])
 
@@ -104,7 +106,7 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
     return (
       <div
         className={clsx(
-          'p-2 rounded-md shadow-sm border border-default-200 h-96',
+          'p-2 rounded-md shadow-sm border border-default-200 h-96 overflow-hidden',
           theme === 'dark' ? 'bg-black' : 'bg-white',
           className
         )}

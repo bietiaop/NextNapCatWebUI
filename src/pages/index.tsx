@@ -1,42 +1,17 @@
-import { Route, Routes, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
 import DashboardIndexPage from './dashboard'
 import AboutPage from './dashboard/about'
 import NetworkPage from './dashboard/network'
 import ConfigPage from './dashboard/config'
 import LogsPage from './dashboard/logs'
+import DebugPage from './dashboard/debug'
+import WSDebug from './dashboard/debug/websocket'
+import HttpDebug from './dashboard/debug/http'
 
-import useAuth from '@/hooks/auth'
 import DefaultLayout from '@/layouts/default'
-import { useLocalStorage } from '@uidotdev/usehooks'
-import key from '@/const/key'
 
 export default function IndexPage() {
-  const { isAuth } = useAuth()
-  const [storeURL] = useLocalStorage(key.storeURL)
-  const navigate = useNavigate()
-
-  const isStoreURLInvalid =
-    !!storeURL && storeURL !== 'http://' && storeURL !== 'https://'
-
-  useEffect(() => {
-    if (!isAuth || !isStoreURLInvalid) {
-      const search = new URLSearchParams(window.location.search)
-      const token = search.get('token')
-      const back = search.get('back') || ''
-      let url = '/web_login'
-
-      if (token && isStoreURLInvalid) {
-        url += `?token=${token}`
-      }
-      if (back) {
-        url += `&back=${back}`
-      }
-      navigate(url, { replace: true })
-    }
-  }, [isAuth, storeURL, navigate])
-
   return (
     <DefaultLayout>
       <Routes>
@@ -44,6 +19,10 @@ export default function IndexPage() {
         <Route element={<NetworkPage />} path="/network" />
         <Route element={<ConfigPage />} path="/config" />
         <Route element={<LogsPage />} path="/logs" />
+        <Route element={<DebugPage />} path="/debug">
+          <Route path="ws" element={<WSDebug />} />
+          <Route path="http" element={<HttpDebug />} />
+        </Route>
         <Route element={<AboutPage />} path="/about" />
       </Routes>
     </DefaultLayout>

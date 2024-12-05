@@ -45,12 +45,12 @@ export default function LogsPage() {
     }
   }, [selectedLog])
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <div className="h-[calc(100vh_-_8rem)] flex flex-col gap-4 items-center pt-4 px-2">
       <Tabs
         aria-label="Logs"
-        className="max-w-full overflow-hidden"
         classNames={{
-          panel: 'max-w-full w-[900px] h-[calc(100vh_-_210px)] max-h-full'
+          panel: 'w-full flex-1 h-full py-0 flex flex-col gap-4',
+          base: 'flex-shrink-0 !h-fit'
         }}
       >
         <Tab title="实时日志">
@@ -70,6 +70,6 @@ export default function LogsPage() {
           />
         </Tab>
       </Tabs>
-    </section>
+    </div>
   )
 }

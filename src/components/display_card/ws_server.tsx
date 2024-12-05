@@ -1,131 +1,65 @@
 import { Chip } from '@nextui-org/chip'
-import { Button, ButtonGroup } from '@nextui-org/button'
-import { useState } from 'react'
-import { Switch } from '@nextui-org/switch'
-import { FiEdit3 } from 'react-icons/fi'
-import { CgDebug } from 'react-icons/cg'
-import { MdDeleteForever } from 'react-icons/md'
+import NetworkDisplayCard from './common_card'
+import type { NetworkDisplayCardFields } from './common_card'
 
-import DisplayCardContainer, { DisplayCardProps } from './container'
-interface WebsocketServerDisplayCardProps extends DisplayCardProps {
+interface WebsocketServerDisplayCardProps {
   data: OneBotConfig['network']['websocketServers'][0]
+  showType?: boolean
+  onEdit: () => void
+  onEnable: () => Promise<void>
+  onDelete: () => Promise<void>
+  onEnableDebug: () => Promise<void>
 }
 
-const WebsocketServerDisplayCard: React.FC<WebsocketServerDisplayCardProps> = ({
-  data,
-  showType,
-  onEdit,
-  onEnable,
-  onDelete,
-  onEnableDebug
-}) => {
+const WebsocketServerDisplayCard: React.FC<WebsocketServerDisplayCardProps> = (
+  props
+) => {
+  const { data, showType, onEdit, onEnable, onDelete, onEnableDebug } = props
   const {
-    name,
     host,
     port,
-    enable,
-    debug,
-    reportSelfMessage,
-    enableForcePushEvent,
     heartInterval,
-    messagePostFormat
+    messagePostFormat,
+    reportSelfMessage,
+    enableForcePushEvent
   } = data
-  const [editing, setEditing] = useState(false)
 
-  const handleEnable = () => {
-    setEditing(true)
-    onEnable().finally(() => setEditing(false))
-  }
-
-  const handleDelete = () => {
-    setEditing(true)
-    onDelete().finally(() => setEditing(false))
-  }
-
-  const handleEnableDebug = () => {
-    setEditing(true)
-    onEnableDebug().finally(() => setEditing(false))
-  }
+  const fields: NetworkDisplayCardFields<'websocketServers'> = [
+    { label: '主机', value: host },
+    { label: '端口', value: port },
+    { label: '心跳间隔', value: `${heartInterval}ms` },
+    { label: '消息格式', value: messagePostFormat },
+    {
+      label: '上报自身消息',
+      value: reportSelfMessage,
+      render: (value) => (
+        <Chip color={value ? 'success' : 'default'} size="sm" variant="flat">
+          {value ? '是' : '否'}
+        </Chip>
+      )
+    },
+    {
+      label: '强制推送事件',
+      value: enableForcePushEvent,
+      render: (value) => (
+        <Chip color={value ? 'success' : 'default'} size="sm" variant="flat">
+          {value ? '是' : '否'}
+        </Chip>
+      )
+    }
+  ]
 
   return (
-    <DisplayCardContainer
-      action={
-        <ButtonGroup
-          fullWidth
-          isDisabled={editing}
-          radius="full"
-          size="sm"
-          variant="shadow"
-        >
-          <Button color="warning" startContent={<FiEdit3 />} onClick={onEdit}>
-            编辑
-          </Button>
-
-          <Button
-            color={debug ? 'success' : 'default'}
-            startContent={<CgDebug />}
-            onClick={handleEnableDebug}
-          >
-            {debug ? '关闭调试' : '开启调试'}
-          </Button>
-          <Button
-            color="danger"
-            startContent={<MdDeleteForever />}
-            onClick={handleDelete}
-          >
-            删除
-          </Button>
-        </ButtonGroup>
-      }
-      enableSwitch={
-        <Switch
-          isDisabled={editing}
-          isSelected={enable}
-          onClick={handleEnable}
-        />
-      }
-      tag={showType && 'Websocket服务器'}
-      title={name}
-    >
-      <div className="grid grid-cols-2 gap-1">
-        <div className="flex items-center gap-2">
-          <span className="text-default-400">主机</span>
-          <span>{host}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-default-400">端口</span>
-          <span>{port}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-default-400">心跳间隔</span>
-          <span>{heartInterval}ms</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-default-400">消息格式</span>
-          <span>{messagePostFormat}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-default-400">上报自身消息</span>
-          <Chip
-            color={reportSelfMessage ? 'success' : 'default'}
-            size="sm"
-            variant="flat"
-          >
-            {reportSelfMessage ? '是' : '否'}
-          </Chip>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-default-400">强制推送事件</span>
-          <Chip
-            color={enableForcePushEvent ? 'success' : 'default'}
-            size="sm"
-            variant="flat"
-          >
-            {enableForcePushEvent ? '是' : '否'}
-          </Chip>
-        </div>
-      </div>
-    </DisplayCardContainer>
+    <NetworkDisplayCard
+      data={data}
+      showType={showType}
+      typeLabel="Websocket服务器"
+      fields={fields}
+      onEdit={onEdit}
+      onEnable={onEnable}
+      onDelete={onDelete}
+      onEnableDebug={onEnableDebug}
+    />
   )
 }
 

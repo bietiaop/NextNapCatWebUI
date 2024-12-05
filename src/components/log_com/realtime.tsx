@@ -11,7 +11,9 @@ import { IoDownloadOutline } from 'react-icons/io5'
 
 const RealTimeLogs = () => {
   const Xterm = useRef<XTermRef>(null)
-  const [logLevel, setLogLevel] = useState<Selection>('all')
+  const [logLevel, setLogLevel] = useState<Selection>(
+    new Set(['info', 'warn', 'error'])
+  )
   const [dataArr, setDataArr] = useState<Log[]>([])
 
   const onDownloadLog = () => {
@@ -58,10 +60,9 @@ const RealTimeLogs = () => {
   }, [logLevel, dataArr])
 
   useEffect(() => {
-    let abort: AbortController
     const subscribeLogs = () => {
       try {
-        abort = WebUIManager.getRealTimeLogs((data) => {
+        WebUIManager.getRealTimeLogs((data) => {
           setDataArr((prev) => {
             const newData = [...prev, ...data]
             if (newData.length > 1000) {
@@ -76,16 +77,11 @@ const RealTimeLogs = () => {
     }
 
     subscribeLogs()
-
-    return () => {
-      abort.abort()
-      setDataArr([])
-    }
   }, [])
 
   return (
-    <div className="w-full h-full">
-      <div className="mb-2 flex items-center gap-2">
+    <>
+      <div className="flex items-center gap-2">
         <LogLevelSelect
           selectedKeys={logLevel}
           onSelectionChange={setLogLevel}
@@ -98,8 +94,11 @@ const RealTimeLogs = () => {
           下载日志
         </Button>
       </div>
-      <XTerm className="w-full h-full pb-3 overflow-hidden" ref={Xterm} />
-    </div>
+      <div className="flex-1 h-full overflow-hidden">
+        <XTerm ref={Xterm} />
+      </div>
+      {/*  */}
+    </>
   )
 }
 

@@ -1,5 +1,6 @@
 import key from '@/const/key'
 import axios from 'axios'
+import { getFullServerUrl } from './url'
 
 export const serverRequest = axios.create({
   timeout: 5000
@@ -22,10 +23,7 @@ export const requestServerWithFetch = async (
     }
   }
 
-  const _storeURL =
-    localStorage.getItem(key.storeURL) ?? '"http://localhost:6099"'
-  const storeURL = JSON.parse(_storeURL)
-  const baseURL = storeURL + '/api'
+  const baseURL = getFullServerUrl('/api')
 
   const response = await fetch(baseURL + url, options)
 
@@ -33,12 +31,7 @@ export const requestServerWithFetch = async (
 }
 
 serverRequest.interceptors.request.use((config) => {
-  let _storeURL =
-    localStorage.getItem(key.storeURL) ?? '"http://localhost:6099"'
-
-  _storeURL = JSON.parse(_storeURL)
-
-  const baseURL = _storeURL + '/api'
+  const baseURL = getFullServerUrl('/api')
 
   config.baseURL = baseURL
 

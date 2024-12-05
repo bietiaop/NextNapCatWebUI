@@ -1,5 +1,7 @@
 import { LogLevel } from '@/const/enum'
-import { requestServerWithFetch, serverRequest } from '@/utils/request'
+import { serverRequest } from '@/utils/request'
+import { getFullServerUrl } from '@/utils/url'
+import { EventSourcePolyfill } from 'event-source-polyfill'
 
 export interface Log {
   level: LogLevel
@@ -35,59 +37,37 @@ export default class WebUIManager {
   }
 
   public static getRealTimeLogs(writer: (data: Log[]) => void) {
-    const abort = new AbortController()
-    requestServerWithFetch('/Log/GetLogRealTime', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      signal: abort.signal
-    })
-      .then((response) => {
-        const reader = response.body?.getReader()
-        if (reader) {
-          let previousData = ''
-          reader
-            .read()
-            .then(function processText({ done, value }) {
-              if (done) {
-                return
-              }
-              const text = new TextDecoder().decode(value)
-              const data = (previousData + text).split(/(?<=})\n/)
-              data.forEach((line, index) => {
-                if (index === data.length - 1) {
-                  previousData = line
-                } else {
-                  try {
-                    const json = JSON.parse(line)
-                    writer([json])
-                  } catch (error) {
-                    console.error(error)
-                  }
-                }
-              })
-              reader
-                .read()
-                .then(processText)
-                .catch((error) => {
-                  if (error.name !== 'AbortError') {
-                    console.error(error)
-                  }
-                })
-            })
-            .catch((error) => {
-              if (error.name !== 'AbortError') {
-                console.error(error)
-              }
-            })
-        }
-      })
-      .catch((error) => {
-        if (error.name !== 'AbortError') {
-          console.error(error)
-        }
-      })
-    return abort
+    const token = localStorage.getItem('token')
+    if (!token) {
+      throw new Error('未登录')
+    }
+    const _token = JSON.parse(token)
+    const eventSource = new EventSourcePolyfill(
+      getFullServerUrl('/api/Log/GetLogRealTime'),
+      {
+        headers: {
+          Authorization: `Bearer ${_token}`,
+          Accept: 'text/event-stream'
+        },
+        withCredentials: true
+      }
+    )
+
+    eventSource.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data)
+        data.message = data.message.replace(/\n/g, '\r\n')
+        writer([data])
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    eventSource.onerror = (error) => {
+      console.error('SSE连接出错:', error)
+      eventSource.close()
+    }
+
+    return eventSource
   }
 }

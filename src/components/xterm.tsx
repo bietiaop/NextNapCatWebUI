@@ -35,8 +35,8 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
       const fitAddon = new FitAddon()
       terminal.loadAddon(new WebLinksAddon())
       terminal.loadAddon(fitAddon)
-      terminal.open(domRef.current)
       terminal.loadAddon(new WebglAddon())
+      terminal.open(domRef.current)
       fitAddon.fit()
 
       terminal.writeln(
@@ -106,13 +106,20 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
     return (
       <div
         className={clsx(
-          'p-2 rounded-md shadow-sm border border-default-200 h-96 overflow-hidden',
+          'p-2 rounded-md shadow-sm border border-default-200 w-full h-full overflow-hidden',
           theme === 'dark' ? 'bg-black' : 'bg-white',
           className
         )}
         {...rest}
-        ref={domRef}
-      />
+      >
+        <div
+          style={{
+            width: '100%',
+            height: '100%'
+          }}
+          ref={domRef}
+        ></div>
+      </div>
     )
   }
 )

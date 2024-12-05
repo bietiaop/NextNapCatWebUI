@@ -33,7 +33,9 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
   } = props
   const Xterm = useRef<XTermRef>(null)
 
-  const [logLevel, setLogLevel] = useState<Selection>('all')
+  const [logLevel, setLogLevel] = useState<Selection>(
+    new Set(['info', 'warn', 'error'])
+  )
 
   const logToColored = (log: string) => {
     const logs = log
@@ -116,7 +118,7 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
         <Button onClick={refreshList}>刷新列表</Button>
         <Button onClick={refreshLog}>刷新日志</Button>
       </CardHeader>
-      <CardBody className="relative -mt-2">
+      <CardBody className="relative">
         <PageLoading loading={logLoading} />
         <XTerm className="w-full h-full" ref={Xterm} />
       </CardBody>

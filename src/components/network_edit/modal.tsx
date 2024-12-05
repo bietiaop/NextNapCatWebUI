@@ -48,15 +48,12 @@ const NetworkFormModal = <T extends keyof OneBotConfig['network']>(
     }
   }
 
-  const getDisplayForm: (
-    onClose: () => void,
-    configData?: OneBotConfig['network'][typeof field][0]
-  ) => JSX.Element = (onClose, configData) => {
+  const renderFormComponent = (onClose: () => void) => {
     switch (field) {
       case 'httpServers':
         return (
           <HTTPServerForm
-            data={configData as OneBotConfig['network']['httpServers'][0]}
+            data={data as OneBotConfig['network']['httpServers'][0]}
             onClose={onClose}
             onSubmit={onSubmit}
           />
@@ -64,7 +61,7 @@ const NetworkFormModal = <T extends keyof OneBotConfig['network']>(
       case 'httpClients':
         return (
           <HTTPClientForm
-            data={configData as OneBotConfig['network']['httpClients'][0]}
+            data={data as OneBotConfig['network']['httpClients'][0]}
             onClose={onClose}
             onSubmit={onSubmit}
           />
@@ -72,7 +69,7 @@ const NetworkFormModal = <T extends keyof OneBotConfig['network']>(
       case 'websocketServers':
         return (
           <WebsocketServerForm
-            data={configData as OneBotConfig['network']['websocketServers'][0]}
+            data={data as OneBotConfig['network']['websocketServers'][0]}
             onClose={onClose}
             onSubmit={onSubmit}
           />
@@ -80,13 +77,13 @@ const NetworkFormModal = <T extends keyof OneBotConfig['network']>(
       case 'websocketClients':
         return (
           <WebsocketClientForm
-            data={configData as OneBotConfig['network']['websocketClients'][0]}
+            data={data as OneBotConfig['network']['websocketClients'][0]}
             onClose={onClose}
             onSubmit={onSubmit}
           />
         )
       default:
-        return <></>
+        return null
     }
   }
 
@@ -95,6 +92,7 @@ const NetworkFormModal = <T extends keyof OneBotConfig['network']>(
       backdrop="blur"
       isDismissable={false}
       isOpen={isOpen}
+      size="lg"
       scrollBehavior="outside"
       onOpenChange={onOpenChange}
     >
@@ -104,7 +102,7 @@ const NetworkFormModal = <T extends keyof OneBotConfig['network']>(
             <ModalHeader className="flex flex-col gap-1">
               {modalTitle[field]}
             </ModalHeader>
-            {getDisplayForm(onClose, data)}
+            {renderFormComponent(onClose)}
           </>
         )}
       </ModalContent>

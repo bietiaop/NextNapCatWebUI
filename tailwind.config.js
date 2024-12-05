@@ -1,7 +1,7 @@
 import { nextui } from '@nextui-org/theme'
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     './index.html',
     './src/layouts/**/*.{js,ts,jsx,tsx,mdx}',

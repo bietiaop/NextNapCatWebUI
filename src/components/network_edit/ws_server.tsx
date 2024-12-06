@@ -34,13 +34,15 @@ const WebsocketServerForm: React.FC<WebsocketServerFormProps> = ({
       name: 'enable',
       label: '启用',
       type: 'switch',
-      description: '保存后启用此配置'
+      description: '保存后启用此配置',
+      colSpan: 1
     },
     {
       name: 'debug',
       label: '开启Debug',
       type: 'switch',
-      description: '是否开启调试模式'
+      description: '是否开启调试模式',
+      colSpan: 1
     },
     {
       name: 'name',
@@ -62,19 +64,8 @@ const WebsocketServerForm: React.FC<WebsocketServerFormProps> = ({
       label: 'Port',
       type: 'input',
       placeholder: '请输入端口',
-      isRequired: true
-    },
-    {
-      name: 'reportSelfMessage',
-      label: '上报自身消息',
-      type: 'switch',
-      description: '是否上报自身消息'
-    },
-    {
-      name: 'enableForcePushEvent',
-      label: '强制推送事件',
-      type: 'switch',
-      description: '是否强制推送事件'
+      isRequired: true,
+      colSpan: 1
     },
     {
       name: 'messagePostFormat',
@@ -85,7 +76,22 @@ const WebsocketServerForm: React.FC<WebsocketServerFormProps> = ({
       options: [
         { key: 'array', value: 'Array' },
         { key: 'string', value: 'String' }
-      ]
+      ],
+      colSpan: 1
+    },
+    {
+      name: 'reportSelfMessage',
+      label: '上报自身消息',
+      type: 'switch',
+      description: '是否上报自身消息',
+      colSpan: 1
+    },
+    {
+      name: 'enableForcePushEvent',
+      label: '强制推送事件',
+      type: 'switch',
+      description: '是否强制推送事件',
+      colSpan: 1
     },
     {
       name: 'token',

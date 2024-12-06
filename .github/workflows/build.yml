@@ -1,0 +1,53 @@
+name: "Build Action"
+
+on:
+    push:
+      branches:
+      - main
+    workflow_dispatch:
+
+jobs:
+    Build-NextNapCatWebUI:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Clone Main Repository
+            uses: actions/checkout@v4
+            with:
+              ref: main
+              token: ${{ secrets.GITHUB_TOKEN }}
+
+          - name: Set version
+            run: |
+              commit_sha=$(git rev-parse --short HEAD)
+              version=$(jq -r '.version' package.json)
+              echo "version=${version}" >> $GITHUB_ENV
+
+          - name: Use Node.js 20.X
+            uses: actions/setup-node@v4
+            with:
+              node-version: 20.X
+
+          - name: Build NextNapCatWebUI
+            run: |
+              yarn install && yarn webui:build || exit 1
+              rm package-lock.json
+
+          - name: Upload Artifact
+            uses: actions/upload-artifact@v4
+            with:
+              name: NextNapCatWebUI
+              path: dist
+
+          - name: Compress subdirectories
+            run: |
+              zip -q -r NextNapCatWebUI.zip dist/*
+
+          - name: Create Release and Upload Artifacts
+            if: contains(github.event.head_commit.message, 'release')
+            uses: softprops/action-gh-release@v1
+            with:
+              name: NextNapCatWebUI-v${{ env.version }}
+              tag_name: v${{ env.version }}
+              token: ${{ secrets.GITHUB_TOKEN }}
+              files: |
+                NextNapCatWebUI.zip

@@ -1,5 +1,5 @@
 import {
-  // BugIcon2,
+  BugIcon2,
   InfoIcon,
   RouteIcon,
   SettingsIcon,
@@ -55,24 +55,24 @@ export const siteConfig = {
       ),
       href: '/logs'
     },
-    // {
-    //   label: '接口调试',
-    //   icon: (
-    //     <div className="w-5 h-5">
-    //       <BugIcon2 />
-    //     </div>
-    //   ),
-    //   items: [
-    //     {
-    //       label: 'HTTP',
-    //       href: '/debug/http'
-    //     },
-    //     {
-    //       label: 'Websocket',
-    //       href: '/debug/ws'
-    //     }
-    //   ]
-    // },
+    {
+      label: '接口调试',
+      icon: (
+        <div className="w-5 h-5">
+          <BugIcon2 />
+        </div>
+      ),
+      items: [
+        {
+          label: 'HTTP',
+          href: '/debug/http'
+        },
+        {
+          label: 'Websocket',
+          href: '/debug/ws'
+        }
+      ]
+    },
     {
       label: '关于我们',
       icon: (

@@ -29,13 +29,15 @@ const HTTPClientForm: React.FC<HTTPClientFormProps> = ({
       name: 'enable',
       label: '启用',
       type: 'switch',
-      description: '保存后启用此配置'
+      description: '保存后启用此配置',
+      colSpan: 1
     },
     {
       name: 'debug',
       label: '开启Debug',
       type: 'switch',
-      description: '是否开启调试模式'
+      description: '是否开启调试模式',
+      colSpan: 1
     },
     {
       name: 'name',
@@ -56,7 +58,8 @@ const HTTPClientForm: React.FC<HTTPClientFormProps> = ({
       name: 'reportSelfMessage',
       label: '上报自身消息',
       type: 'switch',
-      description: '是否上报自身消息'
+      description: '是否上报自身消息',
+      colSpan: 1
     },
     {
       name: 'messagePostFormat',
@@ -67,7 +70,8 @@ const HTTPClientForm: React.FC<HTTPClientFormProps> = ({
       options: [
         { key: 'array', value: 'Array' },
         { key: 'string', value: 'String' }
-      ]
+      ],
+      colSpan: 1
     },
     {
       name: 'token',

@@ -20,7 +20,7 @@ jobs:
             run: |
               commit_sha=$(git rev-parse --short HEAD)
               version=$(jq -r '.version' package.json)
-              echo "version=${version}-${commit_sha}" >> $GITHUB_ENV
+              echo "version=${version}" >> $GITHUB_ENV
 
           - name: Use Node.js 20.X
             uses: actions/setup-node@v4
@@ -46,8 +46,8 @@ jobs:
             if: contains(github.event.head_commit.message, 'release')
             uses: softprops/action-gh-release@v1
             with:
-              name: NextNapCatWebUI
-              tag_name: ${{ env.version }}
+              name: NextNapCatWebUI-v${{ env.version }}
+              tag_name: v${{ env.version }}
               token: ${{ secrets.GITHUB_TOKEN }}
               files: |
                 NextNapCatWebUI.zip

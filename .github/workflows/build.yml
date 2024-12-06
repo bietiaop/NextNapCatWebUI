@@ -16,6 +16,12 @@ jobs:
               ref: main
               token: ${{ secrets.GITHUB_TOKEN }}
 
+          - name: Set version
+            run: |
+              commit_sha=$(git rev-parse --short HEAD)
+              version=$(jq -r '.version' package.json)
+              echo "version=${version}-${commit_sha}" >> $GITHUB_ENV
+
           - name: Use Node.js 20.X
             uses: actions/setup-node@v4
             with:
@@ -35,12 +41,6 @@ jobs:
           - name: Compress subdirectories
             run: |
               zip -q -r NextNapCatWebUI.zip dist/*
-
-          - name: Set version
-            run: |
-              commit_sha=$(git rev-parse --short HEAD)
-              version=$(jq -r '.version' package.json)
-              echo "version=${version}-${commit_sha}" >> $GITHUB_ENV
 
           - name: Create Release and Upload Artifacts
             uses: softprops/action-gh-release@v1

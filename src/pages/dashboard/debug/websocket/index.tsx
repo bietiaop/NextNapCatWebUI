@@ -11,8 +11,8 @@ import WSStatus from '@/components/onebot/ws_status'
 
 export default function WSDebug() {
   const [socketConfig, setSocketConfig] = useState({
-    url: 'ws://192.168.31.196:3000/',
-    token: 'test'
+    url: 'ws://127.0.0.1:3000/',
+    token: ''
   })
   const [inputUrl, setInputUrl] = useState(socketConfig.url)
   const [inputToken, setInputToken] = useState(socketConfig.token)

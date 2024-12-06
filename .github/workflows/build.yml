@@ -13,39 +13,39 @@ jobs:
           - name: Clone Main Repository
             uses: actions/checkout@v4
             with:
-                ref: main
-                token: ${{ secrets.GITHUB_TOKEN }}
+              ref: main
+              token: ${{ secrets.GITHUB_TOKEN }}
 
           - name: Use Node.js 20.X
             uses: actions/setup-node@v4
             with:
-                node-version: 20.X
+              node-version: 20.X
 
           - name: Build NextNapCatWebUI
             run: |
-                npm install && npm run webui:build
+              npm install
+              npm run webui:build
 
           - name: Upload Artifact
             uses: actions/upload-artifact@v4
             with:
-                name: NextNapCatWebUI
-                path: dist
+              name: NextNapCatWebUI
+              path: dist
 
           - name: Compress subdirectories
             run: |
-                zip -q -r NextNapCatWebUI.zip dist/*
+              zip -q -r NextNapCatWebUI.zip dist/*
 
-          - name: Read version from package.json
-            id: get_version
+          - name: Set version
             run: |
-                version=$(jq -r '.version' package.json)
-                echo "version=$version" >> $GITHUB_ENV
+              version=$(jq -r '.version' package.json)
+              echo "version=${version}-${GITHUB_SHA}" >> $GITHUB_ENV
 
           - name: Create Release and Upload Artifacts
             uses: softprops/action-gh-release@v1
             with:
-                name: NextNapCatWebUI
-                tag_name: v${{ env.version }}
-                token: ${{ secrets.GITHUB_TOKEN }}
-                files: |
-                    NextNapCatWebUI.zip
+              name: NextNapCatWebUI
+              tag_name: ${{ env.version }}
+              token: ${{ secrets.GITHUB_TOKEN }}
+              files: |
+                NextNapCatWebUI.zip

@@ -35,10 +35,17 @@ jobs:
             run: |
                 zip -q -r NextNapCatWebUI.zip dist/*
 
+          - name: Read version from package.json
+            id: get_version
+            run: |
+                version=$(jq -r '.version' package.json)
+                echo "version=$version" >> $GITHUB_ENV
+
           - name: Create Release Draft and Upload Artifacts
             uses: softprops/action-gh-release@v1
             with:
                 name: NextNapCatWebUI
+                tag_name: v${{ env.version }}
                 token: ${{ secrets.GITHUB_TOKEN }}
                 files: |
                     NextNapCatWebUI.zip

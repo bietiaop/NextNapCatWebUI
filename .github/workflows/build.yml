@@ -38,8 +38,9 @@ jobs:
 
           - name: Set version
             run: |
+              commit_sha=$(git rev-parse --short HEAD)
               version=$(jq -r '.version' package.json)
-              echo "version=${version}-${GITHUB_SHA}" >> $GITHUB_ENV
+              echo "version=${version}-${commit_sha}" >> $GITHUB_ENV
 
           - name: Create Release and Upload Artifacts
             uses: softprops/action-gh-release@v1

@@ -1,7 +1,7 @@
 {
   "name": "vite-template",
   "private": true,
-  "version": "0.0.3-alpha",
+  "version": "0.0.3-beta",
   "type": "module",
   "scripts": {
     "webui:dev": "vite",

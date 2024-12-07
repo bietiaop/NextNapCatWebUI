@@ -1,22 +1,70 @@
-import {
+import type {
   OB11Message,
   OB11GroupMessage,
   OB11PrivateMessage
 } from '@/types/onebot'
+import { isOB11GroupMessage } from '@/utils/onebot'
 import { Avatar } from '@nextui-org/avatar'
+import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/popover'
 import clsx from 'clsx'
+import { renderMessageContent } from '../render_message'
 
 export interface OneBotMessageProps {
   data: OB11Message
 }
 
-// 将卡片提出成组件
 export interface OneBotMessageGroupProps {
   data: OB11GroupMessage
 }
+
 export interface OneBotMessagePrivateProps {
   data: OB11PrivateMessage
 }
+
+const MessageContent: React.FC<{ data: OB11Message }> = ({ data }) => {
+  return (
+    <div className="h-full flex flex-col overflow-hidden flex-1">
+      <div className="flex gap-2 items-center flex-shrink-0">
+        <div className="font-bold">
+          {isOB11GroupMessage(data) && data.sender.card && (
+            <span className="mr-1">{data.sender.card}</span>
+          )}
+          <span
+            className={clsx(
+              isOB11GroupMessage(data) &&
+                data.sender.card &&
+                'text-default-400 font-normal'
+            )}
+          >
+            {data.sender.nickname}
+          </span>
+        </div>
+        <div>({data.sender.user_id})</div>
+        <div className="text-sm">消息ID: {data.message_id}</div>
+      </div>
+      <Popover showArrow triggerScaleOnOpen={false}>
+        <PopoverTrigger>
+          <div className="flex-1 break-all overflow-hidden whitespace-pre-wrap border border-default-100 p-2 rounded-md hover:bg-content2 md:cursor-pointer transition-background relative group">
+            <div className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 text-default-300">
+              点击查看完整消息
+            </div>
+            {Array.isArray(data.message)
+              ? renderMessageContent(data.message, true)
+              : data.raw_message}
+          </div>
+        </PopoverTrigger>
+        <PopoverContent>
+          <div className="p-2">
+            {Array.isArray(data.message)
+              ? renderMessageContent(data.message)
+              : data.raw_message}
+          </div>
+        </PopoverContent>
+      </Popover>
+    </div>
+  )
+}
+
 const OneBotMessageGroup: React.FC<OneBotMessageGroupProps> = ({ data }) => {
   return (
     <div className="h-full overflow-hidden flex flex-col w-full">
@@ -36,28 +84,7 @@ const OneBotMessageGroup: React.FC<OneBotMessageGroupProps> = ({ data }) => {
           size="md"
           className="flex-shrink-0 mr-2"
         />
-        <div className="h-full flex flex-col overflow-hidden flex-1">
-          <div className="flex gap-2 items-center flex-shrink-0">
-            <div className="font-bold">
-              {data.sender.card && (
-                <span className="mr-1">{data.sender.card}</span>
-              )}
-              <span
-                className={clsx(
-                  data.sender.card && 'text-default-400 font-normal'
-                )}
-              >
-                {data.sender.nickname}
-              </span>
-            </div>
-
-            <div>({data.sender.user_id})</div>
-            <div className="text-sm">消息ID: {data.message_id}</div>
-          </div>
-          <div className="flex-1 break-all overflow-auto whitespace-pre-wrap border border-default-100 p-2 rounded-md">
-            {data.raw_message}
-          </div>
-        </div>
+        <MessageContent data={data} />
       </div>
     </div>
   )
@@ -74,16 +101,7 @@ const OneBotMessagePrivate: React.FC<OneBotMessagePrivateProps> = ({
         size="md"
         className="flex-shrink-0 mr-2"
       />
-      <div className="h-full flex flex-col overflow-hidden">
-        <div className="flex gap-2 items-center flex-shrink-0">
-          <div className="font-bold">{data.sender.nickname}</div>
-          <div>({data.sender.user_id})</div>
-          <div className="text-sm">消息ID: {data.message_id}</div>
-        </div>
-        <div className="flex-1 break-all overflow-auto whitespace-pre-wrap border border-default-100 p-2 rounded-md">
-          {data.raw_message}
-        </div>
-      </div>
+      <MessageContent data={data} />
     </div>
   )
 }

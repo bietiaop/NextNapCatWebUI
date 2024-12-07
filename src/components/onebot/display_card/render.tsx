@@ -41,7 +41,7 @@ export const getItemSize = (event: OB11AllEvent['post_type']) => {
     return 100
   }
   if (event === 'message') {
-    return 250
+    return 180
   }
   if (event === 'request') {
     return 100
@@ -79,12 +79,12 @@ const OneBotItemRender = ({ data, index, style }: OneBotItemRenderProps) => {
   const msg = data[index]
   const isEvent = isOB11Event(msg)
   return (
-    <div style={style} className="p-2 overflow-visible w-full h-full">
+    <div style={style} className="p-1 overflow-visible w-full h-full">
       <motion.div
         variants={itemVariants}
         initial="hidden"
         animate="visible"
-        className="h-full"
+        className="h-full px-2"
       >
         <Card className="w-full h-full py-2">
           <CardHeader className="py-0 text-default-500 flex-row gap-2">

@@ -5,6 +5,7 @@ import {
   OneBot11FriendRecall,
   OneBot11GroupAdmin,
   OneBot11GroupBan,
+  OneBot11GroupCard,
   OneBot11GroupDecrease,
   OneBot11GroupEssence,
   OneBot11GroupIncrease,
@@ -200,6 +201,20 @@ const GroupEssenceNotice: React.FC<NoticeProps<OneBot11GroupEssence>> = ({
   )
 }
 
+const GroupCardNotice: React.FC<NoticeProps<OneBot11GroupCard>> = ({
+  data
+}) => {
+  const { group_id, user_id, card_new, card_old } = data
+  return (
+    <>
+      <div>群号: {group_id}</div>
+      <div>用户ID: {user_id}</div>
+      <div>新名片: {card_new}</div>
+      <div>旧名片: {card_old}</div>
+    </>
+  )
+}
+
 const OneBotNotice: React.FC<OneBotNoticeProps> = ({ data }) => {
   let NoticeComponent: React.ReactNode
   switch (data.notice_type) {
@@ -255,6 +270,9 @@ const OneBotNotice: React.FC<OneBotNoticeProps> = ({ data }) => {
       NoticeComponent = (
         <GroupEssenceNotice data={data as OneBot11GroupEssence} />
       )
+      break
+    case OB11NoticeType.GroupCard:
+      NoticeComponent = <GroupCardNotice data={data as OneBot11GroupCard} />
       break
   }
 

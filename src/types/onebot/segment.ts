@@ -240,6 +240,7 @@ export type OB11SegmentBase =
   | ForwardSegment
   | XmlSegment
   | JsonSegment
+  | FileSegment
 
 /** 合并转发已有消息节点消息段 */
 export interface DirectNodeSegment extends Segment {

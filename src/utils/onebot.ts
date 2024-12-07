@@ -1,5 +1,8 @@
 import {
+  OB11GroupMessage,
+  OB11Message,
   OB11NoticeType,
+  OB11PrivateMessage,
   type AllOB11WsResponse,
   type OB11AllEvent,
   type OB11Notice,
@@ -162,7 +165,37 @@ export const getNoticeTypeName = (type: OB11Notice['notice_type']): string => {
       return '好友消息撤回'
     case OB11NoticeType.Notify:
       return '通知'
+    case OB11NoticeType.GroupMsgEmojiLike:
+      return '群消息表情回应'
+    case OB11NoticeType.GroupEssence:
+      return '群消息精华'
+    case OB11NoticeType.GroupCard:
+      return '群名片更新'
     default:
       return '未知'
   }
+}
+
+/**
+ * 判断 OneBot 消息是否为私聊消息
+ * @param data OneBot 消息
+ * @returns 是否为私聊消息
+ * @description 用于判断 OneBot 消息是否为私聊消息
+ */
+export const isOB11PrivateMessage = (
+  data: OB11Message
+): data is OB11PrivateMessage => {
+  return data.message_type === 'private'
+}
+
+/**
+ * 判断 OneBot 消息是否为群消息
+ * @param data OneBot 消息
+ * @returns 是否为群消息
+ * @description 用于判断 OneBot 消息是否为群消息
+ */
+export const isOB11GroupMessage = (
+  data: OB11Message
+): data is OB11GroupMessage => {
+  return data.message_type === 'group'
 }

@@ -8,10 +8,14 @@ import { useWebSocketDebug } from '@/hooks/use-websocket-debug'
 import OneBotMessageList from '@/components/onebot/message_list'
 import OneBotSendModal from '@/components/onebot/send_modal'
 import WSStatus from '@/components/onebot/ws_status'
+import { useLocalStorage } from '@uidotdev/usehooks'
+import key from '@/const/key'
 
 export default function WSDebug() {
+  const [url] = useLocalStorage(key.storeURL, 'http://127.0.0.1:6099')
+  const defaultWsUrl = url.replace('http', 'ws').replace(':6099', ':3000')
   const [socketConfig, setSocketConfig] = useState({
-    url: 'ws://127.0.0.1:3000/',
+    url: defaultWsUrl,
     token: ''
   })
   const [inputUrl, setInputUrl] = useState(socketConfig.url)
@@ -32,8 +36,8 @@ export default function WSDebug() {
   }, [inputUrl, inputToken])
 
   return (
-    <div className="h-[calc(100vh-4rem)] overflow-hidden flex flex-col">
-      <Card className="m-2 flex-shrink-0">
+    <div className="h-[calc(100vh-3rem)] overflow-hidden flex flex-col">
+      <Card className="mx-2 mt-2 flex-shrink-0">
         <CardBody className="gap-2">
           <div className="grid gap-2 items-center md:grid-cols-5">
             <Input

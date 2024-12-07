@@ -58,7 +58,9 @@ export const enum OB11NoticeType {
   /** 群表情回应 Lagrange */
   GroupMsgEmojiLikeLagrange = 'reaction',
   /** 精华 */
-  GroupEssence = 'essence'
+  GroupEssence = 'essence',
+  /** 群名片更新 */
+  GroupCard = 'group_card'
 }
 
 /** 请求事件类型 */
@@ -380,6 +382,19 @@ export interface OneBot11GroupEssence extends NoticeBase {
   operator_id: number
 }
 
+/** GroupCard */
+export interface OneBot11GroupCard extends NoticeBase {
+  /** 通知类型 */
+  notice_type: OB11NoticeType.GroupCard
+  /** 群号 */
+  group_id: number
+  /** 用户 QQ 号 */
+  user_id: number
+  /** 名片 */
+  card_new: string
+  card_old: string
+}
+
 /** 通知事件 */
 export type OB11Notice =
   | OneBot11GroupUpload
@@ -396,6 +411,7 @@ export type OB11Notice =
   | OneBot11GroupMessageReaction
   | OneBot11GroupMessageReactionLagrange
   | OneBot11GroupEssence
+  | OneBot11GroupCard
 
 /** 请求事件基类 */
 export interface RequestBase extends OB11EventBase {

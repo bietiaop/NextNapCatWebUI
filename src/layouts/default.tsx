@@ -89,10 +89,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <div
         ref={contentRef}
         className={clsx(
-          'overflow-y-auto relative flex-1 rounded-md m-1 bg-content1 dark:bg-background',
+          'overflow-y-auto relative flex-1 rounded-md m-1 bg-content1 dark:bg-zinc-950',
           openSideBar ? 'ml-0' : 'ml-1',
           !b64img && 'shadow-inner shadow-danger-200 dark:shadow-danger-50',
-          b64img && '!bg-opacity-50 backdrop-blur-none'
+          b64img && '!bg-opacity-50 backdrop-blur-none dark:bg-background'
         )}
       >
         <div className="h-10 flex items-center hm-medium text-xl sticky top-0 left-0 backdrop-blur-lg z-20 shadow-sm bg-opacity-30 bg-background dark:bg-background shadow-danger-50 dark:shadow-danger-100">

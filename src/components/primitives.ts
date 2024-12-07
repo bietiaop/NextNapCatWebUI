@@ -13,6 +13,7 @@ export const title = tv({
       foreground: 'from-[#FFFFFF] to-[#4B4B4B]'
     },
     size: {
+      xxs: 'text-medium lg:text-medium',
       xs: 'text-xl lg:text-xl',
       sm: 'text-3xl lg:text-4xl',
       md: 'text-[2.3rem] lg:text-5xl leading-9',

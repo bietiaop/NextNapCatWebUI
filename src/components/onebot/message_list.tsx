@@ -44,7 +44,9 @@ const OneBotMessageList: React.FC<OneBotMessageListProps> = (props) => {
         ref={listRef}
         itemCount={messages.length}
         width="100%"
-        style={{ overflowX: 'hidden' }}
+        style={{
+          overflowX: 'hidden'
+        }}
         itemSize={(idx) => {
           const msg = messages[idx]
           if (isOB11Event(msg)) {

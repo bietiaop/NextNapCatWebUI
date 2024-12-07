@@ -1059,3 +1059,635 @@ export const BugIcon2 = (props: IconSvgProps) => (
     </g>
   </svg>
 )
+
+export const WebUIIcon = (props: IconSvgProps) => (
+  <>
+    <svg
+      width="63.9375"
+      height="64.56657608695652"
+      viewBox="0 0 63.9375 66.56657608695652"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ verticalAlign: 'text-top' }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#C5BEF6',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M53.69 19.19L61.94 19.19L54.44 61.19Q54.19 62.44 53.31 63.34Q52.44 64.25 51.19 64.50L51.19 64.50Q49.91 64.72 48.77 64.22Q47.63 63.72 46.97 62.66L46.97 62.66L32.09 38.22L17.19 62.66Q16.66 63.56 15.73 64.06Q14.81 64.56 13.75 64.56L13.75 64.56Q12.28 64.56 11.16 63.63Q10.03 62.69 9.78 61.19L9.78 61.19L2.22 19.19L10.47 19.19L15.84 48.78L28.66 28.34Q29.19 27.44 30.11 26.94Q31.03 26.44 32.09 26.44L32.09 26.44Q33.16 26.44 34.06 26.94Q34.97 27.44 35.56 28.34L35.56 28.34L48.31 48.78L53.69 19.19Z"
+          style={{
+            strokeDasharray: '295, 297',
+            strokeDashoffset: 296
+          }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="0ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="0ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="42.15625"
+      height="64"
+      viewBox="0 0 42.15625 66"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ verticalAlign: 'text-top' }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#E5C5F7',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M40.16 41.41L40.16 41.41Q40.16 43.09 39.56 45.05Q38.97 47 37.64 48.67Q36.31 50.34 34.17 51.47Q32.03 52.59 28.97 52.59L28.97 52.59L14.31 52.59L14.31 44.88L28.97 44.88Q30.63 44.88 31.53 43.86Q32.44 42.84 32.44 41.34L32.44 41.34Q32.44 39.75 31.42 38.84Q30.41 37.94 28.97 37.94L28.97 37.94L14.31 37.94Q12.66 37.94 11.75 38.95Q10.84 39.97 10.84 41.47L10.84 41.47L10.84 52.81Q10.84 54.44 11.86 55.34Q12.88 56.25 14.38 56.25L14.38 56.25L28.97 56.25L28.97 64L14.31 64Q12.63 64 10.67 63.41Q8.72 62.81 7.05 61.48Q5.38 60.16 4.25 58.02Q3.13 55.88 3.13 52.81L3.13 52.81L3.13 41.41Q3.13 39.72 3.72 37.77Q4.31 35.81 5.64 34.14Q6.97 32.47 9.11 31.34Q11.25 30.22 14.31 30.22L14.31 30.22L28.97 30.22Q30.66 30.22 32.61 30.81Q34.56 31.41 36.23 32.73Q37.91 34.06 39.03 36.20Q40.16 38.34 40.16 41.41Z"
+          style={{ strokeDasharray: '219, 221', strokeDashoffset: 220 }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="800ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="800ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="43.0625"
+      height="64"
+      viewBox="0 0 43.0625 66"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#DDC6F7',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M41.06 41.59L41.06 52.59Q41.06 53.75 40.80 55.03Q40.53 56.31 39.97 57.58Q39.41 58.84 38.52 60Q37.63 61.16 36.36 62.05Q35.09 62.94 33.44 63.47Q31.78 64 29.69 64L29.69 64L15.03 64Q13.88 64 12.59 63.73Q11.31 63.47 10.05 62.91Q8.78 62.34 7.63 61.45Q6.47 60.56 5.58 59.30Q4.69 58.03 4.16 56.36Q3.63 54.69 3.63 52.59L3.63 52.59L3.63 15.94L11.75 15.94L11.75 52.59Q11.75 54.09 12.69 54.98Q13.63 55.88 15.03 55.88L15.03 55.88L29.69 55.88Q31.22 55.88 32.08 54.97Q32.94 54.06 32.94 52.59L32.94 52.59L32.94 41.59Q32.94 40.06 32.03 39.20Q31.13 38.34 29.69 38.34L29.69 38.34L15.03 38.34L15.03 30.22L29.69 30.22Q30.84 30.22 32.13 30.48Q33.41 30.75 34.67 31.31Q35.94 31.88 37.09 32.77Q38.25 33.66 39.13 34.92Q40 36.19 40.53 37.84Q41.06 39.50 41.06 41.59L41.06 41.59Z"
+          style={{
+            strokeDasharray: '239, 241',
+            strokeDashoffset: 240
+          }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="1600ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="1600ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="50.625"
+      height="64"
+      viewBox="0 0 50.625 66"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#A5D1F7',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M48.63 19.19L48.63 59.91Q48.63 60.78 48.31 61.53Q48 62.28 47.44 62.83Q46.88 63.38 46.13 63.69Q45.38 64 44.53 64L44.53 64L26.22 64Q23.63 64 20.97 63.44Q18.31 62.88 15.83 61.70Q13.34 60.53 11.16 58.72Q8.97 56.91 7.33 54.42Q5.69 51.94 4.75 48.73Q3.81 45.53 3.81 41.59L3.81 41.59L3.81 19.19L11.94 19.19L11.94 41.59Q11.94 45.03 12.89 47.41Q13.84 49.78 15.31 51.38Q16.78 52.97 18.53 53.88Q20.28 54.78 21.86 55.22Q23.44 55.66 24.64 55.77Q25.84 55.88 26.22 55.88L26.22 55.88L40.50 55.88L40.50 19.19L48.63 19.19Z"
+          style={{
+            strokeDasharray: '235, 237',
+            strokeDashoffset: 236
+          }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="2400ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="2400ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="14.90625"
+      height="64"
+      viewBox="0 0 14.90625 66"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#A5B7F7',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M12.91 19.19L12.91 64L4.78 64L4.78 19.19L12.91 19.19Z"
+          style={{ strokeDasharray: '105, 107', strokeDashoffset: 106 }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="3200ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="3200ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+  </>
+)
+
+export const BietiaopIcon = (props: IconSvgProps) => (
+  <>
+    <svg
+      width="24.688"
+      height="32"
+      viewBox="0 0 24.688 34"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#2B72FF',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M6.40 32L1.76 32L1.76 9.12L6.40 9.12L6.40 32ZM13.60 32L2.56 32L2.56 28.32L13.60 28.32Q15.68 28.32 16.78 27.18Q17.89 26.05 17.89 23.78L17.89 23.78Q17.89 21.47 16.78 20.34Q15.68 19.20 13.60 19.20L13.60 19.20L2.88 19.20L2.88 15.52L13.60 15.52Q17.89 15.52 20.29 17.63Q22.69 19.74 22.69 23.78L22.69 23.78Q22.69 27.78 20.29 29.89Q17.89 32 13.60 32L13.60 32Z"
+          style={{
+            strokeDasharray: '148, 150',
+            strokeDashoffset: 149
+          }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="0ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="0ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="8.432"
+      height="32"
+      viewBox="0 0 8.432 34"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#2B72FF',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M6.40 32L1.76 32L1.76 15.52L6.40 15.52L6.40 32ZM6.43 12.80L1.73 12.80L1.73 9.18L6.43 9.18L6.43 12.80Z"
+          style={{ strokeDasharray: '58, 60', strokeDashoffset: 59 }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="600ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="600ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="26"
+      height="32.16"
+      viewBox="0 0 26 34.16"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#2B72FF',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M23.17 32.16L10.21 32.16Q5.92 32.16 3.52 30.03Q1.12 27.90 1.12 23.78L1.12 23.78Q1.12 19.62 3.52 17.49Q5.92 15.36 10.21 15.36L10.21 15.36L18.21 15.36Q21.02 15.36 22.51 16.69Q24 18.02 24 20.48L24 20.48Q24 25.50 18.21 25.50L18.21 25.50L6.11 25.50Q6.78 28.48 10.21 28.48L10.21 28.48L23.17 28.48L23.17 32.16ZM17.98 19.04L10.21 19.04Q6.91 19.04 6.14 21.82L6.14 21.82L17.98 21.82Q18.62 21.82 18.99 21.44Q19.36 21.06 19.36 20.38L19.36 20.38Q19.36 19.04 17.98 19.04L17.98 19.04Z"
+          style={{
+            strokeDasharray: '130, 132',
+            strokeDashoffset: 131
+          }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="1200ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="1200ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="19.312"
+      height="32"
+      viewBox="0 0 19.312 34"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#2B72FF',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M17.31 32L10.34 32Q7.55 32 6.24 30.61Q4.93 29.22 4.93 26.94L4.93 26.94L4.93 19.20L0.16 19.20L0.16 15.52L4.93 15.52L4.93 10.46L9.57 10.46L9.57 15.52L16.42 15.52L16.42 19.20L9.57 19.20L9.57 26.37Q9.57 28.32 11.49 28.32L11.49 28.32L17.31 28.32L17.31 32Z"
+          style={{ strokeDasharray: '88, 90', strokeDashoffset: 89 }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="1800ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="1800ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="8.432"
+      height="32"
+      viewBox="0 0 8.432 34"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#2B72FF',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M6.40 32L1.76 32L1.76 15.52L6.40 15.52L6.40 32ZM6.43 12.80L1.73 12.80L1.73 9.18L6.43 9.18L6.43 12.80Z"
+          style={{ strokeDasharray: '58, 60', strokeDashoffset: 59 }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="2400ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="2400ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="25.072"
+      height="32"
+      viewBox="0 0 25.072 34"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#2B72FF',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M23.07 32L6.14 32Q3.55 32 2.18 30.69Q0.80 29.38 0.80 26.94L0.80 26.94Q0.80 24.54 2.18 23.23Q3.55 21.92 6.14 21.92L6.14 21.92L18.43 21.92L18.43 21.15Q18.43 19.20 16.51 19.20L16.51 19.20L2.94 19.20L2.94 15.52L17.73 15.52Q20.64 15.52 21.86 16.85Q23.07 18.18 23.07 20.58L23.07 20.58L23.07 32ZM6.98 28.32L6.98 28.32L18.43 28.32L18.43 25.60L6.98 25.60Q6.37 25.60 6.03 25.97Q5.70 26.34 5.70 26.94L5.70 26.94Q5.70 27.55 6.03 27.94Q6.37 28.32 6.98 28.32Z"
+          style={{ strokeDasharray: '131, 133', strokeDashoffset: 132 }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="3000ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="3000ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="27.216"
+      height="32.16"
+      viewBox="0 0 27.216 34.16"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#2B72FF',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M16.13 32.16L10.21 32.16Q5.92 32.16 3.52 30.03Q1.12 27.90 1.12 23.78L1.12 23.78Q1.12 19.62 3.52 17.49Q5.92 15.36 10.21 15.36L10.21 15.36L16.13 15.36Q20.42 15.36 22.82 17.49Q25.22 19.62 25.22 23.78L25.22 23.78Q25.22 27.90 22.82 30.03Q20.42 32.16 16.13 32.16L16.13 32.16ZM10.21 28.48L10.21 28.48L16.13 28.48Q18.21 28.48 19.31 27.33Q20.42 26.18 20.42 23.78L20.42 23.78Q20.42 21.34 19.31 20.19Q18.21 19.04 16.13 19.04L16.13 19.04L10.21 19.04Q8.13 19.04 7.02 20.19Q5.92 21.34 5.92 23.78L5.92 23.78Q5.92 26.18 7.02 27.33Q8.13 28.48 10.21 28.48Z"
+          style={{ strokeDasharray: '109, 111', strokeDashoffset: 110 }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="3600ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="3600ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+    <svg
+      width="24.688"
+      height="39.2"
+      viewBox="0 0 24.688 41.2"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        verticalAlign: 'text-top'
+      }}
+      {...props}
+    >
+      <g
+        id="svgGroup"
+        stroke-linecap="round"
+        stroke="#000"
+        fill="transparent"
+        style={{
+          fill: 'transparent',
+          fillOpacity: 0,
+          stroke: '#2B72FF',
+          strokeWidth: '2px'
+        }}
+      >
+        <path
+          d="M6.40 39.20L1.76 39.20L1.76 15.52L13.60 15.52Q17.89 15.52 20.29 17.63Q22.69 19.74 22.69 23.74L22.69 23.74Q22.69 27.78 20.29 29.89Q17.89 32 13.60 32L13.60 32L6.40 32L6.40 39.20ZM13.60 19.20L13.60 19.20L6.40 19.20L6.40 28.32L13.60 28.32Q15.68 28.32 16.78 27.18Q17.89 26.05 17.89 23.74L17.89 23.74Q17.89 21.47 16.78 20.34Q15.68 19.20 13.60 19.20Z"
+          style={{ strokeDasharray: '120, 122', strokeDashoffset: 121 }}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            to="0"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="4200ms"
+          ></animate>
+          <animate
+            attributeName="fill-opacity"
+            to="1"
+            dur="800ms"
+            calcMode="linear"
+            repeatCount="1"
+            fill="freeze"
+            begin="4200ms"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+  </>
+)

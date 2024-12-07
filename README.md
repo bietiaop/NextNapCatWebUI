@@ -2,12 +2,14 @@
 
 ## Screenshots
 
-| 场景 | 截图 |
-|------|------|
-|      |      |
-|      |      |
-|      |      |
-
+| 场景 | 亮色 | 暗色 |
+|------|------|------|
+| WebUI登录 | ![WebUI登录](./screenshots/weblogin_light.png) | ![WebUI登录](./screenshots/weblogin_dark.png) |
+| QQ登录 | ![QQ登录](./screenshots/qqlogin_light.png) | ![QQ登录](./screenshots/qqlogin_dark.png) |
+| 网络列表 | ![网络配置](./screenshots/network_list_light.png) | ![网络配置](./screenshots/network_list_dark.png) |
+| 网络编辑 | ![网络配置](./screenshots/network_edit_light.png) | ![网络配置](./screenshots/network_edit_dark.png) |
+| 日志 | ![日志](./screenshots/log_light.png) | ![日志](./screenshots/log_dark.png) |
+| WS调试 | ![WS调试](./screenshots/ws_debug_light.png) | ![WS调试](./screenshots/ws_debug_dark.png) |
 
 ## Directly deploy via [Vercel](https://vercel.com/)
 

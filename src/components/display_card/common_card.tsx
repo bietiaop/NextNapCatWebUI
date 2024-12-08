@@ -96,7 +96,12 @@ const NetworkDisplayCard = <T extends keyof NetworkType>({
     >
       <div className="grid grid-cols-2 gap-1">
         {fields.map((field, index) => (
-          <div key={index} className="flex items-center gap-2">
+          <div
+            key={index}
+            className={`flex items-center gap-2 ${
+              field.label === 'URL' ? 'col-span-2' : ''
+            }`}
+          >
             <span className="text-default-400">{field.label}</span>
             {field.render ? (
               field.render(field.value)

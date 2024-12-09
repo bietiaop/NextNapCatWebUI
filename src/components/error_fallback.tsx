@@ -20,7 +20,7 @@ function errorFallbackRender({
         <p className="mb-2">错误信息</p>
         <Code>{error.message}</Code>
       </div>
-      <Button color="primary" size="md" onClick={resetErrorBoundary}>
+      <Button color="primary" size="md" onPress={resetErrorBoundary}>
         重试
       </Button>
     </div>

@@ -5,3 +5,9 @@ export enum LogLevel {
   ERROR = 'error',
   FATAL = 'fatal'
 }
+
+export enum PlayMode {
+  Loop = 'loop',
+  Random = 'random',
+  Single = 'single'
+}

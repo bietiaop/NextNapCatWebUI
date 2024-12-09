@@ -99,7 +99,7 @@ const renderItems = (items: MenuItem[], children = false) => {
           radius="full"
           startContent={item.icon}
           variant={isActive ? (children ? 'solid' : 'shadow') : 'light'}
-          onClick={() => {
+          onPress={() => {
             if (item.href) {
               if (!isActive) {
                 goTo(item.href)

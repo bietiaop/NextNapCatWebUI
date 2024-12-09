@@ -56,6 +56,13 @@ const GenericForm = <T extends keyof NetworkConfigType>({
     onClose()
   }
 
+  const _onSubmit = handleSubmit(submitAction, (e) => {
+    for (const error in e) {
+      toast.error(e[error]?.message as string)
+      return
+    }
+  })
+
   useEffect(() => {
     if (data) {
       const keys = Object.keys(data) as Path<NetworkConfig[T][0]>[]
@@ -153,12 +160,7 @@ const GenericForm = <T extends keyof NetworkConfigType>({
         <Button
           color="primary"
           isLoading={formState.isSubmitting}
-          onClick={handleSubmit(submitAction, (e) => {
-            for (const error in e) {
-              toast.error(e[error]?.message as string)
-              return
-            }
-          })}
+          onPress={() => _onSubmit}
         >
           保存
         </Button>

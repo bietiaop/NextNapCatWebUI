@@ -64,21 +64,21 @@ const NetworkDisplayCard = <T extends keyof NetworkType>({
           size="sm"
           variant="shadow"
         >
-          <Button color="warning" startContent={<FiEdit3 />} onClick={onEdit}>
+          <Button color="warning" startContent={<FiEdit3 />} onPress={onEdit}>
             编辑
           </Button>
 
           <Button
             color={debug ? 'success' : 'default'}
             startContent={<CgDebug />}
-            onClick={handleEnableDebug}
+            onPress={handleEnableDebug}
           >
             {debug ? '关闭调试' : '开启调试'}
           </Button>
           <Button
             color="danger"
             startContent={<MdDeleteForever />}
-            onClick={handleDelete}
+            onPress={handleDelete}
           >
             删除
           </Button>

@@ -88,7 +88,7 @@ const RealTimeLogs = () => {
         />
         <Button
           className="flex-shrink-0"
-          onClick={onDownloadLog}
+          onPress={onDownloadLog}
           startContent={<IoDownloadOutline className="text-lg" />}
         >
           下载日志

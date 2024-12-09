@@ -150,7 +150,7 @@ export default function QQLoginPage() {
               className="w-fit mx-auto"
               variant="light"
               color="primary"
-              onClick={() => {
+              onPress={() => {
                 navigate('/web_login', {
                   replace: true
                 })

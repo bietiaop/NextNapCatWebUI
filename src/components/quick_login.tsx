@@ -86,7 +86,7 @@ const QuickLogin: React.FC<QuickLoginProps> = ({
           radius="full"
           size="lg"
           variant="light"
-          onClick={onUpdateQQList}
+          onPress={onUpdateQQList}
         >
           <IoMdRefresh size={24} />
         </Button>
@@ -99,7 +99,7 @@ const QuickLogin: React.FC<QuickLoginProps> = ({
           radius="full"
           size="lg"
           variant="shadow"
-          onClick={onSubmit}
+          onPress={onSubmit}
         >
           登录
         </Button>

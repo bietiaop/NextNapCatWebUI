@@ -101,7 +101,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             className="mr-1"
             radius="none"
             variant="light"
-            onClick={() => setOpenSideBar(!openSideBar)}
+            onPress={() => setOpenSideBar(!openSideBar)}
           >
             {openSideBar ? <MdMenuOpen size={24} /> : <MdMenu size={24} />}
           </Button>

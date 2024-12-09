@@ -58,13 +58,13 @@ const SideBar: React.FC<SideBarProps> = (props) => {
         </div>
         <div className="overflow-y-auto flex flex-col flex-1 px-4">
           <Menus items={items} />
-          <div className="mt-auto">
+          <div className="mt-auto mb-10 md:mb-0">
             <Button
               className="w-full"
               color="danger"
               radius="full"
               variant="light"
-              onClick={toggleTheme}
+              onPress={toggleTheme}
               startContent={
                 !isDark ? <MdLightMode size={16} /> : <MdDarkMode size={16} />
               }
@@ -76,7 +76,7 @@ const SideBar: React.FC<SideBarProps> = (props) => {
               color="danger"
               radius="full"
               variant="light"
-              onClick={onRevokeAuth}
+              onPress={onRevokeAuth}
               startContent={<IoMdLogOut size={16} />}
             >
               退出登录

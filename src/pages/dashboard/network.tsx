@@ -334,12 +334,12 @@ export default function NetworkPage() {
           color="primary"
           radius="full"
           variant="flat"
-          onClick={refresh}
+          onPress={refresh}
         >
           <IoMdRefresh size={24} />
         </Button>
       </div>
-      <Tabs aria-label="Network Configs" items={tabs}>
+      <Tabs aria-label="Network Configs" className="max-w-full" items={tabs}>
         {(item) => (
           <Tab key={item.key} title={item.title}>
             <EmptySection isEmpty={!item.items.length} />

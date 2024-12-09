@@ -33,7 +33,13 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'monaco-editor': ['monaco-editor']
+          'monaco-editor': ['monaco-editor'],
+          'react-dom': ['react-dom'],
+          'react-router-dom': ['react-router-dom'],
+          'react-hook-form': ['react-hook-form'],
+          'react-icons': ['react-icons'],
+          'react-hot-toast': ['react-hot-toast'],
+          qface: ['qface']
         }
       }
     }

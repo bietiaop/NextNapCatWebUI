@@ -73,7 +73,7 @@ export default function WebLoginPage() {
           <div className="flex justify-end">
             <Button
               radius="full"
-              onClick={() => toast.dismiss(t.id)}
+              onPress={() => toast.dismiss(t.id)}
               color="primary"
               variant="flat"
             >
@@ -151,7 +151,7 @@ export default function WebLoginPage() {
               radius="full"
               size="lg"
               variant="shadow"
-              onClick={onSubmit}
+              onPress={onSubmit}
             >
               {!isLoading && (
                 <Image

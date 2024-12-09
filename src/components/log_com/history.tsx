@@ -112,11 +112,11 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
           selectedKeys={logLevel}
           onSelectionChange={setLogLevel}
         />
-        <Button className="flex-shrink-0" onClick={onDownloadLog}>
+        <Button className="flex-shrink-0" onPress={onDownloadLog}>
           下载日志
         </Button>
-        <Button onClick={refreshList}>刷新列表</Button>
-        <Button onClick={refreshLog}>刷新日志</Button>
+        <Button onPress={refreshList}>刷新列表</Button>
+        <Button onPress={refreshLog}>刷新日志</Button>
       </CardHeader>
       <CardBody className="relative">
         <PageLoading loading={logLoading} />

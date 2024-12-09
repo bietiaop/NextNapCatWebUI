@@ -41,7 +41,7 @@ export default function Hitokoto() {
       <div className="flex gap-2">
         <Tooltip content="刷新" placement="top">
           <Button
-            onClick={run}
+            onPress={run}
             size="sm"
             isLoading={loading}
             isIconOnly
@@ -54,7 +54,7 @@ export default function Hitokoto() {
         </Tooltip>
         <Tooltip content="复制" placement="top">
           <Button
-            onClick={onCopy}
+            onPress={onCopy}
             size="sm"
             isIconOnly
             radius="full"

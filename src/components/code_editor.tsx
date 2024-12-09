@@ -3,8 +3,24 @@ import Editor, { OnMount } from '@monaco-editor/react'
 import monaco from '@/monaco'
 import { loader } from '@monaco-editor/react'
 import { useTheme } from '@/hooks/use-theme'
+loader.config({
+  monaco,
+  paths: {
+    vs: '/monaco-editor/min/vs'
+  }
+})
 
-loader.config({ monaco })
+loader.config({
+  'vs/nls': {
+    availableLanguages: { '*': 'zh-cn' }
+  }
+})
+
+loader.config({
+  'vs/nls': {
+    availableLanguages: { '*': 'zh-cn' }
+  }
+})
 
 export interface CodeEditorProps extends React.ComponentProps<typeof Editor> {
   test?: string

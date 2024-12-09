@@ -2,11 +2,13 @@ import { Image } from '@nextui-org/image'
 import packageJson from '../../../package.json'
 
 import logo from '@/assets/images/logo.png'
-import { BietiaopIcon, WebUIIcon } from '@/components/icons'
+import { BietiaopIcon, GithubIcon, WebUIIcon } from '@/components/icons'
 import { Chip } from '@nextui-org/chip'
 import NapCatRepoInfo from '@/components/napcat_repo_info'
 import { title } from '@/components/primitives'
 import clsx from 'clsx'
+import { Tooltip } from '@nextui-org/tooltip'
+import { Link } from '@nextui-org/link'
 
 function VersionInfo() {
   return (
@@ -20,6 +22,15 @@ function VersionInfo() {
       >
         {packageJson.version}
       </Chip>
+      <Tooltip
+        content="View source code on GitHub"
+        placement="bottom"
+        showArrow
+      >
+        <Link isExternal href="https://github.com/bietiaop/NextNapCatWebUI">
+          <GithubIcon className="text-default-900 hover:text-default-600 w-8 h-8 hover:drop-shadow-lg transition-all" />
+        </Link>
+      </Tooltip>
     </div>
   )
 }

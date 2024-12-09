@@ -11,5 +11,15 @@ export default defineConfig({
     // '/api': 'http://192.168.31.196:6099'
     // '/api': 'http://127.0.0.1:6099'
     // }
+  },
+  build: {
+    assetsInlineLimit: 0,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'monaco-editor': ['monaco-editor']
+        }
+      }
+    }
   }
 })

@@ -3,7 +3,7 @@ import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
 import { Image } from '@nextui-org/image'
 import { IoKeyOutline } from 'react-icons/io5'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useLocalStorage } from '@uidotdev/usehooks'
 import { useNavigate } from 'react-router-dom'
@@ -16,6 +16,8 @@ import { ThemeSwitch } from '@/components/theme-switch'
 import WebUIManager from '@/controllers/webui_manager'
 import WebConfig from '@/components/web_config'
 import key from '@/const/key'
+import { Code } from '@nextui-org/code'
+import { Link } from '@nextui-org/link'
 
 export default function WebLoginPage() {
   const urlSearchParams = new URLSearchParams(window.location.search)
@@ -46,6 +48,46 @@ export default function WebLoginPage() {
       setIsLoading(false)
     }
   }
+
+  useEffect(() => {
+    toast(
+      (t) => (
+        <div>
+          <div className="font-bold text-center">遇到网络错误？</div>
+          <div>
+            <p>
+              由于浏览器自身限制，不支持<Code>HTTPS</Code>对<Code>HTTP</Code>
+              发起请求。需要您手动同意不安全的连接。
+              <Link
+                isExternal
+                showAnchorIcon
+                href="https://blog.csdn.net/qq_17627195/article/details/129203873#_18"
+              >
+                点击查看设置方法
+              </Link>
+            </p>
+            <p>
+              注意，直接看<b>方法二（针对单一网站）</b>
+            </p>
+          </div>
+          <div className="flex justify-end">
+            <Button
+              radius="full"
+              onClick={() => toast.dismiss(t.id)}
+              color="primary"
+              variant="flat"
+            >
+              知道了
+            </Button>
+          </div>
+        </div>
+      ),
+      {
+        position: 'top-right',
+        duration: 60000
+      }
+    )
+  }, [])
 
   return (
     <PureLayout>

@@ -6,7 +6,7 @@ import { useTheme } from '@/hooks/use-theme'
 loader.config({
   monaco,
   paths: {
-    vs: 'monaco-editor/min/vs'
+    vs: '/monaco-editor/min/vs'
   }
 })
 

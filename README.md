@@ -113,3 +113,13 @@ $ pnpm webui:dev
 # Related Projects
 
 - [NapCat](https://github.com/NapNeko/NapCatQQ/)
+- [Karin](https://github.com/KarinJS/Karin/)
+
+# Thanks to
+
+- [Vercel](https://vercel.com/)
+- [React](https://react.dev/)
+- [NextUI](https://nextui.org/)
+- and more open-source projects
+
+感谢群友“维拉”提供的在线音乐API。

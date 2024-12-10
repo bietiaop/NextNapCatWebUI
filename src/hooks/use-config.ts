@@ -160,6 +160,13 @@ const useConfig = () => {
     return mergedConfig
   }
 
+  const saveConfigWithoutNetwork = async (newConfig: OneBotConfig) => {
+    newConfig.network = config.network
+    await QQManager.setOB11Config(newConfig)
+    dispatch(storeUpdateConfig(newConfig))
+    return newConfig
+  }
+
   return {
     config,
     createNetworkConfig,
@@ -170,7 +177,8 @@ const useConfig = () => {
     deleteNetworkConfig,
     enableNetworkConfig,
     enableDebugNetworkConfig,
-    mergeConfig
+    mergeConfig,
+    saveConfigWithoutNetwork
   }
 }
 

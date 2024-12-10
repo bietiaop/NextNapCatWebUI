@@ -14,7 +14,9 @@ export interface MenuItem {
   autoOpen?: boolean
   href?: string
   items?: MenuItem[]
+  customIcon?: string
 }
+
 export const siteConfig = {
   name: 'NapCat WebUI',
   description: 'NapCat WebUI.',

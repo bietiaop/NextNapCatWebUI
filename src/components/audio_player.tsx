@@ -21,6 +21,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/popover'
 import { VolumeHighIcon, VolumeLowIcon } from './icons'
 import { useMediaQuery } from 'react-responsive'
 import clsx from 'clsx'
+import { useLocalStorage } from '@uidotdev/usehooks'
+import key from '@/const/key'
 
 export interface AudioPlayerProps
   extends React.AudioHTMLAttributes<HTMLAudioElement> {
@@ -69,6 +71,10 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   const isMediumUp = useMediaQuery({ minWidth: 768 })
   const shouldAdd = useRef(false)
   const currentProgress = (currentTime / duration) * 100
+  const [storageAutoPlay, setStorageAutoPlay] = useLocalStorage(
+    key.autoPlay,
+    true
+  )
 
   const handleTimeUpdate = (event: React.SyntheticEvent<HTMLAudioElement>) => {
     const audio = event.target as HTMLAudioElement
@@ -84,6 +90,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
 
   const handlePlay = (e: React.SyntheticEvent<HTMLAudioElement>) => {
     setIsPlaying(true)
+    setStorageAutoPlay(true)
     onPlay?.(e)
   }
 
@@ -112,13 +119,11 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   }, [volume])
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault()
     startY.current = e.touches[0].clientY
     startX.current = e.touches[0].clientX
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault()
     const deltaY = e.touches[0].clientY - startY.current
     const deltaX = e.touches[0].clientX - startX.current
     const container = cardRef.current
@@ -168,14 +173,15 @@ export default function AudioPlayer(props: AudioPlayerProps) {
     ? isSmallScreen
       ? 'translateY(90%)'
       : 'translateX(96%)'
-    : 'translate(0)'
+    : ''
 
   const translateStyle = dragTranslate || collapsedTranslate
 
   return (
     <div
       className={clsx(
-        'fixed right-0 bottom-0 z-[9999] w-full md:w-96 transition-transform',
+        'fixed right-0 bottom-0 z-[9999] w-full md:w-96',
+        !translateX && !translateY && 'transition-transform',
         isCollapsed && 'md:hover:!translate-x-80'
       )}
       style={{
@@ -189,7 +195,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
         onPlay={handlePlay}
         onPause={handlePause}
         onEnded={onPlayEnd}
-        autoPlay
+        autoPlay={autoPlay ?? storageAutoPlay}
         {...rest}
         controls={false}
         hidden
@@ -347,6 +353,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
                     onPress={() => {
                       if (isPlaying) {
                         audioRef.current?.pause()
+                        setStorageAutoPlay(false)
                       } else {
                         audioRef.current?.play()
                       }

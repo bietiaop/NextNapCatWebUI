@@ -5,7 +5,7 @@ import { Button } from '@nextui-org/button'
 import { IoMdRefresh } from 'react-icons/io'
 import { useDisclosure } from '@nextui-org/modal'
 
-import AddButton from '@/components/add_button'
+import AddButton from '@/components/button/add_button'
 import useConfig from '@/hooks/use-config'
 import PageLoading from '@/components/page_loading'
 import NetworkFormModal from '@/components/network_edit/modal'

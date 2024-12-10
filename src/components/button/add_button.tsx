@@ -11,7 +11,7 @@ import {
   PCIcon,
   PlusIcon,
   WebsocketIcon
-} from './icons'
+} from '../icons'
 
 import { Button } from '@nextui-org/button'
 import { IoAddCircleOutline } from 'react-icons/io5'

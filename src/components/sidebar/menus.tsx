@@ -7,6 +7,7 @@ import { matchPath, useLocation, useNavigate } from 'react-router-dom'
 
 import { useLocalStorage } from '@uidotdev/usehooks'
 import key from '@/const/key'
+import { Image } from '@nextui-org/image'
 
 const renderItems = (items: MenuItem[], children = false) => {
   return items?.map((item) => {
@@ -18,6 +19,10 @@ const renderItems = (items: MenuItem[], children = false) => {
       [item.items]
     )
     const [b64img] = useLocalStorage(key.backgroundImage, '')
+    const [customIcons] = useLocalStorage<Record<string, string>>(
+      key.customIcons,
+      {}
+    )
     const isActive = React.useMemo(() => {
       if (item.href) {
         return !!matchPath(item.href, locate.pathname)
@@ -97,7 +102,18 @@ const renderItems = (items: MenuItem[], children = false) => {
             )
           }
           radius="full"
-          startContent={item.icon}
+          startContent={
+            customIcons[item.label] ? (
+              <Image
+                radius="none"
+                src={customIcons[item.label]}
+                alt={item.label}
+                className="w-5 h-5"
+              />
+            ) : (
+              item.icon
+            )
+          }
           variant={isActive ? (children ? 'solid' : 'shadow') : 'light'}
           onPress={() => {
             if (item.href) {

@@ -160,7 +160,7 @@ const GenericForm = <T extends keyof NetworkConfigType>({
         <Button
           color="primary"
           isLoading={formState.isSubmitting}
-          onPress={() => _onSubmit}
+          onPress={() => _onSubmit()}
         >
           保存
         </Button>

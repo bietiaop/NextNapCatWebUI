@@ -3,7 +3,9 @@ enum key {
   token = 'token',
   theme = 'theme',
   backgroundImage = 'background-image',
-  musicID = 'music-id'
+  musicID = 'music-id',
+  autoPlay = 'auto-play',
+  customIcons = 'custom-icons'
 }
 
 export default key

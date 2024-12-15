@@ -14,17 +14,14 @@ import QuickLogin from '@/components/quick_login'
 import QrCodeLogin from '@/components/qr_code_login'
 import logo from '@/assets/images/logo.png'
 import { Button } from '@nextui-org/button'
-
-export interface QQItem {
-  uin: string
-}
+import type { QQItem } from '@/components/quick_login'
 
 export default function QQLoginPage() {
   const navigate = useNavigate()
   const [uinValue, setUinValue] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [qrcode, setQrcode] = useState<string>('')
-  const [qqList, setQQList] = useState<QQItem[]>([])
+  const [qqList, setQQList] = useState<(QQItem | LoginListItem)[]>([])
   const [refresh, setRefresh] = useState<boolean>(false)
   const firstLoad = useRef<boolean>(true)
   const onSubmit = async () => {
@@ -72,17 +69,22 @@ export default function QQLoginPage() {
   const onUpdateQQList = async () => {
     setRefresh(true)
     try {
-      const data = await QQManager.getQQQuickLoginList()
-
-      const qqList = data.map((item) => ({
-        uin: item
-      }))
-
-      setQQList(qqList)
+      const data = await QQManager.getQQQuickLoginListNew()
+      setQQList(data)
     } catch (error) {
-      const msg = (error as Error).message
+      try {
+        const data = await QQManager.getQQQuickLoginList()
 
-      toast.error(`获取QQ列表失败: ${msg}`)
+        const qqList = data.map((item) => ({
+          uin: item
+        }))
+
+        setQQList(qqList)
+      } catch (error) {
+        const msg = (error as Error).message
+
+        toast.error(`获取QQ列表失败: ${msg}`)
+      }
     } finally {
       setRefresh(false)
     }

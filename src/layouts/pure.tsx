@@ -9,11 +9,7 @@ export default function PureLayout({
   return (
     <div className="relative flex flex-col h-screen">
       <div className="absolute right-0 top-0 p-2">
-        <Tooltip
-          content="View source code on GitHub"
-          placement="left"
-          showArrow
-        >
+        <Tooltip content="查看WebUI源码" placement="left" showArrow>
           <Link isExternal href="https://github.com/bietiaop/NextNapCatWebUI">
             <GithubIcon className="text-default-900 hover:text-default-600 w-10 h-10 hover:drop-shadow-lg transition-all" />
           </Link>

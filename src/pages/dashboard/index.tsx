@@ -1,7 +1,10 @@
 import Hitokoto from '@/components/hitokoto'
 import { title } from '@/components/primitives'
+import QQInfoCard from '@/components/qq_info_card'
+import QQManager from '@/controllers/qq_manager'
 import useConfig from '@/hooks/use-config'
 import { Card, CardBody } from '@nextui-org/card'
+import { useRequest } from 'ahooks'
 import clsx from 'clsx'
 import { useEffect } from 'react'
 
@@ -57,6 +60,7 @@ const NetworkItemDisplay: React.FC<NetworkItemDisplayProps> = ({
 
 const DashboardIndexPage: React.FC = () => {
   const { config, refreshConfig } = useConfig()
+  const { data, loading, error } = useRequest(QQManager.getQQLoginInfo)
   const allNetWorkConfigLength =
     config.network.httpClients.length +
     config.network.websocketClients.length +
@@ -67,6 +71,7 @@ const DashboardIndexPage: React.FC = () => {
   }, [])
   return (
     <section className="w-full p-2 md:p-4">
+      <QQInfoCard data={data} error={error} loading={loading} />
       <div className="grid grid-cols-8 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 py-5">
         <NetworkItemDisplay count={allNetWorkConfigLength} label="网络配置" />
         <NetworkItemDisplay

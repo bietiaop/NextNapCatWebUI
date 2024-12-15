@@ -3,13 +3,14 @@ import { Select, SelectItem } from '@nextui-org/select'
 import { Button } from '@nextui-org/button'
 import { Image } from '@nextui-org/image'
 import { Avatar } from '@nextui-org/avatar'
+import { isQQQuickNewItem } from '@/utils/qq'
 
 export interface QQItem {
   uin: string
 }
 
 interface QuickLoginProps {
-  qqList: QQItem[]
+  qqList: (QQItem | LoginListItem)[]
   refresh: boolean
   isLoading: boolean
   selectedQQ: string
@@ -54,9 +55,17 @@ const QuickLogin: React.FC<QuickLoginProps> = ({
                   alt={item.key?.toString()}
                   className="flex-shrink-0"
                   size="sm"
-                  src={`https://q1.qlogo.cn/g?b=qq&nk=${item.key}&s=1`}
+                  src={
+                    isQQQuickNewItem(item.data)
+                      ? item.data?.faceUrl
+                      : `https://q1.qlogo.cn/g?b=qq&nk=${item.key}&s=1`
+                  }
                 />
-                <div className="flex flex-col">{item.key?.toString()}</div>
+                <div className="flex flex-col">
+                  {isQQQuickNewItem(item.data)
+                    ? `${item.data.nickName}(${item.key?.toString()})`
+                    : item.key?.toString()}
+                </div>
               </div>
             ))
           }}
@@ -71,9 +80,17 @@ const QuickLogin: React.FC<QuickLoginProps> = ({
                   alt={item.uin}
                   className="flex-shrink-0"
                   size="sm"
-                  src={`https://q1.qlogo.cn/g?b=qq&nk=${item.uin}&s=1`}
+                  src={
+                    isQQQuickNewItem(item)
+                      ? item.faceUrl
+                      : `https://q1.qlogo.cn/g?b=qq&nk=${item.uin}&s=1`
+                  }
                 />
-                <div className="flex flex-col">{item.uin}</div>
+                <div className="flex flex-col">
+                  {isQQQuickNewItem(item)
+                    ? `${item.nickName}(${item.uin})`
+                    : item.uin}
+                </div>
               </div>
             </SelectItem>
           )}

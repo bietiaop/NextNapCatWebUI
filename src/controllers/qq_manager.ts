@@ -1,3 +1,4 @@
+import { SelfInfo } from '@/types/user'
 import { serverRequest } from '@/utils/request'
 
 export default class QQManager {
@@ -52,9 +53,23 @@ export default class QQManager {
     return data.data.data
   }
 
+  public static async getQQQuickLoginListNew() {
+    const data = await serverRequest.post<ServerResponse<LoginListItem[]>>(
+      '/QQLogin/GetQuickLoginListNew'
+    )
+    return data.data.data
+  }
+
   public static async setQuickLogin(uin: string) {
     await serverRequest.post<ServerResponse<null>>('/QQLogin/SetQuickLogin', {
       uin
     })
+  }
+
+  public static async getQQLoginInfo() {
+    const data = await serverRequest.post<ServerResponse<SelfInfo>>(
+      '/QQLogin/GetQQLoginInfo'
+    )
+    return data.data.data
   }
 }

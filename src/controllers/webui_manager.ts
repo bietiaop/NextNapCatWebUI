@@ -23,6 +23,12 @@ export default class WebUIManager {
     return data.data.Credential
   }
 
+  public static async getPackageInfo() {
+    const { data } =
+      await serverRequest.get<ServerResponse<PackageInfo>>('/base/PackageInfo')
+    return data.data
+  }
+
   public static async getLogList() {
     const { data } =
       await serverRequest.get<ServerResponse<string[]>>('/Log/GetLogList')

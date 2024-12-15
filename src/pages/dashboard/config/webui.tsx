@@ -25,8 +25,8 @@ const WebUIConfigCard: React.FC<WebUIConfigCardProps> = (props) => {
             render={({ field }) => (
               <Input
                 {...field}
-                label="网易云音乐音乐ID"
-                placeholder="请输入音乐ID"
+                label="网易云音乐歌单ID（网页内音乐播放器）"
+                placeholder="请输入歌单ID"
               />
             )}
           />

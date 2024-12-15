@@ -9,8 +9,12 @@ import { title } from '@/components/primitives'
 import clsx from 'clsx'
 import { Tooltip } from '@nextui-org/tooltip'
 import { Link } from '@nextui-org/link'
+import { useRequest } from 'ahooks'
+import WebUIManager from '@/controllers/webui_manager'
+import { Spinner } from '@nextui-org/spinner'
 
 function VersionInfo() {
+  const { data, loading, error } = useRequest(WebUIManager.getPackageInfo)
   return (
     <div className="flex items-center gap-2 mb-5">
       <Chip
@@ -22,11 +26,22 @@ function VersionInfo() {
       >
         {packageJson.version}
       </Chip>
-      <Tooltip
-        content="View source code on GitHub"
-        placement="bottom"
-        showArrow
+      <Chip
+        startContent={
+          <Chip color="warning" size="sm" className="-ml-0.5 select-none">
+            NapCat
+          </Chip>
+        }
       >
+        {error ? (
+          error.message
+        ) : loading ? (
+          <Spinner size="sm" />
+        ) : (
+          data?.version
+        )}
+      </Chip>
+      <Tooltip content="查看WebUI源码" placement="bottom" showArrow>
         <Link isExternal href="https://github.com/bietiaop/NextNapCatWebUI">
           <GithubIcon className="text-default-900 hover:text-default-600 w-8 h-8 hover:drop-shadow-lg transition-all" />
         </Link>

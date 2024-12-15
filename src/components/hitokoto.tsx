@@ -25,18 +25,21 @@ export default function Hitokoto() {
       toast.error('复制失败, 请手动复制')
     }
   }
-  if (error) {
-    return <div className="text-danger-400">一言加载失败：{error.message}</div>
-  }
   return (
     <div>
       <div className="relative">
         {loading && <PageLoading />}
-        <div className="font-noto-serif">{data?.hitokoto}</div>
-        <div className="text-right">
-          —— <span className="text-default-400">{data?.from}</span>{' '}
-          {data?.from_who}
-        </div>
+        {error ? (
+          <div className="text-danger-400">一言加载失败：{error.message}</div>
+        ) : (
+          <>
+            <div className="font-noto-serif">{data?.hitokoto}</div>
+            <div className="text-right">
+              —— <span className="text-default-400">{data?.from}</span>{' '}
+              {data?.from_who}
+            </div>
+          </>
+        )}
       </div>
       <div className="flex gap-2">
         <Tooltip content="刷新" placement="top">

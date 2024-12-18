@@ -88,7 +88,7 @@ const NetworkDisplayCard = <T extends keyof NetworkType>({
         <Switch
           isDisabled={editing}
           isSelected={enable}
-          onClick={handleEnable}
+          onChange={handleEnable}
         />
       }
       tag={showType && typeLabel}

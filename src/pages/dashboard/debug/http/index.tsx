@@ -1,17 +1,21 @@
-import { title } from '@/components/primitives'
+import OneBotApiDebug from '@/components/onebot/api/debug'
+import OneBotApiNavList from '@/components/onebot/api/nav_list'
+import oneBotHttpApi from '@/const/ob_api'
+import type { OneBotHttpApi } from '@/const/ob_api'
+import { useState } from 'react'
 
 export default function HttpDebug() {
+  const [selectedApi, setSelectedApi] =
+    useState<keyof OneBotHttpApi>('/set_qq_profile')
+  const data = oneBotHttpApi[selectedApi]
   return (
-    <div className="text-center py-6">
-      <h1
-        className={title({
-          color: 'pink',
-          size: 'sm'
-        })}
-      >
-        HTTP Debug
-      </h1>
-      <p className="text-gray-500">Coming soon...</p>
+    <div className="w-full h-[calc(100%-2.5rem)] flex items-stretch">
+      <OneBotApiNavList
+        data={oneBotHttpApi}
+        selectedApi={selectedApi}
+        onSelect={setSelectedApi}
+      />
+      <OneBotApiDebug path={selectedApi} data={data} />
     </div>
   )
 }

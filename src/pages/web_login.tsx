@@ -5,6 +5,7 @@ import { Image } from '@nextui-org/image'
 import { IoKeyOutline } from 'react-icons/io5'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
+import type { Toast } from 'react-hot-toast'
 import { useLocalStorage } from '@uidotdev/usehooks'
 import { useNavigate } from 'react-router-dom'
 
@@ -51,7 +52,7 @@ export default function WebLoginPage() {
 
   useEffect(() => {
     toast(
-      (t) => (
+      (t: Toast) => (
         <div>
           <div className="font-bold text-center">遇到网络错误？</div>
           <div>

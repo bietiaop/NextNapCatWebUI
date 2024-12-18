@@ -1,4 +1,5 @@
 import key from '@/const/key'
+import { AxiosResponse } from 'axios'
 
 /**
  * 打开链接
@@ -22,4 +23,24 @@ export const getFullServerUrl = (path: string) => {
     localStorage.getItem(key.storeURL) ?? '"http://localhost:6099"'
   _storeURL = JSON.parse(_storeURL)
   return _storeURL + path
+}
+
+/**
+ * 将Axios的响应转换为标准的HTTP报文
+ * @param response Axios响应
+ * @returns 标准的HTTP报文
+ */
+export function parseAxiosResponse(
+  response: AxiosResponse,
+  http_version: string = 'HTTP/1.1'
+) {
+  const statusLine = `${http_version} ${response.status} ${response.statusText}`
+  const headers = Object.entries(response.headers)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join('\r\n')
+  const body = response.data
+    ? `\r\n\r\n${JSON.stringify(response.data, null, 2)}`
+    : ''
+
+  return `${statusLine}\r\n${headers}${body}`
 }

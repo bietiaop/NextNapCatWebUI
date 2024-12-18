@@ -37,7 +37,7 @@ const CodeEditor = React.forwardRef<CodeEditorRef, CodeEditorProps>(
         if (typeof ref === 'function') {
           ref(editor)
         } else {
-          ;(ref as React.MutableRefObject<CodeEditorRef>).current = editor
+          ;(ref as React.RefObject<CodeEditorRef>).current = editor
         }
       }
       if (props.onMount) {

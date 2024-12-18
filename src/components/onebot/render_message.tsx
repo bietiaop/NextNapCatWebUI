@@ -7,7 +7,7 @@ import { FaReply } from 'react-icons/fa6'
 export const renderMessageContent = (
   segments: OB11Segment[],
   small = false
-): JSX.Element[] => {
+): React.ReactElement[] => {
   return segments.map((segment, index) => {
     switch (segment.type) {
       case 'text':

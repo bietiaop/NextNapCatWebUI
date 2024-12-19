@@ -90,7 +90,7 @@ const OneBotItemRender = ({ data, index, style }: OneBotItemRenderProps) => {
         animate="visible"
         className="h-full px-2"
       >
-        <Card className="w-full h-full py-2">
+        <Card className="w-full h-full py-2 bg-opacity-50 backdrop-blur-sm">
           <CardHeader className="py-0 text-default-500 flex-row gap-2">
             <div className="font-bold">
               {isEvent ? getEventName(msg.post_type) : '请求响应'}

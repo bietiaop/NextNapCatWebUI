@@ -24,7 +24,7 @@ const SwitchCard = forwardRef<HTMLInputElement, SwitchCardProps>(
           base: clsx(
             'inline-flex flex-row-reverse w-full max-w-md bg-content1 hover:bg-content2 items-center',
             'justify-between cursor-pointer rounded-lg gap-2 p-3 border-2 border-transparent',
-            'data-[selected=true]:border-primary'
+            'data-[selected=true]:border-primary bg-opacity-50 backdrop-blur-sm'
           )
         }}
         {...props}

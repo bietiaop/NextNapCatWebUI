@@ -39,7 +39,7 @@ export default function WSDebug() {
 
   return (
     <div className="h-[calc(100vh-3rem)] overflow-hidden flex flex-col">
-      <Card className="mx-2 mt-2 flex-shrink-0">
+      <Card className="mx-2 mt-2 flex-shrink-0 bg-opacity-50 backdrop-blur-sm">
         <CardBody className="gap-2">
           <div className="grid gap-2 items-center md:grid-cols-5">
             <Input
@@ -70,7 +70,7 @@ export default function WSDebug() {
               </Button>
             </div>
           </div>
-          <div className="p-2 border border-default-100 rounded-md dark:bg-[rgb(30,30,30)]">
+          <div className="p-2 border border-default-100 bg-content1 bg-opacity-50 rounded-md dark:bg-[rgb(30,30,30)]">
             <div className="grid gap-2 md:grid-cols-5 items-center md:w-fit">
               <WSStatus state={readyState} />
               <div className="md:w-64 max-w-full col-span-2">

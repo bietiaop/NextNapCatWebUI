@@ -81,7 +81,7 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
   }, [logContent, logLevel])
 
   return (
-    <Card className="max-w-full h-full">
+    <Card className="max-w-full h-full bg-opacity-50 backdrop-blur-sm">
       <CardHeader className="flex-row justify-start gap-3">
         <Select
           label="选择日志"
@@ -89,7 +89,8 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
           isLoading={listLoading}
           errorMessage={listError?.message}
           classNames={{
-            trigger: 'hover:!bg-content3'
+            trigger:
+              'hover:!bg-content3 bg-opacity-50 backdrop-blur-sm hover:!bg-opacity-60'
           }}
           placeholder="选择日志"
           onChange={(e) => {

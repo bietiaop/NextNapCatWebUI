@@ -80,7 +80,7 @@ const OneBotApiDebug: React.FC<OneBotApiDebugProps> = (props) => {
       </h1>
       <h1 className="text-lg font-bold mb-4">
         <Snippet
-          className="bg-default-50"
+          className="bg-default-50 bg-opacity-50 backdrop-blur-md"
           symbol={<IoLink size={18} className="inline-block mr-1" />}
         >
           {path}
@@ -114,7 +114,7 @@ const OneBotApiDebug: React.FC<OneBotApiDebugProps> = (props) => {
           <IoSend />
         </Button>
       </div>
-      <Card shadow="sm" className="my-4 dark:bg-[#1E1E1E]">
+      <Card shadow="sm" className="my-4 bg-opacity-50 backdrop-blur-md">
         <CardHeader className="font-noto-serif font-bold text-lg gap-1 pb-0">
           <span className="mr-2">请求体</span>
           <Button
@@ -157,7 +157,10 @@ const OneBotApiDebug: React.FC<OneBotApiDebugProps> = (props) => {
           </motion.div>
         </CardBody>
       </Card>
-      <Card shadow="sm" className="my-4 relative">
+      <Card
+        shadow="sm"
+        className="my-4 relative bg-opacity-50 backdrop-blur-md"
+      >
         <PageLoading loading={isFetching} />
         <CardHeader className="font-noto-serif font-bold text-lg gap-1 pb-0">
           <span className="mr-2">响应</span>
@@ -202,7 +205,7 @@ const OneBotApiDebug: React.FC<OneBotApiDebugProps> = (props) => {
           </motion.div>
         </CardBody>
       </Card>
-      <div className="p-2 md:p-4 border border-default-50 rounded-lg">
+      <div className="p-2 md:p-4 border border-default-50 dark:border-default-200 rounded-lg backdrop-blur-sm">
         <h2 className="text-xl font-semibold mb-2">请求体结构</h2>
         <DisplayStruct schema={parsedRequest} />
         <h2 className="text-xl font-semibold mt-4 mb-2">响应体结构</h2>

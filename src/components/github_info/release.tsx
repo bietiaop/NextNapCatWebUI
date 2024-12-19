@@ -26,7 +26,7 @@ const GithubRelease: React.FC<GithubReleaseProps> = (props) => {
   return (
     <div className="flex flex-col gap-1">
       <span>Releases</span>
-      <div className="px-2 py-1 rounded-small bg-default-100 group-data-[hover=true]:bg-default-200">
+      <div className="px-2 py-1 rounded-small bg-default-100 bg-opacity-50 backdrop-blur-sm group-data-[hover=true]:bg-default-200">
         <span className="text-tiny text-default-600">{releaseData.name}</span>
         <div className="flex gap-2 text-tiny">
           <span className="text-default-500">{releaseTime}</span>

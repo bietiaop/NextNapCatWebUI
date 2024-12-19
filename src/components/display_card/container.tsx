@@ -27,7 +27,7 @@ const DisplayCardContainer: React.FC<ContainerProps> = ({
   children
 }) => {
   return (
-    <Card>
+    <Card className="bg-opacity-50 backdrop-blur-sm">
       <CardHeader className={'pb-0 flex items-center'}>
         {tag && (
           <div className="text-center text-default-400 mb-1 absolute top-0 left-1/2 -translate-x-1/2 text-sm pointer-events-none bg-warning-100 dark:bg-warning-50 px-2 rounded-b">

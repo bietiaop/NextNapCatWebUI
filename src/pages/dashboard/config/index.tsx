@@ -101,9 +101,10 @@ export default function ConfigPage() {
         isVertical
         className="w-full"
         classNames={{
-          tabList: 'sticky top-14',
+          tabList: 'sticky top-14 bg-opacity-50 backdrop-blur-sm',
           panel: 'w-full',
-          base: '!w-auto flex-grow-0 flex-shrink-0 mr-0'
+          base: '!w-auto flex-grow-0 flex-shrink-0 mr-0',
+          cursor: 'bg-opacity-60 backdrop-blur-sm'
         }}
       >
         <Tab title="OneBot配置" key="onebot">

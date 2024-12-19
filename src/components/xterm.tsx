@@ -31,7 +31,9 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
       if (!domRef.current) {
         return
       }
-      const terminal = new Terminal()
+      const terminal = new Terminal({
+        allowTransparency: true
+      })
       terminalRef.current = terminal
       const fitAddon = new FitAddon()
       terminal.loadAddon(new WebLinksAddon())
@@ -67,7 +69,8 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
     useEffect(() => {
       if (terminalRef.current) {
         terminalRef.current.options.theme = {
-          background: theme === 'dark' ? '#000' : '#fff',
+          background:
+            theme === 'dark' ? 'rgba(0, 0, 0, 0)' : 'rgba(255, 255, 255, 0)',
           foreground: theme === 'dark' ? '#fff' : '#000',
           selectionBackground: theme === 'dark' ? '#666' : '#ddd',
           cursor: theme === 'dark' ? '#fff' : '#000',
@@ -107,7 +110,7 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
     return (
       <div
         className={clsx(
-          'p-2 rounded-md shadow-sm border border-default-200 w-full h-full overflow-hidden',
+          'p-2 rounded-md shadow-sm border border-default-200 w-full h-full overflow-hidden bg-opacity-50 backdrop-blur-sm',
           theme === 'dark' ? 'bg-black' : 'bg-white',
           className
         )}

@@ -39,7 +39,9 @@ const LogLevelSelect = (props: LogLevelSelectProps) => {
       selectionMode="multiple"
       aria-label="Log Level"
       classNames={{
-        label: 'mb-2'
+        label: 'mb-2',
+        trigger: 'bg-opacity-50 backdrop-blur-sm hover:!bg-opacity-60',
+        popoverContent: 'bg-opacity-50 backdrop-blur-sm'
       }}
       size="sm"
       items={[

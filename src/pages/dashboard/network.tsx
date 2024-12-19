@@ -341,7 +341,15 @@ export default function NetworkPage() {
           <IoMdRefresh size={24} />
         </Button>
       </div>
-      <Tabs aria-label="Network Configs" className="max-w-full" items={tabs}>
+      <Tabs
+        aria-label="Network Configs"
+        className="max-w-full"
+        items={tabs}
+        classNames={{
+          tabList: 'bg-opacity-50 backdrop-blur-sm',
+          cursor: 'bg-opacity-60 backdrop-blur-sm'
+        }}
+      >
         {(item) => (
           <Tab key={item.key} title={item.title}>
             <EmptySection isEmpty={!item.items.length} />

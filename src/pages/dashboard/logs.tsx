@@ -52,7 +52,9 @@ export default function LogsPage() {
         aria-label="Logs"
         classNames={{
           panel: 'w-full flex-1 h-full py-0 flex flex-col gap-4',
-          base: 'flex-shrink-0 !h-fit'
+          base: 'flex-shrink-0 !h-fit',
+          tabList: 'bg-opacity-50 backdrop-blur-sm',
+          cursor: 'bg-opacity-60 backdrop-blur-sm'
         }}
       >
         <Tab title="实时日志">

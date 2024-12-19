@@ -170,7 +170,7 @@ const RenderSchema: React.FC<{ schema: ParsedSchema }> = ({ schema }) => {
 
 const DisplayStruct: React.FC<DisplayStructProps> = ({ schema }) => {
   return (
-    <div className="p-4 bg-content2 rounded-lg">
+    <div className="p-4 bg-content2 rounded-lg bg-opacity-50">
       {Array.isArray(schema) ? (
         schema.map((s, i) => <RenderSchema key={s.name || i} schema={s} />)
       ) : (

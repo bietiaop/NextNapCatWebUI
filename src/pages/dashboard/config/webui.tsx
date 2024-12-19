@@ -18,7 +18,7 @@ export interface WebUIConfigCardProps {
 const WebUIConfigCard: React.FC<WebUIConfigCardProps> = (props) => {
   const { control, onSubmit, reset, isSubmitting, onRefresh } = props
   return (
-    <Card>
+    <Card className="bg-opacity-50 backdrop-blur-sm">
       <CardBody className="items-center py-5">
         <div className="w-96 flex flex-col gap-2">
           <Controller

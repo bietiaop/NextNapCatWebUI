@@ -1,8 +1,9 @@
-import type { OneBotHttpApi, OneBotHttpApiPath } from '@/const/ob_api'
 import { Card, CardBody } from '@nextui-org/card'
 import { Input } from '@nextui-org/input'
 import clsx from 'clsx'
 import { useState } from 'react'
+
+import type { OneBotHttpApi, OneBotHttpApiPath } from '@/const/ob_api'
 
 export interface OneBotApiNavListProps {
   data: OneBotHttpApi

@@ -1,7 +1,7 @@
 // originally written by @imoaazahmed
-
-import { useEffect, useMemo } from 'react'
 import { useLocalStorage } from '@uidotdev/usehooks'
+import { useEffect, useMemo } from 'react'
+
 const ThemeProps = {
   key: 'theme',
   light: 'light',

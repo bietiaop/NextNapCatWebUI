@@ -1,15 +1,17 @@
 import { Button } from '@nextui-org/button'
 import { Card, CardBody } from '@nextui-org/card'
 import { Input } from '@nextui-org/input'
-import { useState, useCallback } from 'react'
+import { useLocalStorage } from '@uidotdev/usehooks'
+import { useCallback, useState } from 'react'
 import toast from 'react-hot-toast'
-import { useWebSocketDebug } from '@/hooks/use-websocket-debug'
+
+import key from '@/const/key'
 
 import OneBotMessageList from '@/components/onebot/message_list'
 import OneBotSendModal from '@/components/onebot/send_modal'
 import WSStatus from '@/components/onebot/ws_status'
-import { useLocalStorage } from '@uidotdev/usehooks'
-import key from '@/const/key'
+
+import { useWebSocketDebug } from '@/hooks/use-websocket-debug'
 
 export default function WSDebug() {
   const [url] = useLocalStorage(key.storeURL, 'http://127.0.0.1:6099')

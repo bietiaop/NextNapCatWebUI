@@ -1,8 +1,11 @@
-import React from 'react'
 import Editor, { OnMount } from '@monaco-editor/react'
-import monaco from '@/monaco'
 import { loader } from '@monaco-editor/react'
+import React from 'react'
+
 import { useTheme } from '@/hooks/use-theme'
+
+import monaco from '@/monaco'
+
 loader.config({
   monaco,
   paths: {

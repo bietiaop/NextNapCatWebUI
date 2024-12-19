@@ -1,18 +1,18 @@
-import { useForm, Controller } from 'react-hook-form'
+import { Button } from '@nextui-org/button'
+import { Input } from '@nextui-org/input'
+import { ModalBody, ModalFooter } from '@nextui-org/modal'
+import { Select, SelectItem } from '@nextui-org/select'
+import { ReactElement, useEffect } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import type {
-  SubmitHandler,
   DefaultValues,
   Path,
-  PathValue
+  PathValue,
+  SubmitHandler
 } from 'react-hook-form'
-import { Input } from '@nextui-org/input'
-import { Button } from '@nextui-org/button'
-import { Select, SelectItem } from '@nextui-org/select'
-import { ModalBody, ModalFooter } from '@nextui-org/modal'
-import { useEffect, ReactElement } from 'react'
+import toast from 'react-hot-toast'
 
 import SwitchCard from '../switch_card'
-import toast from 'react-hot-toast'
 
 export type FieldTypes = 'input' | 'select' | 'switch'
 

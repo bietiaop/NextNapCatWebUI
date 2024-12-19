@@ -1,20 +1,19 @@
-import type { MenuItem } from '@/config/site'
-
-import React from 'react'
 import { Button } from '@nextui-org/button'
-import { MdDarkMode, MdLightMode } from 'react-icons/md'
-import clsx from 'clsx'
 import { Image } from '@nextui-org/image'
+import clsx from 'clsx'
+import React from 'react'
+import { IoMdLogOut } from 'react-icons/io'
+import { MdDarkMode, MdLightMode } from 'react-icons/md'
 
-import { title } from '../primitives'
-
-import Menus from './menus'
-
-import logo from '@/assets/images/logo.png'
-import { useTheme } from '@/hooks/use-theme'
 import useAuth from '@/hooks/auth'
 import useDialog from '@/hooks/use-dialog'
-import { IoMdLogOut } from 'react-icons/io'
+import { useTheme } from '@/hooks/use-theme'
+
+import logo from '@/assets/images/logo.png'
+import type { MenuItem } from '@/config/site'
+
+import { title } from '../primitives'
+import Menus from './menus'
 
 interface SideBarProps {
   open: boolean

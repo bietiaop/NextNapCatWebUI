@@ -1,5 +1,6 @@
-import { SelfInfo } from '@/types/user'
 import { serverRequest } from '@/utils/request'
+
+import { SelfInfo } from '@/types/user'
 
 export default class QQManager {
   public static async getOB11Config() {

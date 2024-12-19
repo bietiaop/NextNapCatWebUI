@@ -1,5 +1,6 @@
 import { Spinner } from '@nextui-org/spinner'
 import clsx from 'clsx'
+
 export interface PageLoadingProps {
   loading?: boolean
 }

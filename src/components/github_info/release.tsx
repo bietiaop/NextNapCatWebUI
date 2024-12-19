@@ -1,8 +1,8 @@
-import type { GithubRelease as GithubReleaseType } from '@/types/github'
-
 import { useEffect, useState } from 'react'
 
 import { getReleaseTime } from '@/utils/time'
+
+import type { GithubRelease as GithubReleaseType } from '@/types/github'
 
 export interface GithubReleaseProps {
   releaseData: GithubReleaseType

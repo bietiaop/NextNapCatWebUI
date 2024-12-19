@@ -1,9 +1,10 @@
-import SaveButtons from '@/components/button/save_buttons'
-import SwitchCard from '@/components/switch_card'
 import { Card, CardBody } from '@nextui-org/card'
 import { Input } from '@nextui-org/input'
 import { Controller } from 'react-hook-form'
 import type { Control } from 'react-hook-form'
+
+import SaveButtons from '@/components/button/save_buttons'
+import SwitchCard from '@/components/switch_card'
 
 export interface OneBotConfigCardProps {
   control: Control<IConfig['onebot']>

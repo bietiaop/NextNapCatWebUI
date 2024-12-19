@@ -1,7 +1,9 @@
+import { EventSourcePolyfill } from 'event-source-polyfill'
+
 import { LogLevel } from '@/const/enum'
+
 import { serverRequest } from '@/utils/request'
 import { getFullServerUrl } from '@/utils/url'
-import { EventSourcePolyfill } from 'event-source-polyfill'
 
 export interface Log {
   level: LogLevel

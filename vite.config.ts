@@ -1,8 +1,8 @@
-import { defineConfig, normalizePath } from 'vite'
 import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
 import path from 'node:path'
+import { defineConfig, normalizePath } from 'vite'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 const monacoEditorPath = normalizePath(
   path.resolve(__dirname, 'node_modules/monaco-editor/min/vs')

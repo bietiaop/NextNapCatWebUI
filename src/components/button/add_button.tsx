@@ -1,9 +1,13 @@
+import { Button } from '@nextui-org/button'
 import {
   Dropdown,
-  DropdownTrigger,
+  DropdownItem,
   DropdownMenu,
-  DropdownItem
+  DropdownTrigger
 } from '@nextui-org/dropdown'
+import { Tooltip } from '@nextui-org/tooltip'
+import { FaRegCircleQuestion } from 'react-icons/fa6'
+import { IoAddCircleOutline } from 'react-icons/io5'
 
 import {
   HTTPClientIcon,
@@ -12,11 +16,6 @@ import {
   PlusIcon,
   WebsocketIcon
 } from '../icons'
-
-import { Button } from '@nextui-org/button'
-import { IoAddCircleOutline } from 'react-icons/io5'
-import { Tooltip } from '@nextui-org/tooltip'
-import { FaRegCircleQuestion } from 'react-icons/fa6'
 
 export interface AddButtonProps {
   onOpen: (key: keyof OneBotConfig['network']) => void

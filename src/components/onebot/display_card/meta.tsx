@@ -1,10 +1,12 @@
+import { Chip } from '@nextui-org/chip'
+
+import { getLifecycleColor, getLifecycleName } from '@/utils/onebot'
+
 import type {
   OB11Meta,
   OneBot11Heartbeat,
   OneBot11Lifecycle
 } from '@/types/onebot'
-import { getLifecycleColor, getLifecycleName } from '@/utils/onebot'
-import { Chip } from '@nextui-org/chip'
 
 export interface OneBotDisplayMetaProps {
   data: OB11Meta

@@ -1,8 +1,10 @@
-import { useAppDispatch, useAppSelector } from './use-store'
-
 import { updateConfig as storeUpdateConfig } from '@/store/modules/config'
-import QQManager from '@/controllers/qq_manager'
+
 import { deepClone } from '@/utils/object'
+
+import QQManager from '@/controllers/qq_manager'
+
+import { useAppDispatch, useAppSelector } from './use-store'
 
 const useConfig = () => {
   const config = useAppSelector((state) => state.config.value)

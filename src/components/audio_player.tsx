@@ -1,10 +1,15 @@
+import { Button } from '@nextui-org/button'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Image } from '@nextui-org/image'
-import { Button } from '@nextui-org/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/popover'
 import { Slider } from '@nextui-org/slider'
+import { Tooltip } from '@nextui-org/tooltip'
+import { useLocalStorage } from '@uidotdev/usehooks'
+import clsx from 'clsx'
+import { useEffect, useRef, useState } from 'react'
 import {
-  BiSolidSkipPreviousCircle,
-  BiSolidSkipNextCircle
+  BiSolidSkipNextCircle,
+  BiSolidSkipPreviousCircle
 } from 'react-icons/bi'
 import {
   FaPause,
@@ -13,16 +18,13 @@ import {
   FaRepeat,
   FaShuffle
 } from 'react-icons/fa6'
-import { useEffect, useRef, useState } from 'react'
-import { PlayMode } from '@/const/enum'
 import { TbRepeatOnce } from 'react-icons/tb'
-import { Tooltip } from '@nextui-org/tooltip'
-import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/popover'
-import { VolumeHighIcon, VolumeLowIcon } from './icons'
 import { useMediaQuery } from 'react-responsive'
-import clsx from 'clsx'
-import { useLocalStorage } from '@uidotdev/usehooks'
+
+import { PlayMode } from '@/const/enum'
 import key from '@/const/key'
+
+import { VolumeHighIcon, VolumeLowIcon } from './icons'
 
 export interface AudioPlayerProps
   extends React.AudioHTMLAttributes<HTMLAudioElement> {

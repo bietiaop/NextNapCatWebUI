@@ -1,8 +1,8 @@
-import { OB11Segment } from '@/types/onebot'
 import { Image } from '@nextui-org/image'
-
 import qface from 'qface'
 import { FaReply } from 'react-icons/fa6'
+
+import { OB11Segment } from '@/types/onebot'
 
 export const renderMessageContent = (
   segments: OB11Segment[],

@@ -1,5 +1,7 @@
-import key from '@/const/key'
 import axios from 'axios'
+
+import key from '@/const/key'
+
 import { getFullServerUrl } from './url'
 
 export const serverRequest = axios.create({

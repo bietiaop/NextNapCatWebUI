@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import type { LiteralValue, ParsedSchema } from '@/utils/zod'
 import { Chip } from '@nextui-org/chip'
-import { motion } from 'motion/react'
-import { TbSquareRoundedChevronRightFilled } from 'react-icons/tb'
 import { Tooltip } from '@nextui-org/tooltip'
+import { motion } from 'motion/react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast'
+import { TbSquareRoundedChevronRightFilled } from 'react-icons/tb'
+
+import type { LiteralValue, ParsedSchema } from '@/utils/zod'
 
 interface DisplayStructProps {
   schema: ParsedSchema | ParsedSchema[]

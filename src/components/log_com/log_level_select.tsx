@@ -1,8 +1,9 @@
-import { LogLevel } from '@/const/enum'
 import { Chip } from '@nextui-org/chip'
 import { Select, SelectItem } from '@nextui-org/select'
 import { SharedSelection } from '@nextui-org/system'
 import type { Selection } from '@react-types/shared'
+
+import { LogLevel } from '@/const/enum'
 
 export interface LogLevelSelectProps {
   selectedKeys: Selection

@@ -1,6 +1,7 @@
 import { Select, SelectItem } from '@nextui-org/select'
 import { SharedSelection } from '@nextui-org/system'
 import type { Selection } from '@react-types/shared'
+
 export interface FilterMessageTypeProps {
   filterTypes: Selection
   onSelectionChange: (keys: SharedSelection) => void

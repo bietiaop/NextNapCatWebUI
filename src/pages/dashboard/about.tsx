@@ -1,17 +1,19 @@
-import { Image } from '@nextui-org/image'
-import packageJson from '../../../package.json'
-
-import logo from '@/assets/images/logo.png'
-import { BietiaopIcon, GithubIcon, WebUIIcon } from '@/components/icons'
 import { Chip } from '@nextui-org/chip'
+import { Image } from '@nextui-org/image'
+import { Link } from '@nextui-org/link'
+import { Spinner } from '@nextui-org/spinner'
+import { Tooltip } from '@nextui-org/tooltip'
+import { useRequest } from 'ahooks'
+import clsx from 'clsx'
+
+import { BietiaopIcon, GithubIcon, WebUIIcon } from '@/components/icons'
 import NapCatRepoInfo from '@/components/napcat_repo_info'
 import { title } from '@/components/primitives'
-import clsx from 'clsx'
-import { Tooltip } from '@nextui-org/tooltip'
-import { Link } from '@nextui-org/link'
-import { useRequest } from 'ahooks'
+
+import logo from '@/assets/images/logo.png'
 import WebUIManager from '@/controllers/webui_manager'
-import { Spinner } from '@nextui-org/spinner'
+
+import packageJson from '../../../package.json'
 
 function VersionInfo() {
   const { data, loading, error } = useRequest(WebUIManager.getPackageInfo)

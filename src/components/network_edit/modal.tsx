@@ -1,12 +1,12 @@
 import { Modal, ModalContent, ModalHeader } from '@nextui-org/modal'
 import toast from 'react-hot-toast'
 
-import HTTPServerForm from './http_server'
-import HTTPClientForm from './http_client'
-import WebsocketServerForm from './ws_server'
-import WebsocketClientForm from './ws_client'
-
 import useConfig from '@/hooks/use-config'
+
+import HTTPClientForm from './http_client'
+import HTTPServerForm from './http_server'
+import WebsocketClientForm from './ws_client'
+import WebsocketServerForm from './ws_server'
 
 const modalTitle = {
   httpServers: 'HTTP Server',

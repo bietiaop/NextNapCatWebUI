@@ -1,6 +1,7 @@
 import { z } from 'zod'
-import { baseResponseSchema, commonResponseDataSchema } from './response'
+
 import messageNodeSchema from './message/node'
+import { baseResponseSchema, commonResponseDataSchema } from './response'
 
 const oneBotHttpApiGroup = {
   '/set_group_kick': {

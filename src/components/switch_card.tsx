@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react'
 import { Switch } from '@nextui-org/switch'
 import clsx from 'clsx'
+import React, { forwardRef } from 'react'
 
 export interface SwitchCardProps {
   label?: string

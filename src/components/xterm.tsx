@@ -1,13 +1,14 @@
-import { Terminal } from '@xterm/xterm'
-import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
-import { WebLinksAddon } from '@xterm/addon-web-links'
 import { FitAddon } from '@xterm/addon-fit'
+import { WebLinksAddon } from '@xterm/addon-web-links'
 import { WebglAddon } from '@xterm/addon-webgl'
-import clsx from 'clsx'
-
+import { Terminal } from '@xterm/xterm'
 import '@xterm/xterm/css/xterm.css'
-import { gradientText } from '@/utils/terminal'
+import clsx from 'clsx'
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
+
 import { useTheme } from '@/hooks/use-theme'
+
+import { gradientText } from '@/utils/terminal'
 
 export type XTermRef = {
   write: (

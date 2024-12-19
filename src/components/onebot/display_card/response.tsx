@@ -1,9 +1,11 @@
-import { RequestResponse } from '@/types/onebot'
-import { getResponseStatusColor, getResponseStatusText } from '@/utils/onebot'
 import { Button } from '@nextui-org/button'
 import { Chip } from '@nextui-org/chip'
 import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/popover'
 import { Snippet } from '@nextui-org/snippet'
+
+import { getResponseStatusColor, getResponseStatusText } from '@/utils/onebot'
+
+import { RequestResponse } from '@/types/onebot'
 
 export interface OneBotDisplayResponseProps {
   data: RequestResponse

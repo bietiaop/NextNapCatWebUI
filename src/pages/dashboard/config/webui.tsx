@@ -1,9 +1,11 @@
-import ImageInput from '@/components/input/image_input'
-import SaveButtons from '@/components/button/save_buttons'
 import { Card, CardBody } from '@nextui-org/card'
 import { Input } from '@nextui-org/input'
 import { Controller } from 'react-hook-form'
 import type { Control } from 'react-hook-form'
+
+import SaveButtons from '@/components/button/save_buttons'
+import ImageInput from '@/components/input/image_input'
+
 import { siteConfig } from '@/config/site'
 
 export interface WebUIConfigCardProps {

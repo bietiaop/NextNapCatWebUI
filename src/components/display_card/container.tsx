@@ -2,6 +2,7 @@ import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import clsx from 'clsx'
 
 import { title } from '../primitives'
+
 export interface ContainerProps {
   title: string
   tag?: React.ReactNode

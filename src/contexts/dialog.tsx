@@ -1,8 +1,7 @@
 // Dialog Context
-import type { ModalProps } from '@/components/modal'
-
 import React from 'react'
 
+import type { ModalProps } from '@/components/modal'
 import Modal from '@/components/modal'
 
 interface AlertProps {

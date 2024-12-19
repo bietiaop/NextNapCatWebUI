@@ -1,13 +1,14 @@
-import React from 'react'
+import { Button } from '@nextui-org/button'
 import {
-  Modal as NextUIModal,
-  ModalContent,
-  ModalHeader,
   ModalBody,
+  ModalContent,
   ModalFooter,
+  ModalHeader,
+  Modal as NextUIModal,
   useDisclosure
 } from '@nextui-org/modal'
-import { Button } from '@nextui-org/button'
+import React from 'react'
+
 export interface ModalProps {
   content: React.ReactNode
   title?: React.ReactNode

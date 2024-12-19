@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router-dom'
 
+import DefaultLayout from '@/layouts/default'
+
 import DashboardIndexPage from './dashboard'
 import AboutPage from './dashboard/about'
-import NetworkPage from './dashboard/network'
 import ConfigPage from './dashboard/config'
-import LogsPage from './dashboard/logs'
 import DebugPage from './dashboard/debug'
-import WSDebug from './dashboard/debug/websocket'
 import HttpDebug from './dashboard/debug/http'
-
-import DefaultLayout from '@/layouts/default'
+import WSDebug from './dashboard/debug/websocket'
+import LogsPage from './dashboard/logs'
+import NetworkPage from './dashboard/network'
 
 export default function IndexPage() {
   return (

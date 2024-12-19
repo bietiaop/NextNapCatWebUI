@@ -4,10 +4,10 @@ import { BrowserRouter } from 'react-router-dom'
 
 import App from '@/App.tsx'
 import { Provider } from '@/provider.tsx'
-
 import '@/styles/globals.css'
-import WebUIManager from './controllers/webui_manager'
+
 import key from './const/key'
+import WebUIManager from './controllers/webui_manager'
 
 WebUIManager.checkWebUiLogined()
 

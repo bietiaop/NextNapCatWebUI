@@ -1,5 +1,6 @@
-import key from '@/const/key'
 import { useLocalStorage } from '@uidotdev/usehooks'
+
+import key from '@/const/key'
 
 const useAuth = () => {
   const [token, setToken] = useLocalStorage<string>(key.token, '')

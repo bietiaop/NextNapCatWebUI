@@ -1,13 +1,14 @@
-import { useForm } from 'react-hook-form'
-
+import { Tab, Tabs } from '@nextui-org/tabs'
+import { useLocalStorage } from '@uidotdev/usehooks'
 import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import useConfig from '@/hooks/use-config'
-import { useLocalStorage } from '@uidotdev/usehooks'
 import key from '@/const/key'
+
+import useConfig from '@/hooks/use-config'
 import useMusic from '@/hooks/use-music'
-import { Tab, Tabs } from '@nextui-org/tabs'
+
 import OneBotConfigCard from './onebot'
 import WebUIConfigCard from './webui'
 

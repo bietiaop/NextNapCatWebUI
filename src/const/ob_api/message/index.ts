@@ -1,8 +1,10 @@
 import { z } from 'zod'
-import oneBotHttpApiMessagePrivate from './private'
-import oneBotHttpApiMessageGroup from './group'
+
 import { baseResponseSchema, commonResponseDataSchema } from '../response'
+import oneBotHttpApiMessageGroup from './group'
 import messageNodeSchema from './node'
+import oneBotHttpApiMessagePrivate from './private'
+
 const fileSchema = z.object({
   file: z.string(),
   url: z.string(),

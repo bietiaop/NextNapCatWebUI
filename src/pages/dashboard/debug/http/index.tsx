@@ -1,8 +1,10 @@
-import OneBotApiDebug from '@/components/onebot/api/debug'
-import OneBotApiNavList from '@/components/onebot/api/nav_list'
+import { useState } from 'react'
+
 import oneBotHttpApi from '@/const/ob_api'
 import type { OneBotHttpApi } from '@/const/ob_api'
-import { useState } from 'react'
+
+import OneBotApiDebug from '@/components/onebot/api/debug'
+import OneBotApiNavList from '@/components/onebot/api/nav_list'
 
 export default function HttpDebug() {
   const [selectedApi, setSelectedApi] =

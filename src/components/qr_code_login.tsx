@@ -1,5 +1,5 @@
-import { QRCodeSVG } from 'qrcode.react'
 import { Spinner } from '@nextui-org/spinner'
+import { QRCodeSVG } from 'qrcode.react'
 
 interface QrCodeLoginProps {
   qrcode: string

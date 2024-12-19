@@ -5,5 +5,19 @@
   "singleQuote": true,
   "semi": false,
   "trailingComma": "none",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@/const/(.*)$",
+    "^@/store/(.*)$",
+    "^@/components/(.*)$",
+    "^@/contexts/(.*)$",
+    "^@/hooks/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

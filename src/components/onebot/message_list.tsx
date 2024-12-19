@@ -1,9 +1,12 @@
-import { useRef, useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { VariableSizeList } from 'react-window'
+
 import OneBotItemRender, {
   getItemSize
 } from '@/components/onebot/display_card/render'
+
 import { isOB11Event } from '@/utils/onebot'
+
 import type { AllOB11WsResponse } from '@/types/onebot'
 
 export interface OneBotMessageListProps {

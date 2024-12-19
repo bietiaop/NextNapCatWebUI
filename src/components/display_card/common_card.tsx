@@ -1,10 +1,12 @@
 import { Button, ButtonGroup } from '@nextui-org/button'
-import { useState } from 'react'
 import { Switch } from '@nextui-org/switch'
-import { FiEdit3 } from 'react-icons/fi'
+import { useState } from 'react'
 import { CgDebug } from 'react-icons/cg'
+import { FiEdit3 } from 'react-icons/fi'
 import { MdDeleteForever } from 'react-icons/md'
+
 import DisplayCardContainer from './container'
+
 type NetworkType = OneBotConfig['network']
 
 export type NetworkDisplayCardFields<T extends keyof NetworkType> = Array<{

@@ -1,13 +1,16 @@
+import { Button } from '@nextui-org/button'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import { Select, SelectItem } from '@nextui-org/select'
+import type { Selection } from '@react-types/shared'
+import { useEffect, useRef, useState } from 'react'
+
+import { colorizeLogLevel } from '@/utils/terminal'
+
+import PageLoading from '../page_loading'
 import XTerm from '../xterm'
 import type { XTermRef } from '../xterm'
-import { Select, SelectItem } from '@nextui-org/select'
-import { Button } from '@nextui-org/button'
-import { useEffect, useRef, useState } from 'react'
-import PageLoading from '../page_loading'
-import { colorizeLogLevel } from '@/utils/terminal'
-import type { Selection } from '@react-types/shared'
 import LogLevelSelect from './log_level_select'
+
 export interface HistoryLogsProps {
   list: string[]
   onSelect: (name: string) => void

@@ -1,11 +1,15 @@
 // Songs Context
-import AudioPlayer from '@/components/audio_player'
-import { PlayMode } from '@/const/enum'
-import key from '@/const/key'
-import type { FinalMusic } from '@/types/music'
-import { get163MusicListSongs, getNextMusic } from '@/utils/music'
 import { useLocalStorage } from '@uidotdev/usehooks'
 import { createContext, useEffect, useState } from 'react'
+
+import { PlayMode } from '@/const/enum'
+import key from '@/const/key'
+
+import AudioPlayer from '@/components/audio_player'
+
+import { get163MusicListSongs, getNextMusic } from '@/utils/music'
+
+import type { FinalMusic } from '@/types/music'
 
 export interface MusicContextProps {
   setListId: (id: string) => void

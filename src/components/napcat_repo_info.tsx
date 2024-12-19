@@ -1,16 +1,11 @@
-import type {
-  GirhubRepo,
-  GithubContributor,
-  GithubPullRequest,
-  GithubRelease as GithubReleaseType
-} from '@/types/github'
-
 import { Listbox, ListboxItem } from '@nextui-org/listbox'
-import { useRequest } from 'ahooks'
 import { Spinner } from '@nextui-org/spinner'
+import { useRequest } from 'ahooks'
 import { MdError } from 'react-icons/md'
 
-import { request } from '@/utils/request'
+import IconWrapper from '@/components/github_info/icon_wrapper'
+import ItemCounter from '@/components/github_info/item_counter'
+import GithubRelease from '@/components/github_info/release'
 import {
   BookIcon,
   BugIcon,
@@ -20,10 +15,16 @@ import {
   UsersIcon,
   WatchersIcon
 } from '@/components/icons'
-import ItemCounter from '@/components/github_info/item_counter'
-import IconWrapper from '@/components/github_info/icon_wrapper'
-import GithubRelease from '@/components/github_info/release'
+
+import { request } from '@/utils/request'
 import { openUrl } from '@/utils/url'
+
+import type {
+  GirhubRepo,
+  GithubContributor,
+  GithubPullRequest,
+  GithubRelease as GithubReleaseType
+} from '@/types/github'
 
 function displayData(data: number, loading: boolean, error?: Error) {
   if (error) {

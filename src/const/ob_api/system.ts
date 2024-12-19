@@ -1,4 +1,5 @@
 import { z } from 'zod'
+
 import { baseResponseSchema, commonResponseDataSchema } from './response'
 
 const oneBotHttpApiSystem = {

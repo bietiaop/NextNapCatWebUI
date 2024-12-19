@@ -1,13 +1,16 @@
+import { Button } from '@nextui-org/button'
+import type { Selection } from '@react-types/shared'
 import { useEffect, useRef, useState } from 'react'
+import toast from 'react-hot-toast'
+import { IoDownloadOutline } from 'react-icons/io5'
+
+import { colorizeLogLevelWithTag } from '@/utils/terminal'
+
+import WebUIManager, { Log } from '@/controllers/webui_manager'
+
 import type { XTermRef } from '../xterm'
 import XTerm from '../xterm'
-import WebUIManager, { Log } from '@/controllers/webui_manager'
-import toast from 'react-hot-toast'
-import { colorizeLogLevelWithTag } from '@/utils/terminal'
 import LogLevelSelect from './log_level_select'
-import type { Selection } from '@react-types/shared'
-import { Button } from '@nextui-org/button'
-import { IoDownloadOutline } from 'react-icons/io5'
 
 const RealTimeLogs = () => {
   const Xterm = useRef<XTermRef>(null)

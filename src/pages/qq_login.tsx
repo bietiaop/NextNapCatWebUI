@@ -1,20 +1,21 @@
+import { Button } from '@nextui-org/button'
+import { CardBody, CardHeader } from '@nextui-org/card'
+import { Image } from '@nextui-org/image'
+import { Tab, Tabs } from '@nextui-org/tabs'
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { Tabs, Tab } from '@nextui-org/tabs'
-import { CardHeader, CardBody } from '@nextui-org/card'
-import { Image } from '@nextui-org/image'
 
-import { title } from '@/components/primitives'
 import HoverEffectCard from '@/components/effect_card'
-import PureLayout from '@/layouts/pure'
-import { ThemeSwitch } from '@/components/theme-switch'
-import QQManager from '@/controllers/qq_manager'
-import QuickLogin from '@/components/quick_login'
+import { title } from '@/components/primitives'
 import QrCodeLogin from '@/components/qr_code_login'
-import logo from '@/assets/images/logo.png'
-import { Button } from '@nextui-org/button'
+import QuickLogin from '@/components/quick_login'
 import type { QQItem } from '@/components/quick_login'
+import { ThemeSwitch } from '@/components/theme-switch'
+
+import logo from '@/assets/images/logo.png'
+import QQManager from '@/controllers/qq_manager'
+import PureLayout from '@/layouts/pure'
 
 export default function QQLoginPage() {
   const navigate = useNavigate()

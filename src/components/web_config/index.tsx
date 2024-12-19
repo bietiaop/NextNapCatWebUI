@@ -1,8 +1,9 @@
-import key from '@/const/key'
 import { Input } from '@nextui-org/input'
 import { Select, SelectItem } from '@nextui-org/select'
 import { useLocalStorage } from '@uidotdev/usehooks'
 import { useEffect, useState } from 'react'
+
+import key from '@/const/key'
 
 interface WebConfigProps {
   queryURL?: string

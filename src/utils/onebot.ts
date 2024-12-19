@@ -1,11 +1,11 @@
 import {
-  OB11GroupMessage,
-  OB11Message,
-  OB11NoticeType,
-  OB11PrivateMessage,
   type AllOB11WsResponse,
   type OB11AllEvent,
+  OB11GroupMessage,
+  OB11Message,
   type OB11Notice,
+  OB11NoticeType,
+  OB11PrivateMessage,
   type OneBot11Lifecycle,
   type RequestResponse
 } from '../types/onebot'

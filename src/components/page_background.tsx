@@ -1,5 +1,5 @@
-import React from 'react'
 import { Image } from '@nextui-org/image'
+import React from 'react'
 
 import bkg_color from '@/assets/images/bkg-color.png'
 

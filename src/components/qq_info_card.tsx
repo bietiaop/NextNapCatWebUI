@@ -1,6 +1,8 @@
-import { SelfInfo } from '@/types/user'
 import { Avatar } from '@nextui-org/avatar'
 import { Card, CardBody } from '@nextui-org/card'
+
+import { SelfInfo } from '@/types/user'
+
 import PageLoading from './page_loading'
 
 export interface QQInfoCardProps {

@@ -1,10 +1,13 @@
+import { PlayMode } from '@/const/enum'
+
 import type {
   FinalMusic,
   Music163ListResponse,
   Music163URLResponse
 } from '@/types/music'
+
 import { request } from './request'
-import { PlayMode } from '@/const/enum'
+
 /**
  * 获取网易云音乐歌单
  * @param id 歌单id

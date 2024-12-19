@@ -1,21 +1,25 @@
-import { useEffect, useState } from 'react'
-import { motion } from 'motion/react'
-import { OneBotHttpApiContent, OneBotHttpApiPath } from '@/const/ob_api'
-import { parse, generateDefaultJson } from '@/utils/zod'
-import DisplayStruct from './display_struct'
-import { useLocalStorage } from '@uidotdev/usehooks'
-import key from '@/const/key'
-import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
+import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import { Input } from '@nextui-org/input'
+import { Snippet } from '@nextui-org/snippet'
+import { useLocalStorage } from '@uidotdev/usehooks'
+import { motion } from 'motion/react'
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import { IoLink, IoSend } from 'react-icons/io5'
 import { PiCatDuotone } from 'react-icons/pi'
+
+import key from '@/const/key'
+import { OneBotHttpApiContent, OneBotHttpApiPath } from '@/const/ob_api'
+
 import CodeEditor from '@/components/code_editor'
-import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import PageLoading from '@/components/page_loading'
+
 import { request } from '@/utils/request'
 import { parseAxiosResponse } from '@/utils/url'
-import toast from 'react-hot-toast'
-import PageLoading from '@/components/page_loading'
-import { Snippet } from '@nextui-org/snippet'
+import { generateDefaultJson, parse } from '@/utils/zod'
+
+import DisplayStruct from './display_struct'
 
 export interface OneBotApiDebugProps {
   path: OneBotHttpApiPath

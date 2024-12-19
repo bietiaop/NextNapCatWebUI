@@ -1,6 +1,8 @@
-import { GithubIcon } from '@/components/icons'
 import { Link } from '@nextui-org/link'
 import { Tooltip } from '@nextui-org/tooltip'
+
+import { GithubIcon } from '@/components/icons'
+
 export default function PureLayout({
   children
 }: {

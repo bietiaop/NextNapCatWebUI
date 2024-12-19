@@ -1,4 +1,5 @@
 import { Chip } from '@nextui-org/chip'
+
 import NetworkDisplayCard from './common_card'
 import type { NetworkDisplayCardFields } from './common_card'
 

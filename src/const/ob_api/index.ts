@@ -1,8 +1,10 @@
 import { ZodSchema } from 'zod'
-import oneBotHttpApiUser from './user'
-import oneBotHttpApiMessage from './message'
+
 import oneBotHttpApiGroup from './group'
+import oneBotHttpApiMessage from './message'
 import oneBotHttpApiSystem from './system'
+import oneBotHttpApiUser from './user'
+
 type AllKey =
   | keyof typeof oneBotHttpApiUser
   | keyof typeof oneBotHttpApiMessage

@@ -1,21 +1,23 @@
-import type { MenuItem } from '@/config/site'
-
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { Button } from '@nextui-org/button'
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs'
+import { Button } from '@nextui-org/button'
+import { useLocalStorage } from '@uidotdev/usehooks'
 import clsx from 'clsx'
-import { MdMenu, MdMenuOpen } from 'react-icons/md'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import QQManager from '@/controllers/qq_manager'
+import { MdMenu, MdMenuOpen } from 'react-icons/md'
+import { useLocation, useNavigate } from 'react-router-dom'
 
+import key from '@/const/key'
+
+import errorFallbackRender from '@/components/error_fallback'
 // import PageLoading from "@/components/Loading/PageLoading";
 import SideBar from '@/components/sidebar'
-import errorFallbackRender from '@/components/error_fallback'
-import { siteConfig } from '@/config/site'
-import { useLocalStorage } from '@uidotdev/usehooks'
-import key from '@/const/key'
+
 import useAuth from '@/hooks/auth'
+
+import type { MenuItem } from '@/config/site'
+import { siteConfig } from '@/config/site'
+import QQManager from '@/controllers/qq_manager'
 
 const menus: MenuItem[] = siteConfig.navItems
 

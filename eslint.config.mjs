@@ -1,12 +1,11 @@
-import globals from 'globals'
 import eslint_js from '@eslint/js'
-import reactPlugin from 'eslint-plugin-react'
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import tsEslintPlugin from '@typescript-eslint/eslint-plugin'
 import tsEslintParser from '@typescript-eslint/parser'
-
-import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import reactPlugin from 'eslint-plugin-react'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import globals from 'globals'
 
 const customTsFlatConfig = [
   {

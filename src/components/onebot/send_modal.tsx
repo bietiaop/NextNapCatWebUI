@@ -1,16 +1,17 @@
-import { useCallback, useRef } from 'react'
+import { Button } from '@nextui-org/button'
 import {
   Modal,
-  ModalContent,
-  ModalHeader,
   ModalBody,
+  ModalContent,
   ModalFooter,
+  ModalHeader,
   useDisclosure
 } from '@nextui-org/modal'
+import { useCallback, useRef } from 'react'
+import toast from 'react-hot-toast'
+
 import CodeEditor from '@/components/code_editor'
 import type { CodeEditorRef } from '@/components/code_editor'
-import { Button } from '@nextui-org/button'
-import toast from 'react-hot-toast'
 
 export interface OneBotSendModalProps {
   sendMessage: (msg: string) => void

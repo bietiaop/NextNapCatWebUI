@@ -1,10 +1,12 @@
-import HistoryLogs from '@/components/log_com/history'
-import RealTimeLogs from '@/components/log_com/realtime'
-import WebUIManager from '@/controllers/webui_manager'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import { useRequest } from 'ahooks'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+
+import HistoryLogs from '@/components/log_com/history'
+import RealTimeLogs from '@/components/log_com/realtime'
+
+import WebUIManager from '@/controllers/webui_manager'
 
 export default function LogsPage() {
   const {

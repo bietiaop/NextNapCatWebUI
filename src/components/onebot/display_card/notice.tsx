@@ -1,3 +1,7 @@
+import { Chip } from '@nextui-org/chip'
+
+import { getNoticeTypeName } from '@/utils/onebot'
+
 import {
   OB11Notice,
   OB11NoticeType,
@@ -16,8 +20,6 @@ import {
   OneBot11LuckyKing,
   OneBot11Poke
 } from '@/types/onebot'
-import { getNoticeTypeName } from '@/utils/onebot'
-import { Chip } from '@nextui-org/chip'
 
 export interface OneBotNoticeProps {
   data: OB11Notice

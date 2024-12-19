@@ -1,5 +1,6 @@
-import key from '@/const/key'
 import { AxiosResponse } from 'axios'
+
+import key from '@/const/key'
 
 /**
  * 打开链接

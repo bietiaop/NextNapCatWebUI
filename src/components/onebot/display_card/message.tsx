@@ -1,12 +1,15 @@
-import type {
-  OB11Message,
-  OB11GroupMessage,
-  OB11PrivateMessage
-} from '@/types/onebot'
-import { isOB11GroupMessage } from '@/utils/onebot'
 import { Avatar } from '@nextui-org/avatar'
 import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/popover'
 import clsx from 'clsx'
+
+import { isOB11GroupMessage } from '@/utils/onebot'
+
+import type {
+  OB11GroupMessage,
+  OB11Message,
+  OB11PrivateMessage
+} from '@/types/onebot'
+
 import { renderMessageContent } from '../render_message'
 
 export interface OneBotMessageProps {

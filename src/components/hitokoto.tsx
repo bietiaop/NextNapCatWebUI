@@ -1,10 +1,13 @@
-import { request } from '@/utils/request'
 import { Button } from '@nextui-org/button'
-import { useRequest } from 'ahooks'
-import PageLoading from './page_loading'
-import { IoCopy, IoRefresh } from 'react-icons/io5'
-import toast from 'react-hot-toast'
 import { Tooltip } from '@nextui-org/tooltip'
+import { useRequest } from 'ahooks'
+import toast from 'react-hot-toast'
+import { IoCopy, IoRefresh } from 'react-icons/io5'
+
+import { request } from '@/utils/request'
+
+import PageLoading from './page_loading'
+
 export default function Hitokoto() {
   const {
     data: dataOri,

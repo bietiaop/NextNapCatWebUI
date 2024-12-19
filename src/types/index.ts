@@ -1,4 +1,4 @@
-import { SVGProps, ImgHTMLAttributes } from 'react'
+import { ImgHTMLAttributes, SVGProps } from 'react'
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number

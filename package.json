@@ -114,6 +114,10 @@
     "ahooks": {
       "react": "$react",
       "react-dom": "$react-dom"
+    },
+    "react-window": {
+      "react": "$react",
+      "react-dom": "$react-dom"
     }
   }
 }

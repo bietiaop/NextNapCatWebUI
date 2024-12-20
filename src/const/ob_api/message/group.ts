@@ -16,8 +16,11 @@ const oneBotHttpApiMessageGroup: Record<
     description: '发送群消息',
     request: z
       .object({
-        group_id: z.union([z.string(), z.number()]),
-        message: z.array(messageNodeSchema)
+        group_id: z
+          .union([z.string(), z.number()])
+          .describe('群号')
+          .describe('群号'),
+        message: z.array(messageNodeSchema).describe('消息内容')
       })
       .refine(
         (data) => {
@@ -41,16 +44,18 @@ const oneBotHttpApiMessageGroup: Record<
   '/send_group_forward_msg': {
     description: '发送群合并转发消息',
     request: z.object({
-      group_id: z.union([z.string(), z.number()]),
-      messages: z.array(nodeMessage),
-      news: z.array(
-        z.object({
-          text: z.string()
-        })
-      ),
-      prompt: z.string(),
-      summary: z.string(),
-      source: z.string()
+      group_id: z.union([z.string(), z.number()]).describe('群号'),
+      messages: z.array(nodeMessage).describe('消息内容'),
+      news: z
+        .array(
+          z.object({
+            text: z.string()
+          })
+        )
+        .describe('?'),
+      prompt: z.string().describe('外显'),
+      summary: z.string().describe('底下文本'),
+      source: z.string().describe('内容')
     }),
     response: baseResponseSchema.extend({
       data: commonResponseDataSchema
@@ -59,8 +64,8 @@ const oneBotHttpApiMessageGroup: Record<
   '/forward_group_single_msg': {
     description: '消息转发到群',
     request: z.object({
-      group_id: z.union([z.string(), z.number()]),
-      message_id: z.union([z.string(), z.number()])
+      group_id: z.union([z.string(), z.number()]).describe('群号'),
+      message_id: z.union([z.string(), z.number()]).describe('消息 ID')
     }),
     response: baseResponseSchema.extend({
       data: commonResponseDataSchema
@@ -69,8 +74,8 @@ const oneBotHttpApiMessageGroup: Record<
   '/group_poke': {
     description: '发送戳一戳',
     request: z.object({
-      group_id: z.union([z.string(), z.number()]),
-      user_id: z.union([z.string(), z.number()])
+      group_id: z.union([z.string(), z.number()]).describe('群号'),
+      user_id: z.union([z.string(), z.number()]).describe('对方QQ号')
     }),
     response: baseResponseSchema
   }

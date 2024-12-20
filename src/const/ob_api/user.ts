@@ -27,7 +27,7 @@ const oneBotHttpApiUser = {
           .union([z.string(), z.number()])
           .optional()
           .describe('用户ID，与 group_id 二选一'),
-        phoneNumber: z.string().optional().describe('手机号码')
+        phoneNumber: z.string().optional().describe('对方手机号码')
       })
       .refine(
         (data) =>
@@ -48,7 +48,7 @@ const oneBotHttpApiUser = {
   '/ArkShareGroup': {
     description: '获取推荐群聊卡片',
     request: z.object({
-      group_id: z.union([z.string(), z.number()])
+      group_id: z.union([z.string(), z.number()]).describe('群聊ID')
     }),
     response: baseResponseSchema.extend({
       data: z.string()
@@ -102,23 +102,23 @@ const oneBotHttpApiUser = {
   '/set_qq_avatar': {
     description: '设置头像',
     request: z.object({
-      file: z.string()
+      file: z.string().describe('图片文件路径（服务器本地或者远程均可）')
     }),
     response: baseResponseSchema
   },
   '/send_like': {
     description: '点赞',
     request: z.object({
-      user_id: z.union([z.string(), z.number()]),
-      times: z.number()
+      user_id: z.union([z.string(), z.number()]).describe('对方QQ号'),
+      times: z.number().describe('点赞次数')
     }),
     response: baseResponseSchema
   },
   '/create_collection': {
     description: '创建收藏',
     request: z.object({
-      rawData: z.string(),
-      brief: z.string()
+      rawData: z.string().describe('收藏内容'),
+      brief: z.string().describe('收藏简介')
     }),
     response: baseResponseSchema.extend({
       data: commonResponseDataSchema
@@ -127,16 +127,16 @@ const oneBotHttpApiUser = {
   '/set_friend_add_request': {
     description: '处理好友请求',
     request: z.object({
-      flag: z.string(),
-      approve: z.boolean(),
-      remark: z.string()
+      flag: z.string().describe('请求ID'),
+      approve: z.boolean().describe('是否同意'),
+      remark: z.string().describe('好友备注')
     }),
     response: baseResponseSchema
   },
   '/set_self_longnick': {
     description: '设置个性签名',
     request: z.object({
-      longNick: z.string()
+      longNick: z.string().describe('签名内容')
     }),
     response: baseResponseSchema.extend({
       data: commonResponseDataSchema
@@ -145,7 +145,7 @@ const oneBotHttpApiUser = {
   '/get_stranger_info': {
     description: '获取账号信息',
     request: z.object({
-      user_id: z.union([z.string(), z.number()])
+      user_id: z.union([z.string(), z.number()]).describe('对方QQ号')
     }),
     response: baseResponseSchema.extend({
       data: z.object({
@@ -171,7 +171,7 @@ const oneBotHttpApiUser = {
   '/get_friend_list': {
     description: '获取好友列表',
     request: z.object({
-      no_cache: z.boolean()
+      no_cache: z.boolean().describe('是否不使用缓存')
     }),
     response: baseResponseSchema.extend({
       data: z.array(
@@ -234,7 +234,7 @@ const oneBotHttpApiUser = {
   '/fetch_custom_face': {
     description: '获取收藏表情',
     request: z.object({
-      count: z.number().optional()
+      count: z.number().optional().describe('获取数量')
     }),
     response: baseResponseSchema.extend({
       data: z.array(z.string())
@@ -252,10 +252,10 @@ const oneBotHttpApiUser = {
   '/delete_friend': {
     description: '删除好友',
     request: z.object({
-      user_id: z.union([z.string(), z.number()]),
-      friend_id: z.union([z.string(), z.number()]),
-      temp_block: z.boolean(),
-      temp_both_del: z.boolean()
+      user_id: z.union([z.string(), z.number()]).describe('自己QQ号？'),
+      friend_id: z.union([z.string(), z.number()]).describe('好友QQ号'),
+      temp_block: z.boolean().describe('是否加入黑名单'),
+      temp_both_del: z.boolean().describe('是否双向删除')
     }),
     response: baseResponseSchema.extend({
       data: commonResponseDataSchema
@@ -264,7 +264,7 @@ const oneBotHttpApiUser = {
   '/nc_get_user_status': {
     description: '获取用户在线状态',
     request: z.object({
-      user_id: z.union([z.string(), z.number()])
+      user_id: z.union([z.string(), z.number()]).describe('对方QQ号')
     }),
     response: baseResponseSchema.extend({
       data: z.object({

@@ -16,8 +16,8 @@ const oneBotHttpApiMessagePrivate: Record<
     description: '发送私聊消息',
     request: z
       .object({
-        user_id: z.union([z.string(), z.number()]),
-        message: z.array(messageNodeSchema)
+        user_id: z.union([z.string(), z.number()]).describe('对方QQ号'),
+        message: z.array(messageNodeSchema).describe('消息内容')
       })
       .refine(
         (data) => {
@@ -41,16 +41,18 @@ const oneBotHttpApiMessagePrivate: Record<
   '/send_private_forward_msg': {
     description: '发送私聊合并转发消息',
     request: z.object({
-      user_id: z.union([z.string(), z.number()]),
-      messages: z.array(nodeMessage),
-      news: z.array(
-        z.object({
-          text: z.string()
-        })
-      ),
-      prompt: z.string(),
-      summary: z.string(),
-      source: z.string()
+      user_id: z.union([z.string(), z.number()]).describe('对方QQ号'),
+      messages: z.array(nodeMessage).describe('消息内容'),
+      news: z
+        .array(
+          z.object({
+            text: z.string()
+          })
+        )
+        .describe('?'),
+      prompt: z.string().describe('外显'),
+      summary: z.string().describe('底下文本'),
+      source: z.string().describe('内容')
     }),
     response: baseResponseSchema.extend({
       data: commonResponseDataSchema
@@ -59,8 +61,8 @@ const oneBotHttpApiMessagePrivate: Record<
   '/forward_friend_single_msg': {
     description: '消息转发到私聊',
     request: z.object({
-      user_id: z.union([z.string(), z.number()]),
-      message_id: z.union([z.string(), z.number()])
+      user_id: z.union([z.string(), z.number()]).describe('对方QQ号'),
+      message_id: z.union([z.string(), z.number()]).describe('消息ID')
     }),
     response: baseResponseSchema.extend({
       data: commonResponseDataSchema
@@ -69,7 +71,7 @@ const oneBotHttpApiMessagePrivate: Record<
   '/group_poke': {
     description: '发送私聊戳一戳',
     request: z.object({
-      user_id: z.union([z.string(), z.number()])
+      user_id: z.union([z.string(), z.number()]).describe('对方QQ号')
     }),
     response: baseResponseSchema
   }

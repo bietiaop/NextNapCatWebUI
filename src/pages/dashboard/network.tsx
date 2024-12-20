@@ -321,44 +321,47 @@ export default function NetworkPage() {
   }, [])
 
   return (
-    <div className="p-2 md:p-4 relative min-h-full">
-      <NetworkFormModal
-        data={activeData}
-        field={activeField}
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-      />
-      <PageLoading loading={loading} />
-      <div className="flex mb-6 items-center gap-4">
-        <AddButton onOpen={handleClickCreate} />
-        <Button
-          isIconOnly
-          color="primary"
-          radius="full"
-          variant="flat"
-          onPress={refresh}
+    <>
+      <title>网络配置 - NapCat WebUI</title>
+      <div className="p-2 md:p-4 relative min-h-full">
+        <NetworkFormModal
+          data={activeData}
+          field={activeField}
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+        />
+        <PageLoading loading={loading} />
+        <div className="flex mb-6 items-center gap-4">
+          <AddButton onOpen={handleClickCreate} />
+          <Button
+            isIconOnly
+            color="primary"
+            radius="full"
+            variant="flat"
+            onPress={refresh}
+          >
+            <IoMdRefresh size={24} />
+          </Button>
+        </div>
+        <Tabs
+          aria-label="Network Configs"
+          className="max-w-full"
+          items={tabs}
+          classNames={{
+            tabList: 'bg-opacity-50 backdrop-blur-sm',
+            cursor: 'bg-opacity-60 backdrop-blur-sm'
+          }}
         >
-          <IoMdRefresh size={24} />
-        </Button>
+          {(item) => (
+            <Tab key={item.key} title={item.title}>
+              <EmptySection isEmpty={!item.items.length} />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-start items-stretch gap-x-2 gap-y-4">
+                {item.items}
+              </div>
+            </Tab>
+          )}
+        </Tabs>
       </div>
-      <Tabs
-        aria-label="Network Configs"
-        className="max-w-full"
-        items={tabs}
-        classNames={{
-          tabList: 'bg-opacity-50 backdrop-blur-sm',
-          cursor: 'bg-opacity-60 backdrop-blur-sm'
-        }}
-      >
-        {(item) => (
-          <Tab key={item.key} title={item.title}>
-            <EmptySection isEmpty={!item.items.length} />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-start items-stretch gap-x-2 gap-y-4">
-              {item.items}
-            </div>
-          </Tab>
-        )}
-      </Tabs>
-    </div>
+    </>
   )
 }

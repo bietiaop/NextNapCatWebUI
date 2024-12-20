@@ -16,51 +16,54 @@ export interface OneBotConfigCardProps {
 const OneBotConfigCard: React.FC<OneBotConfigCardProps> = (props) => {
   const { control, onSubmit, reset, isSubmitting, onRefresh } = props
   return (
-    <Card className="bg-opacity-50 backdrop-blur-sm">
-      <CardBody className="items-center py-5">
-        <div className="w-96 flex flex-col gap-2">
-          <Controller
-            control={control}
-            name="musicSignUrl"
-            render={({ field }) => (
-              <Input
-                {...field}
-                label="音乐签名地址"
-                placeholder="请输入音乐签名地址"
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="enableLocalFile2Url"
-            render={({ field }) => (
-              <SwitchCard
-                {...field}
-                description="启用本地文件到URL"
-                label="启用本地文件到URL"
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="parseMultMsg"
-            render={({ field }) => (
-              <SwitchCard
-                {...field}
-                description="启用上报解析合并消息"
-                label="启用上报解析合并消息"
-              />
-            )}
-          />
-          <SaveButtons
-            onSubmit={onSubmit}
-            reset={reset}
-            isSubmitting={isSubmitting}
-            refresh={onRefresh}
-          />
-        </div>
-      </CardBody>
-    </Card>
+    <>
+      <title>OneBot配置 - NapCat WebUI</title>
+      <Card className="bg-opacity-50 backdrop-blur-sm">
+        <CardBody className="items-center py-5">
+          <div className="w-96 flex flex-col gap-2">
+            <Controller
+              control={control}
+              name="musicSignUrl"
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  label="音乐签名地址"
+                  placeholder="请输入音乐签名地址"
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="enableLocalFile2Url"
+              render={({ field }) => (
+                <SwitchCard
+                  {...field}
+                  description="启用本地文件到URL"
+                  label="启用本地文件到URL"
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="parseMultMsg"
+              render={({ field }) => (
+                <SwitchCard
+                  {...field}
+                  description="启用上报解析合并消息"
+                  label="启用上报解析合并消息"
+                />
+              )}
+            />
+            <SaveButtons
+              onSubmit={onSubmit}
+              reset={reset}
+              isSubmitting={isSubmitting}
+              refresh={onRefresh}
+            />
+          </div>
+        </CardBody>
+      </Card>
+    </>
   )
 }
 

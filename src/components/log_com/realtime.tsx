@@ -84,6 +84,7 @@ const RealTimeLogs = () => {
 
   return (
     <>
+      <title>实时日志 - NapCat WebUI</title>
       <div className="flex items-center gap-2">
         <LogLevelSelect
           selectedKeys={logLevel}
@@ -100,7 +101,6 @@ const RealTimeLogs = () => {
       <div className="flex-1 h-full overflow-hidden">
         <XTerm ref={Xterm} />
       </div>
-      {/*  */}
     </>
   )
 }

@@ -41,7 +41,6 @@ export function parse(
 ): ParsedSchema | ParsedSchema[] {
   const optional = schema.isOptional ? schema.isOptional() : false
   const description = schema.description
-
   if (schema instanceof ZodString) {
     return { name, type: 'string', optional, description }
   }
@@ -77,13 +76,15 @@ export function parse(
   }
 
   if (schema instanceof ZodEnum) {
-    return {
+    const data = {
       name,
       type: 'enum',
       optional,
       enum: schema._def.values as LiteralValue[],
       description
     }
+    console.log(data)
+    return data
   }
 
   if (schema instanceof ZodUnion) {

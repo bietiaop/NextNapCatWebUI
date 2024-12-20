@@ -179,6 +179,8 @@ export default function AudioPlayer(props: AudioPlayerProps) {
 
   const translateStyle = dragTranslate || collapsedTranslate
 
+  if (!src) return null
+
   return (
     <div
       className={clsx(
@@ -277,7 +279,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
                     filler: 'rounded-full'
                   }}
                   color="foreground"
-                  value={currentProgress}
+                  value={currentProgress || 0}
                   defaultValue={0}
                   size="sm"
                   onChange={(value) => {

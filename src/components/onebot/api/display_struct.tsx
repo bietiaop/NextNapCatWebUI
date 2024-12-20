@@ -149,6 +149,25 @@ const RenderSchema: React.FC<{ schema: ParsedSchema }> = ({ schema }) => {
     )
   }
 
+  if (schema.type === 'enum' && Array.isArray(schema.enum)) {
+    return (
+      <SchemaContainer schema={schema}>
+        <div className="flex gap-1 items-center">
+          {schema.enum?.map((value, i) => (
+            <Chip
+              key={value?.toString() || i}
+              size="sm"
+              variant="flat"
+              color="success"
+            >
+              {value?.toString()}
+            </Chip>
+          ))}
+        </div>
+      </SchemaContainer>
+    )
+  }
+
   return (
     <div className="mb-2 flex items-center gap-1 pl-5">
       <Tooltip content="点击复制" placement="top" showArrow>

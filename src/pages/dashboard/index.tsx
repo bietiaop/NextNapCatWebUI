@@ -73,37 +73,40 @@ const DashboardIndexPage: React.FC = () => {
     refreshConfig()
   }, [])
   return (
-    <section className="w-full p-2 md:p-4">
-      <QQInfoCard data={data} error={error} loading={loading} />
-      <div className="grid grid-cols-8 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 py-5">
-        <NetworkItemDisplay count={allNetWorkConfigLength} label="网络配置" />
-        <NetworkItemDisplay
-          count={config.network.httpServers.length}
-          label="HTTP服务器"
-          size="sm"
-        />
-        <NetworkItemDisplay
-          count={config.network.httpClients.length}
-          label="HTTP客户端"
-          size="sm"
-        />
-        <NetworkItemDisplay
-          count={config.network.websocketServers.length}
-          label="WS服务器"
-          size="sm"
-        />
-        <NetworkItemDisplay
-          count={config.network.websocketClients.length}
-          label="WS客户端"
-          size="sm"
-        />
-      </div>
-      <Card className="bg-opacity-60 shadow-sm shadow-danger-50">
-        <CardBody>
-          <Hitokoto />
-        </CardBody>
-      </Card>
-    </section>
+    <>
+      <title>基础信息 - NapCat WebUI</title>
+      <section className="w-full p-2 md:p-4">
+        <QQInfoCard data={data} error={error} loading={loading} />
+        <div className="grid grid-cols-8 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 py-5">
+          <NetworkItemDisplay count={allNetWorkConfigLength} label="网络配置" />
+          <NetworkItemDisplay
+            count={config.network.httpServers.length}
+            label="HTTP服务器"
+            size="sm"
+          />
+          <NetworkItemDisplay
+            count={config.network.httpClients.length}
+            label="HTTP客户端"
+            size="sm"
+          />
+          <NetworkItemDisplay
+            count={config.network.websocketServers.length}
+            label="WS服务器"
+            size="sm"
+          />
+          <NetworkItemDisplay
+            count={config.network.websocketClients.length}
+            label="WS客户端"
+            size="sm"
+          />
+        </div>
+        <Card className="bg-opacity-60 shadow-sm shadow-danger-50">
+          <CardBody>
+            <Hitokoto />
+          </CardBody>
+        </Card>
+      </section>
+    </>
   )
 }
 

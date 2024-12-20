@@ -81,52 +81,55 @@ const HistoryLogs: React.FC<HistoryLogsProps> = (props) => {
   }, [logContent, logLevel])
 
   return (
-    <Card className="max-w-full h-full bg-opacity-50 backdrop-blur-sm">
-      <CardHeader className="flex-row justify-start gap-3">
-        <Select
-          label="选择日志"
-          size="sm"
-          isLoading={listLoading}
-          errorMessage={listError?.message}
-          classNames={{
-            trigger:
-              'hover:!bg-content3 bg-opacity-50 backdrop-blur-sm hover:!bg-opacity-60'
-          }}
-          placeholder="选择日志"
-          onChange={(e) => {
-            const value = e.target.value
-            if (!value) {
-              return
-            }
-            onSelect(value)
-          }}
-          selectedKeys={[selectedLog || '']}
-          items={list.map((name) => ({
-            value: name,
-            label: name
-          }))}
-        >
-          {(item) => (
-            <SelectItem key={item.value} value={item.value}>
-              {item.label}
-            </SelectItem>
-          )}
-        </Select>
-        <LogLevelSelect
-          selectedKeys={logLevel}
-          onSelectionChange={setLogLevel}
-        />
-        <Button className="flex-shrink-0" onPress={onDownloadLog}>
-          下载日志
-        </Button>
-        <Button onPress={refreshList}>刷新列表</Button>
-        <Button onPress={refreshLog}>刷新日志</Button>
-      </CardHeader>
-      <CardBody className="relative">
-        <PageLoading loading={logLoading} />
-        <XTerm className="w-full h-full" ref={Xterm} />
-      </CardBody>
-    </Card>
+    <>
+      <title>历史日志 - NapCat WebUI</title>
+      <Card className="max-w-full h-full bg-opacity-50 backdrop-blur-sm">
+        <CardHeader className="flex-row justify-start gap-3">
+          <Select
+            label="选择日志"
+            size="sm"
+            isLoading={listLoading}
+            errorMessage={listError?.message}
+            classNames={{
+              trigger:
+                'hover:!bg-content3 bg-opacity-50 backdrop-blur-sm hover:!bg-opacity-60'
+            }}
+            placeholder="选择日志"
+            onChange={(e) => {
+              const value = e.target.value
+              if (!value) {
+                return
+              }
+              onSelect(value)
+            }}
+            selectedKeys={[selectedLog || '']}
+            items={list.map((name) => ({
+              value: name,
+              label: name
+            }))}
+          >
+            {(item) => (
+              <SelectItem key={item.value} value={item.value}>
+                {item.label}
+              </SelectItem>
+            )}
+          </Select>
+          <LogLevelSelect
+            selectedKeys={logLevel}
+            onSelectionChange={setLogLevel}
+          />
+          <Button className="flex-shrink-0" onPress={onDownloadLog}>
+            下载日志
+          </Button>
+          <Button onPress={refreshList}>刷新列表</Button>
+          <Button onPress={refreshLog}>刷新日志</Button>
+        </CardHeader>
+        <CardBody className="relative">
+          <PageLoading loading={logLoading} />
+          <XTerm className="w-full h-full" ref={Xterm} />
+        </CardBody>
+      </Card>
+    </>
   )
 }
 

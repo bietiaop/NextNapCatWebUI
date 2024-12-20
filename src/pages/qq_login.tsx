@@ -109,61 +109,64 @@ export default function QQLoginPage() {
   }, [])
 
   return (
-    <PureLayout>
-      <div className="w-[608px] max-w-full py-8 px-2 md:px-8 overflow-hidden">
-        <HoverEffectCard
-          className="items-center gap-4 pt-0 pb-6 bg-default-50"
-          maxXRotation={3}
-          maxYRotation={3}
-        >
-          <CardHeader className="inline-block max-w-lg text-center justify-center">
-            <div className="flex justify-center">
-              <Image alt="logo" height="7em" src={logo} />
-            </div>
-            <span className={title()}>QQ&nbsp;</span>
-            <span className={title({ color: 'violet' })}>Login&nbsp;</span>
-            <ThemeSwitch className="absolute right-4 top-4" />
-          </CardHeader>
+    <>
+      <title>QQ登录 - NapCat WebUI</title>
+      <PureLayout>
+        <div className="w-[608px] max-w-full py-8 px-2 md:px-8 overflow-hidden">
+          <HoverEffectCard
+            className="items-center gap-4 pt-0 pb-6 bg-default-50"
+            maxXRotation={3}
+            maxYRotation={3}
+          >
+            <CardHeader className="inline-block max-w-lg text-center justify-center">
+              <div className="flex justify-center">
+                <Image alt="logo" height="7em" src={logo} />
+              </div>
+              <span className={title()}>QQ&nbsp;</span>
+              <span className={title({ color: 'violet' })}>Login&nbsp;</span>
+              <ThemeSwitch className="absolute right-4 top-4" />
+            </CardHeader>
 
-          <CardBody className="flex gap-5 p-10 pt-0">
-            <Tabs
-              fullWidth
-              classNames={{
-                tabList: 'shadow-sm dark:shadow-none'
-              }}
-              isDisabled={isLoading}
-              size="lg"
-            >
-              <Tab key="shortcut" title="快速登录">
-                <QuickLogin
-                  handleSelectionChange={handleSelectionChange}
-                  isLoading={isLoading}
-                  qqList={qqList}
-                  refresh={refresh}
-                  selectedQQ={uinValue}
-                  onSubmit={onSubmit}
-                  onUpdateQQList={onUpdateQQList}
-                />
-              </Tab>
-              <Tab key="qrcode" title="扫码登录">
-                <QrCodeLogin qrcode={qrcode} />
-              </Tab>
-            </Tabs>
-            <Button
-              className="w-fit mx-auto"
-              variant="light"
-              color="primary"
-              onPress={() => {
-                navigate('/web_login', {
-                  replace: true
-                })
-              }}
-            >
-              返回 Web Login
-            </Button>
-          </CardBody>
-        </HoverEffectCard>
-      </div>
-    </PureLayout>
+            <CardBody className="flex gap-5 p-10 pt-0">
+              <Tabs
+                fullWidth
+                classNames={{
+                  tabList: 'shadow-sm dark:shadow-none'
+                }}
+                isDisabled={isLoading}
+                size="lg"
+              >
+                <Tab key="shortcut" title="快速登录">
+                  <QuickLogin
+                    handleSelectionChange={handleSelectionChange}
+                    isLoading={isLoading}
+                    qqList={qqList}
+                    refresh={refresh}
+                    selectedQQ={uinValue}
+                    onSubmit={onSubmit}
+                    onUpdateQQList={onUpdateQQList}
+                  />
+                </Tab>
+                <Tab key="qrcode" title="扫码登录">
+                  <QrCodeLogin qrcode={qrcode} />
+                </Tab>
+              </Tabs>
+              <Button
+                className="w-fit mx-auto"
+                variant="light"
+                color="primary"
+                onPress={() => {
+                  navigate('/web_login', {
+                    replace: true
+                  })
+                }}
+              >
+                返回 Web Login
+              </Button>
+            </CardBody>
+          </HoverEffectCard>
+        </div>
+      </PureLayout>
+    </>
   )
 }

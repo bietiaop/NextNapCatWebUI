@@ -11,13 +11,16 @@ export default function HttpDebug() {
     useState<keyof OneBotHttpApi>('/set_qq_profile')
   const data = oneBotHttpApi[selectedApi]
   return (
-    <div className="w-full h-[calc(100%-2.5rem)] flex items-stretch">
-      <OneBotApiNavList
-        data={oneBotHttpApi}
-        selectedApi={selectedApi}
-        onSelect={setSelectedApi}
-      />
-      <OneBotApiDebug path={selectedApi} data={data} />
-    </div>
+    <>
+      <title>HTTP调试 - NapCat WebUI</title>
+      <div className="w-full h-[calc(100%-2.5rem)] flex items-stretch">
+        <OneBotApiNavList
+          data={oneBotHttpApi}
+          selectedApi={selectedApi}
+          onSelect={setSelectedApi}
+        />
+        <OneBotApiDebug path={selectedApi} data={data} />
+      </div>
+    </>
   )
 }

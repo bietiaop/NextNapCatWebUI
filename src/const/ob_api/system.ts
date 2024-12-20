@@ -6,7 +6,7 @@ const oneBotHttpApiSystem = {
   '/get_online_clients': {
     description: '获取当前账号在线客户端列表',
     request: z.object({
-      no_cache: z.boolean().optional()
+      no_cache: z.boolean().optional().describe('是否不使用缓存')
     }),
     response: baseResponseSchema.extend({
       data: z.object({

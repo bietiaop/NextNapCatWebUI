@@ -46,25 +46,31 @@ const OneBotApiDebug: React.FC<OneBotApiDebugProps> = (props) => {
     if (isFetching) return
     setIsFetching(true)
     const r = toast.loading('正在发送请求...')
-    request
-      .post(httpConfig.url + path, {
-        headers: {
-          Authorization: `Bearer ${httpConfig.token}`
-        },
-        responseType: 'text',
-        body: requestBody
-      })
-      .then((res) => {
-        setResponseContent(parseAxiosResponse(res))
-      })
-      .catch((err) => {
-        setResponseContent(parseAxiosResponse(err.response))
-      })
-      .finally(() => {
-        setIsFetching(false)
-        toast.dismiss(r)
-        toast.success('请求发送成功')
-      })
+    try {
+      const parsedRequestBody = JSON.parse(requestBody)
+      request
+        .post(httpConfig.url + path, parsedRequestBody, {
+          headers: {
+            Authorization: `Bearer ${httpConfig.token}`
+          },
+          responseType: 'text'
+        })
+        .then((res) => {
+          setResponseContent(parseAxiosResponse(res))
+        })
+        .catch((err) => {
+          setResponseContent(parseAxiosResponse(err.response))
+        })
+        .finally(() => {
+          setIsFetching(false)
+          toast.dismiss(r)
+          toast.success('请求发送成功')
+        })
+    } catch (error) {
+      toast.error('请求体 JSON 格式错误')
+      setIsFetching(false)
+      toast.dismiss(r)
+    }
   }
 
   useEffect(() => {

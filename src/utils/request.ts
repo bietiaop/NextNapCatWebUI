@@ -9,7 +9,7 @@ export const serverRequest = axios.create({
 })
 
 export const request = axios.create({
-  timeout: 5000
+  timeout: 10000
 })
 
 export const requestServerWithFetch = async (

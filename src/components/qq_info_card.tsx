@@ -1,5 +1,6 @@
 import { Avatar } from '@nextui-org/avatar'
 import { Card, CardBody } from '@nextui-org/card'
+import clsx from 'clsx'
 
 import { SelfInfo } from '@/types/user'
 
@@ -47,6 +48,14 @@ const QQInfoCard: React.FC<QQInfoCardProps> = ({ data, error, loading }) => {
               <div className="font-ubuntu text-gray-500 text-xs">
                 {data?.uin}
               </div>
+            </div>
+            <div className="flex-shrink-0 flex items-center ml-2">
+              <div
+                className={clsx(
+                  'w-2 h-2 rounded-full',
+                  data?.online ? 'bg-green-500' : 'bg-gray-500'
+                )}
+              ></div>
             </div>
           </div>
         </CardBody>

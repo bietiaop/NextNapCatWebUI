@@ -13,7 +13,7 @@ export default function HttpDebug() {
   return (
     <>
       <title>HTTP调试 - NapCat WebUI</title>
-      <div className="w-full h-[calc(100%-2.5rem)] flex items-stretch">
+      <div className="w-full h-[calc(100%-3.6rem)] flex items-stretch">
         <OneBotApiNavList
           data={oneBotHttpApi}
           selectedApi={selectedApi}

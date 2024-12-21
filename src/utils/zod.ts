@@ -83,7 +83,6 @@ export function parse(
       enum: schema._def.values as LiteralValue[],
       description
     }
-    console.log(data)
     return data
   }
 

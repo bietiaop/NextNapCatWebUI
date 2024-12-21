@@ -1,83 +1,49 @@
 import { Card, CardBody } from '@nextui-org/card'
 import { useRequest } from 'ahooks'
-import clsx from 'clsx'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
+import NetworkItemDisplay from '@/components/display_network_item'
 import Hitokoto from '@/components/hitokoto'
-import { title } from '@/components/primitives'
 import QQInfoCard from '@/components/qq_info_card'
 
 import useConfig from '@/hooks/use-config'
 
 import QQManager from '@/controllers/qq_manager'
-
-export interface NetworkItemDisplayProps {
-  count: number
-  label: string
-  size?: 'sm' | 'md'
-}
-
-const NetworkItemDisplay: React.FC<NetworkItemDisplayProps> = ({
-  count,
-  label,
-  size = 'md'
-}) => {
-  return (
-    <Card
-      className={clsx(
-        'bg-opacity-60 shadow-sm',
-        size === 'md'
-          ? 'col-span-8 md:col-span-2 bg-danger-50 shadow-danger-100'
-          : 'col-span-2 md:col-span-1 bg-warning-100 shadow-warning-200'
-      )}
-      shadow="sm"
-    >
-      <CardBody className="items-center gap-1">
-        <div
-          className={clsx(
-            'font-outfit flex-1',
-            title({
-              color: size === 'md' ? 'pink' : 'yellow',
-              size
-            })
-          )}
-        >
-          {count}
-        </div>
-        <div
-          className={clsx(
-            'whitespace-nowrap text-nowrap flex-shrink-0',
-            title({
-              color: size === 'md' ? 'pink' : 'yellow',
-              shadow: true,
-              size: 'xxs'
-            })
-          )}
-        >
-          {label}
-        </div>
-      </CardBody>
-    </Card>
-  )
-}
+import WebUIManager from '@/controllers/webui_manager'
 
 const DashboardIndexPage: React.FC = () => {
   const { config, refreshConfig } = useConfig()
   const { data, loading, error } = useRequest(QQManager.getQQLoginInfo)
+  const [systemStatus, setSystemStatus] = useState<SystemStatus>()
   const allNetWorkConfigLength =
     config.network.httpClients.length +
     config.network.websocketClients.length +
     config.network.websocketServers.length +
     config.network.httpServers.length
+  const getStatus = () => {
+    try {
+      const event = WebUIManager.getSystemStatus(setSystemStatus)
+      return event
+    } catch (error) {
+      const msg = (error as Error).message
+      toast.error(`获取系统状态失败：${msg}`)
+    }
+  }
   useEffect(() => {
     refreshConfig()
+    // const close = getStatus()
+    // return () => {
+    //   close?.close()
+    // }
   }, [])
+  // console.log(systemStatus)
   return (
     <>
       <title>基础信息 - NapCat WebUI</title>
       <section className="w-full p-2 md:p-4">
         <QQInfoCard data={data} error={error} loading={loading} />
-        <div className="grid grid-cols-8 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 py-5">
+        <div className="grid grid-cols-8 md:grid-cols-3 lg:grid-cols-6 gap-y-2 gap-x-1 md:gap-y-4 md:gap-x-4 py-5">
           <NetworkItemDisplay count={allNetWorkConfigLength} label="网络配置" />
           <NetworkItemDisplay
             count={config.network.httpServers.length}

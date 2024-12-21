@@ -91,22 +91,29 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <div
         ref={contentRef}
         className={clsx(
-          'overflow-y-auto relative flex-1 rounded-md m-1 bg-content1 dark:bg-zinc-950',
+          'overflow-y-auto relative flex-1 rounded-md m-1 bg-content1 ',
           openSideBar ? 'ml-0' : 'ml-1',
-          !b64img && 'shadow-inner shadow-danger-200 dark:shadow-danger-50',
+          !b64img && 'shadow-inner',
           b64img && '!bg-opacity-50 backdrop-blur-none dark:bg-background'
         )}
       >
-        <div className="h-10 flex items-center hm-medium text-xl sticky top-0 left-0 backdrop-blur-lg z-20 shadow-sm bg-opacity-30 bg-background dark:bg-background shadow-danger-50 dark:shadow-danger-100">
-          <Button
-            isIconOnly
-            className="mr-1"
-            radius="none"
-            variant="light"
-            onPress={() => setOpenSideBar(!openSideBar)}
+        <div className="h-10 flex items-center hm-medium text-xl sticky top-2 left-0 backdrop-blur-lg z-20 shadow-sm bg-background dark:bg-background shadow-danger-50 dark:shadow-danger-100 m-2 rounded-full !bg-opacity-50">
+          <div
+            className={clsx(
+              'mr-1 transition-all duration-300 ease-in-out ml-0 md:relative',
+              openSideBar && 'ml-60 pl-2 absolute',
+              'md:ml-0 md:pl-0'
+            )}
           >
-            {openSideBar ? <MdMenuOpen size={24} /> : <MdMenu size={24} />}
-          </Button>
+            <Button
+              isIconOnly
+              radius="full"
+              variant="light"
+              onPress={() => setOpenSideBar(!openSideBar)}
+            >
+              {openSideBar ? <MdMenuOpen size={24} /> : <MdMenu size={24} />}
+            </Button>
+          </div>
           <Breadcrumbs isDisabled size="lg">
             {title?.map((item, index) => (
               <BreadcrumbItem key={index}>{item}</BreadcrumbItem>

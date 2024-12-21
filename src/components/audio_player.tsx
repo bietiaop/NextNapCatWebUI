@@ -208,9 +208,8 @@ export default function AudioPlayer(props: AudioPlayerProps) {
 
       <Card
         ref={cardRef}
-        isBlurred
         className={clsx(
-          'border-none bg-background/60 dark:bg-default-100/50 w-full max-w-full transform transition-transform duration-300 overflow-visible',
+          'border-none bg-background/60 dark:bg-default-300/50 w-full max-w-full transform transition-transform backdrop-blur-md duration-300 overflow-visible',
           isSmallScreen ? 'rounded-t-3xl' : 'md:rounded-l-xl'
         )}
         classNames={{

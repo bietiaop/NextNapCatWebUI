@@ -35,7 +35,7 @@ const SideBar: React.FC<SideBarProps> = (props) => {
   return (
     <div
       className={clsx(
-        'overflow-hidden transition-width',
+        'overflow-hidden transition-width fixed top-0 left-0 h-full z-50 bg-background md:bg-transparent md:static shadow-md md:shadow-none rounded-r-md md:rounded-none',
         open ? 'w-64' : 'w-0'
       )}
     >

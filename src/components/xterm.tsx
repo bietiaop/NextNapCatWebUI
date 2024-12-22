@@ -32,7 +32,8 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
         return
       }
       const terminal = new Terminal({
-        allowTransparency: true
+        allowTransparency: true,
+        fontFamily: 'Fira Code'
       })
       terminalRef.current = terminal
       const fitAddon = new FitAddon()
@@ -75,8 +76,7 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
           selectionBackground: theme === 'dark' ? '#666' : '#ddd',
           cursor: theme === 'dark' ? '#fff' : '#000',
           cursorAccent: theme === 'dark' ? '#000' : '#fff',
-          black: theme === 'dark' ? '#000' : '#fff',
-          brightYellow: theme === 'dark' ? '#ff0' : '#FFBF00'
+          black: theme === 'dark' ? '#fff' : '#000'
         }
       }
     }, [theme])

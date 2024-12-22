@@ -31,6 +31,12 @@ export default class WebUIManager {
     return data.data
   }
 
+  public static async getQQVersion() {
+    const { data } =
+      await serverRequest.get<ServerResponse<string>>('/base/QQVersion')
+    return data.data
+  }
+
   public static async getLogList() {
     const { data } =
       await serverRequest.get<ServerResponse<string[]>>('/Log/GetLogList')

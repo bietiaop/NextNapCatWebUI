@@ -1,4 +1,5 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import { Spinner } from '@nextui-org/spinner'
 import { useRequest } from 'ahooks'
 import { FaCircleInfo } from 'react-icons/fa6'
 import { FaQq } from 'react-icons/fa6'
@@ -12,7 +13,7 @@ import packageJson from '../../package.json'
 export interface SystemInfoItemProps {
   title: string
   icon?: React.ReactNode
-  value?: string
+  value?: React.ReactNode
 }
 
 const SystemInfoItem: React.FC<SystemInfoItemProps> = ({
@@ -29,8 +30,21 @@ const SystemInfoItem: React.FC<SystemInfoItemProps> = ({
   )
 }
 
-const SystemInfo = () => {
-  const { data, loading, error } = useRequest(WebUIManager.getPackageInfo)
+export interface SystemInfoProps {
+  archInfo?: string
+}
+const SystemInfo: React.FC<SystemInfoProps> = (props) => {
+  const { archInfo } = props
+  const {
+    data: packageData,
+    loading: packageLoading,
+    error: packageError
+  } = useRequest(WebUIManager.getPackageInfo)
+  const {
+    data: qqVersionData,
+    loading: qqVersionLoading,
+    error: qqVersionError
+  } = useRequest(WebUIManager.getQQVersion)
   return (
     <Card className="bg-opacity-60 shadow-sm shadow-danger-50 dark:shadow-danger-100 overflow-visible flex-1">
       <CardHeader className="pb-0 items-center gap-1 text-danger-500 font-extrabold">
@@ -43,11 +57,13 @@ const SystemInfo = () => {
             title="NapCat 版本"
             icon={<IoLogoOctocat className="text-xl" />}
             value={
-              error
-                ? `错误：${error.message}`
-                : loading
-                  ? '加载中...'
-                  : data?.version
+              packageError ? (
+                `错误：${packageError.message}`
+              ) : packageLoading ? (
+                <Spinner size="sm" />
+              ) : (
+                packageData?.version
+              )
             }
           />
           <SystemInfoItem
@@ -55,10 +71,23 @@ const SystemInfo = () => {
             icon={<IoLogoChrome className="text-xl" />}
             value={packageJson.version}
           />
-          <SystemInfoItem title="QQ 版本" icon={<FaQq className="text-lg" />} />
+          <SystemInfoItem
+            title="QQ 版本"
+            icon={<FaQq className="text-lg" />}
+            value={
+              qqVersionError ? (
+                `错误：${qqVersionError.message}`
+              ) : qqVersionLoading ? (
+                <Spinner size="sm" />
+              ) : (
+                qqVersionData
+              )
+            }
+          />
           <SystemInfoItem
             title="系统版本"
             icon={<RiMacFill className="text-xl" />}
+            value={archInfo}
           />
         </div>
       </CardBody>

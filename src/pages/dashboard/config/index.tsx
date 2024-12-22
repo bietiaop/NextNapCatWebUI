@@ -3,6 +3,7 @@ import { useLocalStorage } from '@uidotdev/usehooks'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { useMediaQuery } from 'react-responsive'
 
 import key from '@/const/key'
 
@@ -39,6 +40,8 @@ export default function ConfigPage() {
       customIcons: {}
     }
   })
+
+  const isMediumUp = useMediaQuery({ minWidth: 768 })
   const [b64img, setB64img] = useLocalStorage(key.backgroundImage, '')
   const [customIcons, setCustomIcons] = useLocalStorage<Record<string, string>>(
     key.customIcons,
@@ -98,12 +101,13 @@ export default function ConfigPage() {
     <section className="w-[1000px] max-w-full md:mx-auto gap-4 py-8 px-2 md:py-10">
       <Tabs
         aria-label="config tab"
-        isVertical
+        fullWidth
         className="w-full"
+        isVertical={isMediumUp}
         classNames={{
-          tabList: 'sticky top-14 bg-opacity-50 backdrop-blur-sm',
+          tabList: 'sticky flex top-14 bg-opacity-50 backdrop-blur-sm',
           panel: 'w-full',
-          base: '!w-auto flex-grow-0 flex-shrink-0 mr-0',
+          base: 'md:!w-auto flex-grow-0 flex-shrink-0 mr-0',
           cursor: 'bg-opacity-60 backdrop-blur-sm'
         }}
       >

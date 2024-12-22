@@ -65,7 +65,8 @@ const RealTimeLogs = () => {
   useEffect(() => {
     const subscribeLogs = () => {
       try {
-        WebUIManager.getRealTimeLogs((data) => {
+        console.log('subscribeLogs')
+        const source = WebUIManager.getRealTimeLogs((data) => {
           setDataArr((prev) => {
             const newData = [...prev, ...data]
             if (newData.length > 1000) {
@@ -74,12 +75,19 @@ const RealTimeLogs = () => {
             return newData
           })
         })
+        return () => {
+          source.close()
+        }
       } catch (error) {
         toast.error('获取实时日志失败')
       }
     }
 
-    subscribeLogs()
+    const close = subscribeLogs()
+    return () => {
+      console.log('close')
+      close?.()
+    }
   }, [])
 
   return (

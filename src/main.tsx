@@ -24,7 +24,7 @@ if (theme && !theme.startsWith('"')) {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Provider>
         <App />
       </Provider>

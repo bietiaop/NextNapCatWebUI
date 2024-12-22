@@ -1,105 +1,94 @@
 import { Card, CardBody } from '@nextui-org/card'
 import { useRequest } from 'ahooks'
-import clsx from 'clsx'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
+import NetworkItemDisplay from '@/components/display_network_item'
 import Hitokoto from '@/components/hitokoto'
-import { title } from '@/components/primitives'
 import QQInfoCard from '@/components/qq_info_card'
+import SystemInfo from '@/components/system_info'
+import SystemStatusDisplay from '@/components/system_status_display'
 
 import useConfig from '@/hooks/use-config'
 
 import QQManager from '@/controllers/qq_manager'
+import WebUIManager from '@/controllers/webui_manager'
 
-export interface NetworkItemDisplayProps {
-  count: number
-  label: string
-  size?: 'sm' | 'md'
-}
-
-const NetworkItemDisplay: React.FC<NetworkItemDisplayProps> = ({
-  count,
-  label,
-  size = 'md'
-}) => {
-  return (
-    <Card
-      className={clsx(
-        'bg-opacity-60 shadow-sm',
-        size === 'md'
-          ? 'col-span-8 md:col-span-2 bg-danger-50 shadow-danger-100'
-          : 'col-span-2 md:col-span-1 bg-warning-100 shadow-warning-200'
-      )}
-      shadow="sm"
-    >
-      <CardBody className="items-center gap-1">
-        <div
-          className={clsx(
-            'font-outfit flex-1',
-            title({
-              color: size === 'md' ? 'pink' : 'yellow',
-              size
-            })
-          )}
-        >
-          {count}
-        </div>
-        <div
-          className={clsx(
-            'whitespace-nowrap text-nowrap flex-shrink-0',
-            title({
-              color: size === 'md' ? 'pink' : 'yellow',
-              shadow: true,
-              size: 'xxs'
-            })
-          )}
-        >
-          {label}
-        </div>
-      </CardBody>
-    </Card>
-  )
-}
-
-const DashboardIndexPage: React.FC = () => {
+const Networks: React.FC = () => {
   const { config, refreshConfig } = useConfig()
-  const { data, loading, error } = useRequest(QQManager.getQQLoginInfo)
   const allNetWorkConfigLength =
     config.network.httpClients.length +
     config.network.websocketClients.length +
     config.network.websocketServers.length +
     config.network.httpServers.length
+
   useEffect(() => {
     refreshConfig()
   }, [])
   return (
+    <div className="grid grid-cols-8 md:grid-cols-3 lg:grid-cols-6 gap-y-2 gap-x-1 md:gap-y-4 md:gap-x-4 py-5">
+      <NetworkItemDisplay count={allNetWorkConfigLength} label="网络配置" />
+      <NetworkItemDisplay
+        count={config.network.httpServers.length}
+        label="HTTP服务器"
+        size="sm"
+      />
+      <NetworkItemDisplay
+        count={config.network.httpClients.length}
+        label="HTTP客户端"
+        size="sm"
+      />
+      <NetworkItemDisplay
+        count={config.network.websocketServers.length}
+        label="WS服务器"
+        size="sm"
+      />
+      <NetworkItemDisplay
+        count={config.network.websocketClients.length}
+        label="WS客户端"
+        size="sm"
+      />
+    </div>
+  )
+}
+
+const QQInfo: React.FC = () => {
+  const { data, loading, error } = useRequest(QQManager.getQQLoginInfo)
+  return <QQInfoCard data={data} error={error} loading={loading} />
+}
+
+const SystemStatusCard: React.FC = () => {
+  const [systemStatus, setSystemStatus] = useState<SystemStatus>()
+  const getStatus = () => {
+    try {
+      const event = WebUIManager.getSystemStatus(setSystemStatus)
+      return event
+    } catch (error) {
+      toast.error('获取系统状态失败')
+    }
+  }
+  useEffect(() => {
+    const close = getStatus()
+    return () => {
+      close?.close()
+    }
+  }, [])
+  return <SystemStatusDisplay data={systemStatus} />
+}
+
+const DashboardIndexPage: React.FC = () => {
+  return (
     <>
       <title>基础信息 - NapCat WebUI</title>
-      <section className="w-full p-2 md:p-4">
-        <QQInfoCard data={data} error={error} loading={loading} />
-        <div className="grid grid-cols-8 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 py-5">
-          <NetworkItemDisplay count={allNetWorkConfigLength} label="网络配置" />
-          <NetworkItemDisplay
-            count={config.network.httpServers.length}
-            label="HTTP服务器"
-            size="sm"
-          />
-          <NetworkItemDisplay
-            count={config.network.httpClients.length}
-            label="HTTP客户端"
-            size="sm"
-          />
-          <NetworkItemDisplay
-            count={config.network.websocketServers.length}
-            label="WS服务器"
-            size="sm"
-          />
-          <NetworkItemDisplay
-            count={config.network.websocketClients.length}
-            label="WS客户端"
-            size="sm"
-          />
+      <section className="w-full p-2 md:p-4 md:max-w-[1000px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch">
+          <div className="flex flex-col gap-2">
+            <QQInfo />
+            <SystemInfo />
+          </div>
+          <SystemStatusCard />
         </div>
+        <Networks />
         <Card className="bg-opacity-60 shadow-sm shadow-danger-50">
           <CardBody>
             <Hitokoto />

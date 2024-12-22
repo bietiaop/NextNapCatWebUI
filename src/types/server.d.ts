@@ -28,3 +28,22 @@ interface PackageInfo {
   dependencies: Record<string, string>
   devDependencies: Record<string, string>
 }
+
+interface SystemStatus {
+  cpu: {
+    core: number
+    model: string
+    speed: string
+    usage: {
+      system: string
+      qq: string
+    }
+  }
+  memory: {
+    total: string
+    usage: {
+      system: string
+      qq: string
+    }
+  }
+}

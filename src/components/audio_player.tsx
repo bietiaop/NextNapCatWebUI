@@ -62,7 +62,10 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   const [duration, setDuration] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(100)
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useLocalStorage(
+    key.isCollapsedMusicPlayer,
+    false
+  )
   const audioRef = useRef<HTMLAudioElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   const startY = useRef(0)
@@ -208,9 +211,8 @@ export default function AudioPlayer(props: AudioPlayerProps) {
 
       <Card
         ref={cardRef}
-        isBlurred
         className={clsx(
-          'border-none bg-background/60 dark:bg-default-100/50 w-full max-w-full transform transition-transform duration-300 overflow-visible',
+          'border-none bg-background/60 dark:bg-default-300/50 w-full max-w-full transform transition-transform backdrop-blur-md duration-300 overflow-visible',
           isSmallScreen ? 'rounded-t-3xl' : 'md:rounded-l-xl'
         )}
         classNames={{

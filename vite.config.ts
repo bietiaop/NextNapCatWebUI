@@ -21,7 +21,7 @@ export default defineConfig({
       ]
     })
   ],
-  base: './',
+  base: '/',
   server: {
     // proxy: {
     // '/api': 'http://192.168.31.196:6099'

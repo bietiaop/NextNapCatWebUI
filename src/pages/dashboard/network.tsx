@@ -323,7 +323,7 @@ export default function NetworkPage() {
   return (
     <>
       <title>网络配置 - NapCat WebUI</title>
-      <div className="p-2 md:p-4 relative min-h-full">
+      <div className="p-2 md:p-4 relative">
         <NetworkFormModal
           data={activeData}
           field={activeField}

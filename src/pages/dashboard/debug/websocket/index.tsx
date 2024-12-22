@@ -40,7 +40,7 @@ export default function WSDebug() {
   return (
     <>
       <title>Websocket调试 - NapCat WebUI</title>
-      <div className="h-[calc(100vh-3rem)] overflow-hidden flex flex-col">
+      <div className="h-[calc(100vh-4rem)] overflow-hidden flex flex-col">
         <Card className="mx-2 mt-2 flex-shrink-0 bg-opacity-50 backdrop-blur-sm">
           <CardBody className="gap-2">
             <div className="grid gap-2 items-center md:grid-cols-5">

@@ -1,6 +1,7 @@
-import { Avatar } from '@nextui-org/avatar'
 import { Card, CardBody } from '@nextui-org/card'
+import { Image } from '@nextui-org/image'
 import clsx from 'clsx'
+import { BsTencentQq } from 'react-icons/bs'
 
 import { SelfInfo } from '@/types/user'
 
@@ -15,47 +16,44 @@ export interface QQInfoCardProps {
 const QQInfoCard: React.FC<QQInfoCardProps> = ({ data, error, loading }) => {
   return (
     <Card
-      className="col-span-8 md:col-span-2 shadow-danger-100 relative bg-opacity-30"
+      className="relative bg-danger-100 bg-opacity-60 overflow-hidden flex-shrink-0 shadow-md shadow-danger-300 dark:shadow-danger-50"
       shadow="none"
-      radius="sm"
+      radius="lg"
     >
       <PageLoading loading={loading} />
       {error ? (
         <CardBody className="items-center gap-1 justify-center">
-          <div className="font-outfit flex-1 text-pink-500">Error</div>
+          <div className="font-outfit flex-1 text-content1-foreground">
+            Error
+          </div>
           <div className="whitespace-nowrap text-nowrap flex-shrink-0">
             {error.message}
           </div>
         </CardBody>
       ) : (
-        <CardBody className="flex-row items-stretch gap-2 justify-center">
-          <div className="flex items-center text-lg font-bold font-noto-serif">
-            欢迎回来,
+        <CardBody className="flex-row items-center gap-2 overflow-hidden relative">
+          <div className="absolute right-0 bottom-0 text-5xl text-danger-400">
+            <BsTencentQq />
           </div>
-          <div className="flex items-center gap-1 shadow-md py-1 pl-1 pr-4 rounded-full">
-            <Avatar
+          <div className="relative flex-shrink-0 z-10">
+            <Image
               src={
                 data?.avatarUrl ??
                 `https://q1.qlogo.cn/g?b=qq&nk=${data?.uin}&s=1`
               }
-              size="sm"
-              className="flex-shrink-0 shadow-md"
+              className="shadow-md rounded-full w-12 aspect-square"
             />
-            <div className="flex-col justify-center">
-              <div className="font-outfit text-pink-500 text-sm">
-                {data?.nick}
-              </div>
-              <div className="font-ubuntu text-gray-500 text-xs">
-                {data?.uin}
-              </div>
-            </div>
-            <div className="flex-shrink-0 flex items-center ml-2">
-              <div
-                className={clsx(
-                  'w-2 h-2 rounded-full',
-                  data?.online ? 'bg-green-500' : 'bg-gray-500'
-                )}
-              ></div>
+            <div
+              className={clsx(
+                'w-4 h-4 rounded-full absolute right-0.5 bottom-0 border-2 border-danger-100 z-10',
+                data?.online ? 'bg-green-500' : 'bg-gray-500'
+              )}
+            ></div>
+          </div>
+          <div className="flex-col justify-center">
+            <div className="font-outfit text-lg truncate">{data?.nick}</div>
+            <div className="font-ubuntu text-danger-500 text-sm">
+              {data?.uin}
             </div>
           </div>
         </CardBody>

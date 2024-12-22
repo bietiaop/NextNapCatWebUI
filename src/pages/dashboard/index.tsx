@@ -1,6 +1,7 @@
 import { Card, CardBody } from '@nextui-org/card'
 import { useRequest } from 'ahooks'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import toast from 'react-hot-toast'
 
 import NetworkItemDisplay from '@/components/display_network_item'
@@ -57,26 +58,41 @@ const QQInfo: React.FC = () => {
   return <QQInfoCard data={data} error={error} loading={loading} />
 }
 
-const SystemStatusCard: React.FC = () => {
+export interface SystemStatusCardProps {
+  setArchInfo: (arch: string | undefined) => void
+}
+const SystemStatusCard: React.FC<SystemStatusCardProps> = ({ setArchInfo }) => {
   const [systemStatus, setSystemStatus] = useState<SystemStatus>()
-  const getStatus = () => {
+  const isSetted = useRef(false)
+  const getStatus = useCallback(() => {
     try {
       const event = WebUIManager.getSystemStatus(setSystemStatus)
       return event
     } catch (error) {
       toast.error('获取系统状态失败')
     }
-  }
+  }, [])
+
   useEffect(() => {
     const close = getStatus()
     return () => {
       close?.close()
     }
-  }, [])
+  }, [getStatus])
+
+  useEffect(() => {
+    if (systemStatus?.arch && !isSetted.current) {
+      setArchInfo(systemStatus.arch)
+      isSetted.current = true
+    }
+  }, [systemStatus, setArchInfo])
+
   return <SystemStatusDisplay data={systemStatus} />
 }
 
 const DashboardIndexPage: React.FC = () => {
+  const [archInfo, setArchInfo] = useState<string>()
+
   return (
     <>
       <title>基础信息 - NapCat WebUI</title>
@@ -84,9 +100,9 @@ const DashboardIndexPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch">
           <div className="flex flex-col gap-2">
             <QQInfo />
-            <SystemInfo />
+            <SystemInfo archInfo={archInfo} />
           </div>
-          <SystemStatusCard />
+          <SystemStatusCard setArchInfo={setArchInfo} />
         </div>
         <Networks />
         <Card className="bg-opacity-60 shadow-sm shadow-danger-50">

@@ -46,4 +46,5 @@ interface SystemStatus {
       qq: string
     }
   }
+  arch: string
 }

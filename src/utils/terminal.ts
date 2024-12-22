@@ -36,60 +36,35 @@ export const gradientText = (
 }
 
 export const logColor = {
-  [LogLevel.DEBUG]: [50, 230, 10],
-  [LogLevel.INFO]: [130, 130, 130],
-  [LogLevel.WARN]: [255, 200, 50],
-  [LogLevel.ERROR]: [255, 0, 0],
-  [LogLevel.FATAL]: [255, 0, 0]
+  [LogLevel.DEBUG]: 'green',
+  [LogLevel.INFO]: 'black',
+  [LogLevel.WARN]: 'yellow',
+  [LogLevel.ERROR]: 'red',
+  [LogLevel.FATAL]: 'red'
 } as const
+
 export const colorizeLogLevel = (content: string) => {
   const logLevel = content.match(/\[[a-zA-Z]+\]/) || []
   let _content = content
   const level =
     (logLevel?.[0]?.replace('[', '').replace(']', '') as LogLevel) ??
     LogLevel.INFO
-  switch (level) {
-    case LogLevel.DEBUG:
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.DEBUG]],
-        [...logColor[LogLevel.DEBUG]]
-      )
+  const color = logColor[level]
+  switch (color) {
+    case 'green':
+      _content = `\x1b[32m${_content}\x1b[0m`
       break
-    case LogLevel.INFO:
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.INFO]],
-        [...logColor[LogLevel.INFO]]
-      )
+    case 'black':
+      _content = `\x1b[30m${_content}\x1b[0m`
       break
-    case LogLevel.WARN:
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.WARN]],
-        [...logColor[LogLevel.WARN]]
-      )
+    case 'yellow':
+      _content = `\x1b[33m${_content}\x1b[0m`
       break
-    case LogLevel.ERROR:
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.ERROR]],
-        [...logColor[LogLevel.ERROR]]
-      )
-      break
-    case LogLevel.FATAL:
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.FATAL]],
-        [...logColor[LogLevel.FATAL]]
-      )
+    case 'red':
+      _content = `\x1b[31m${_content}\x1b[0m`
       break
     default:
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.INFO]],
-        [...logColor[LogLevel.INFO]]
-      )
+      _content = `\x1b[30m${_content}\x1b[0m`
   }
   return {
     content: _content,
@@ -98,55 +73,25 @@ export const colorizeLogLevel = (content: string) => {
 }
 
 export const colorizeLogLevelWithTag = (content: string, level: LogLevel) => {
-  level = level?.toLowerCase() as LogLevel
   let _content = content
   switch (level) {
     case LogLevel.DEBUG:
-      _content = '[DEBUG] ' + _content
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.DEBUG]],
-        [...logColor[LogLevel.DEBUG]]
-      )
+      _content = `\x1b[32m[DEBUG] ${content}\x1b[0m`
       break
     case LogLevel.INFO:
-      _content = '[INFO] ' + _content
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.INFO]],
-        [...logColor[LogLevel.INFO]]
-      )
+      _content = `\x1b[30m[INFO] ${content}\x1b[0m`
       break
     case LogLevel.WARN:
-      _content = '[WARN] ' + _content
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.WARN]],
-        [...logColor[LogLevel.WARN]]
-      )
+      _content = `\x1b[33m[WARN] ${content}\x1b[0m`
       break
     case LogLevel.ERROR:
-      _content = '[ERROR] ' + _content
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.ERROR]],
-        [...logColor[LogLevel.ERROR]]
-      )
+      _content = `\x1b[31m[ERROR] ${content}\x1b[0m`
       break
     case LogLevel.FATAL:
-      _content = '[FATAL] ' + _content
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.FATAL]],
-        [...logColor[LogLevel.FATAL]]
-      )
+      _content = `\x1b[31m[FATAL] ${content}\x1b[0m`
       break
     default:
-      _content = gradientText(
-        _content,
-        [...logColor[LogLevel.INFO]],
-        [...logColor[LogLevel.INFO]]
-      )
+      _content = `\x1b[30m${content}\x1b[0m`
   }
   return _content
 }

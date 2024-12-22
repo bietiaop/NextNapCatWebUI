@@ -1,6 +1,7 @@
 import { Button } from '@nextui-org/button'
 import { Image } from '@nextui-org/image'
 import clsx from 'clsx'
+import { motion } from 'motion/react'
 import React from 'react'
 import { IoMdLogOut } from 'react-icons/io'
 import { MdDarkMode, MdLightMode } from 'react-icons/md'
@@ -33,13 +34,20 @@ const SideBar: React.FC<SideBarProps> = (props) => {
     })
   }
   return (
-    <div
+    <motion.div
       className={clsx(
-        'overflow-hidden transition-width fixed top-0 left-0 h-full z-50 bg-background md:bg-transparent md:static shadow-md md:shadow-none rounded-r-md md:rounded-none',
-        open ? 'w-64' : 'w-0'
+        'overflow-hidden fixed top-0 left-0 h-full z-50 bg-background md:bg-transparent md:static shadow-md md:shadow-none rounded-r-md md:rounded-none'
       )}
+      initial={{ width: 0 }}
+      animate={{ width: open ? '16rem' : 0 }}
+      transition={{
+        type: open ? 'spring' : 'tween',
+        stiffness: 150,
+        damping: open ? 15 : 10
+      }}
+      style={{ overflow: 'hidden' }}
     >
-      <div className="w-64 flex flex-col items-stretch h-full transition-transform duration-300 ease-in-out z-30 relative">
+      <motion.div className="w-64 flex flex-col items-stretch h-full transition-transform duration-300 ease-in-out z-30 relative float-right">
         <div className="flex justify-center items-center mt-1">
           <Image className="-mt-3" height={80} src={logo} />
           <div
@@ -82,8 +90,8 @@ const SideBar: React.FC<SideBarProps> = (props) => {
             </Button>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 

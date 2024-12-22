@@ -57,14 +57,15 @@ const OneBotApiDebug: React.FC<OneBotApiDebugProps> = (props) => {
         })
         .then((res) => {
           setResponseContent(parseAxiosResponse(res))
+          toast.success('请求发送完成，请查看响应')
         })
         .catch((err) => {
+          toast.error('请求发送失败：' + err.message)
           setResponseContent(parseAxiosResponse(err.response))
         })
         .finally(() => {
           setIsFetching(false)
           toast.dismiss(r)
-          toast.success('请求发送成功')
         })
     } catch (error) {
       toast.error('请求体 JSON 格式错误')

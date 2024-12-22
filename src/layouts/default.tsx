@@ -2,6 +2,7 @@ import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs'
 import { Button } from '@nextui-org/button'
 import { useLocalStorage } from '@uidotdev/usehooks'
 import clsx from 'clsx'
+import { motion } from 'motion/react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { MdMenu, MdMenuOpen } from 'react-icons/md'
@@ -91,19 +92,22 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <div
         ref={contentRef}
         className={clsx(
-          'overflow-y-auto relative flex-1 rounded-md m-1 bg-content1 ',
+          'overflow-y-auto relative flex-1 rounded-md m-1 bg-content1 pb-10 md:pb-0',
           openSideBar ? 'ml-0' : 'ml-1',
           !b64img && 'shadow-inner',
           b64img && '!bg-opacity-50 backdrop-blur-none dark:bg-background'
         )}
       >
         <div className="h-10 flex items-center hm-medium text-xl sticky top-2 left-0 backdrop-blur-lg z-20 shadow-sm bg-background dark:bg-background shadow-danger-50 dark:shadow-danger-100 m-2 rounded-full !bg-opacity-50">
-          <div
+          <motion.div
             className={clsx(
-              'mr-1 transition-all duration-300 ease-in-out ml-0 md:relative',
-              openSideBar && 'ml-60 pl-2 absolute',
-              'md:ml-0 md:pl-0'
+              'mr-1 ease-in-out ml-0 md:relative',
+              openSideBar && 'pl-2 absolute',
+              'md:!ml-0 md:pl-0'
             )}
+            transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+            initial={{ marginLeft: 0 }}
+            animate={{ marginLeft: openSideBar ? '15rem' : 0 }}
           >
             <Button
               isIconOnly
@@ -113,7 +117,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             >
               {openSideBar ? <MdMenuOpen size={24} /> : <MdMenu size={24} />}
             </Button>
-          </div>
+          </motion.div>
           <Breadcrumbs isDisabled size="lg">
             {title?.map((item, index) => (
               <BreadcrumbItem key={index}>{item}</BreadcrumbItem>

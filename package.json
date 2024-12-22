@@ -49,6 +49,7 @@
     "ahooks": "^3.8.4",
     "axios": "^1.7.9",
     "clsx": "2.1.1",
+    "echarts": "^5.5.1",
     "event-source-polyfill": "^1.0.31",
     "framer-motion": "^11.14.4",
     "monaco-editor": "^0.52.2",

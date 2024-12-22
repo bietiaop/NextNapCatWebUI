@@ -62,7 +62,10 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   const [duration, setDuration] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(100)
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useLocalStorage(
+    key.isCollapsedMusicPlayer,
+    false
+  )
   const audioRef = useRef<HTMLAudioElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   const startY = useRef(0)

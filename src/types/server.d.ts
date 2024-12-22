@@ -31,6 +31,7 @@ interface PackageInfo {
 
 interface SystemStatus {
   cpu: {
+    core: number
     model: string
     speed: string
     usage: {
@@ -39,6 +40,7 @@ interface SystemStatus {
     }
   }
   memory: {
+    total: string
     usage: {
       system: string
       qq: string

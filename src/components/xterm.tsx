@@ -33,7 +33,7 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
       }
       const terminal = new Terminal({
         allowTransparency: true,
-        fontFamily: 'Fira Code'
+        fontFamily: '"Fira Code", "Noto Serif SC"'
       })
       terminalRef.current = terminal
       const fitAddon = new FitAddon()

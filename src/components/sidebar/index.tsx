@@ -48,8 +48,8 @@ const SideBar: React.FC<SideBarProps> = (props) => {
       style={{ overflow: 'hidden' }}
     >
       <motion.div className="w-64 flex flex-col items-stretch h-full transition-transform duration-300 ease-in-out z-30 relative float-right">
-        <div className="flex justify-center items-center mt-1">
-          <Image className="-mt-3" height={80} src={logo} />
+        <div className="flex justify-center items-center mt-1 gap-2">
+          <Image height={40} src={logo} />
           <div
             className={clsx(
               'flex items-center hm-medium',

@@ -61,7 +61,7 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row items-center">
             <Image
               alt="logo"
-              className="-mt-5 flex-shrink-0 w-52 md:w-48 mr-2"
+              className="flex-shrink-0 w-52 md:w-48 mr-2"
               src={logo}
             />
             <div className="flex -mt-9 md:mt-0">

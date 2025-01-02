@@ -93,13 +93,11 @@ export interface AtSegment extends Segment {
 /** 猜拳魔法表情消息段 */
 export interface RpsSegment extends Segment {
   type: 'rps'
-  data: object
 }
 
 /** 掷骰子魔法表情消息段 */
 export interface DiceSegment extends Segment {
   type: 'dice'
-  data: object
 }
 
 /** 窗口抖动（戳一戳）消息段 */
@@ -168,7 +166,7 @@ export interface MusicSegment extends Segment {
 
 /** 音乐自定义分享消息段 */
 export interface CustomMusicSegment extends Segment {
-  type: 'music_custom'
+  type: 'music'
   data: {
     type: 'custom'
     url: string

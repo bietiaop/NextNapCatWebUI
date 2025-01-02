@@ -12,6 +12,7 @@ import React from 'react'
 export interface ModalProps {
   content: React.ReactNode
   title?: React.ReactNode
+  size?: React.ComponentProps<typeof NextUIModal>['size']
   onClose?: () => void
   onConfirm?: () => void
   onCancel?: () => void
@@ -25,6 +26,7 @@ const Modal: React.FC<ModalProps> = React.memo((props) => {
     backdrop = 'blur',
     title,
     content,
+    size = 'md',
     showCancel = true,
     dismissible,
     onClose,
@@ -42,6 +44,7 @@ const Modal: React.FC<ModalProps> = React.memo((props) => {
         onClose?.()
         onNativeClose()
       }}
+      size={size}
       classNames={{
         backdrop: 'z-[99999999]',
         wrapper: 'z-[999999999]'

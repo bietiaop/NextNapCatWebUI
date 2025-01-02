@@ -107,21 +107,22 @@ export const renderMessageContent = (
       case 'location':
         return <span key={index}>[位置: {segment.data.title || '未知'}]</span>
       case 'music':
+        if (segment.data.type === 'custom') {
+          return (
+            <a
+              key={index}
+              href={segment.data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {segment.data.title}
+            </a>
+          )
+        }
         return (
           <span key={index}>
             [音乐: {segment.data.type} - {segment.data.id}]
           </span>
-        )
-      case 'music_custom':
-        return (
-          <a
-            key={index}
-            href={segment.data.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {segment.data.title}
-          </a>
         )
       case 'reply':
         return (

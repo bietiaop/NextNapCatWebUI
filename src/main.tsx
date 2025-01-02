@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -23,11 +22,11 @@ if (theme && !theme.startsWith('"')) {
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter basename="/">
-      <Provider>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <BrowserRouter basename="/">
+    <Provider>
+      <App />
+    </Provider>
+  </BrowserRouter>
+  // </React.StrictMode>
 )

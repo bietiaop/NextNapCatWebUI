@@ -12,6 +12,7 @@ import { PiCatDuotone } from 'react-icons/pi'
 import key from '@/const/key'
 import { OneBotHttpApiContent, OneBotHttpApiPath } from '@/const/ob_api'
 
+import ChatInputModal from '@/components/chat_input/modal'
 import CodeEditor from '@/components/code_editor'
 import PageLoading from '@/components/page_loading'
 
@@ -147,10 +148,11 @@ const OneBotApiDebug: React.FC<OneBotApiDebugProps> = (props) => {
               value={requestBody}
               onChange={(value) => setRequestBody(value ?? '')}
               language="json"
-              height="200px"
+              height="400px"
             />
 
             <div className="flex justify-end gap-1">
+              <ChatInputModal />
               <Button
                 color="primary"
                 variant="flat"

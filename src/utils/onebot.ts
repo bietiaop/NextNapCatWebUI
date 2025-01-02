@@ -1,11 +1,18 @@
+import type { Op } from 'quill'
+
+import type { EmojiValue } from '@/components/chat_input/formats/emoji_blot'
+import type { ImageValue } from '@/components/chat_input/formats/image_blot'
+import type { ReplyBlockValue } from '@/components/chat_input/formats/reply_blot'
+
 import {
   type AllOB11WsResponse,
   type OB11AllEvent,
-  OB11GroupMessage,
-  OB11Message,
+  type OB11GroupMessage,
+  type OB11Message,
   type OB11Notice,
   OB11NoticeType,
-  OB11PrivateMessage,
+  type OB11PrivateMessage,
+  type OB11Segment,
   type OneBot11Lifecycle,
   type RequestResponse
 } from '../types/onebot'
@@ -198,4 +205,44 @@ export const isOB11GroupMessage = (
   data: OB11Message
 ): data is OB11GroupMessage => {
   return data.message_type === 'group'
+}
+
+/**
+ * 将 Quill Delta 转换为 OneBot 消息
+ * @param op Quill Delta
+ * @returns OneBot 消息
+ * @description 用于将 Quill Delta 转换为 OneBot 消息
+ */
+export const quillToMessage = (op: Op) => {
+  let message: OB11Segment = {
+    type: 'text',
+    data: {
+      text: op.insert as string
+    }
+  }
+  if (typeof op.insert !== 'string') {
+    if (op.insert?.image) {
+      message = {
+        type: 'image',
+        data: {
+          file: (op.insert.image as ImageValue).src
+        }
+      }
+    } else if (op.insert?.emoji) {
+      message = {
+        type: 'face',
+        data: {
+          id: (op.insert.emoji as EmojiValue).id
+        }
+      }
+    } else if (op.insert?.reply) {
+      message = {
+        type: 'reply',
+        data: {
+          id: (op.insert.reply as ReplyBlockValue).messageId
+        }
+      }
+    }
+  }
+  return message
 }

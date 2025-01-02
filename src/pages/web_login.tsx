@@ -103,7 +103,7 @@ export default function WebLoginPage() {
             maxYRotation={3}
           >
             <CardHeader className="inline-block max-w-lg text-center justify-center">
-              <div className="flex items-center justify-center w-full gap-2">
+              <div className="flex items-center justify-center w-full gap-2 pt-10">
                 <Image alt="logo" height="7em" src={logo} />
                 <div>
                   <span className={title()}>Web&nbsp;</span>

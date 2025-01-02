@@ -76,3 +76,22 @@ body {
   border-color: rgba(0, 0, 0, 0.2) !important;
   border-radius: 5px !important;
 }
+
+.ql-hidden {
+  @apply hidden;
+}
+.ql-editor img {
+  @apply inline-block;
+}
+/* input.ql-image {
+  @apply hidden;
+}
+.ql-image svg {
+  fill: none;
+}
+.ql-fill {
+  fill: currentColor;
+}
+.ql-stroke {
+  stroke: currentColor;
+} */

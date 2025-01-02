@@ -47,3 +47,12 @@ export function parseAxiosResponse(
     : ''
   return `${statusLine}\r\n${headers}${body}`
 }
+
+/**
+ * 判断是否为URI
+ * @param uri URI
+ * @returns 是否为URI
+ */
+export const isURI = (uri: string) => {
+  return /^(http|https|file):\/\/.*/.test(uri)
+}

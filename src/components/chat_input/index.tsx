@@ -3,8 +3,8 @@ import type { Range } from 'quill'
 import 'quill/dist/quill.core.css'
 import { useRef } from 'react'
 import toast from 'react-hot-toast'
-import { useQuill } from 'react-quilljs'
 
+import { useCustomQuill } from '@/hooks/use_custom_quill'
 import useShowStructuredMessage from '@/hooks/use_show_strcuted_message'
 
 import { quillToMessage } from '@/utils/onebot'
@@ -33,7 +33,7 @@ const ChatInput = () => {
   const modules = {
     toolbar: '#toolbar'
   }
-  const { quillRef, quill, Quill } = useQuill({
+  const { quillRef, quill, Quill } = useCustomQuill({
     modules,
     formats,
     placeholder: '请输入消息'

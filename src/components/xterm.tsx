@@ -33,7 +33,7 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
       }
       const terminal = new Terminal({
         allowTransparency: true,
-        fontFamily: '"Fira Code", "Noto Serif SC"'
+        fontFamily: '"Fira Code", "Noto Serif SC", monospace' // 添加回退字体
       })
       terminalRef.current = terminal
       const fitAddon = new FitAddon()
@@ -59,8 +59,14 @@ const XTerm = forwardRef<XTermRef, React.HTMLAttributes<HTMLDivElement>>(
       })
       resizeObserver.observe(domRef.current)
 
+      const handleFontLoad = () => {
+        terminal.refresh(0, terminal.rows - 1)
+      }
+      document.fonts.addEventListener('loadingdone', handleFontLoad)
+
       return () => {
         resizeObserver.disconnect()
+        document.fonts.removeEventListener('loadingdone', handleFontLoad)
         setTimeout(() => {
           terminal.dispose()
         }, 0)

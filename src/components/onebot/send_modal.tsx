@@ -42,14 +42,8 @@ const OneBotSendModal: React.FC<OneBotSendModalProps> = (props) => {
 
   return (
     <>
-      <Button
-        onPress={onOpen}
-        color="danger"
-        className="col-span-2 md:w-fit"
-        radius="full"
-        variant="flat"
-      >
-        构造消息发送
+      <Button onPress={onOpen} color="danger" radius="full" variant="flat">
+        构造请求
       </Button>
       <Modal
         isOpen={isOpen}
@@ -63,7 +57,7 @@ const OneBotSendModal: React.FC<OneBotSendModalProps> = (props) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                构造消息发送
+                构造请求
               </ModalHeader>
               <ModalBody>
                 <div className="h-96 dark:bg-[rgb(30,30,30)] p-2 rounded-md border border-default-100">

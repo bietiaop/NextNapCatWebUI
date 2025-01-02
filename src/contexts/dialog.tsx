@@ -4,22 +4,24 @@ import React from 'react'
 import type { ModalProps } from '@/components/modal'
 import Modal from '@/components/modal'
 
-interface AlertProps {
+export interface AlertProps {
   title?: React.ReactNode
   content: React.ReactNode
+  size?: ModalProps['size']
   dismissible?: boolean
   onConfirm?: () => void
 }
 
-interface ConfirmProps {
+export interface ConfirmProps {
   title?: React.ReactNode
   content: React.ReactNode
+  size?: ModalProps['size']
   dismissible?: boolean
   onConfirm?: () => void
   onCancel?: () => void
 }
 
-interface ModalItem extends ModalProps {
+export interface ModalItem extends ModalProps {
   id: number
 }
 
@@ -40,7 +42,7 @@ export const DialogContext = React.createContext<DialogContextProps>({
 const DialogProvider: React.FC<DialogProviderProps> = ({ children }) => {
   const [dialogs, setDialogs] = React.useState<ModalItem[]>([])
   const alert = (config: AlertProps) => {
-    const { title, content, dismissible, onConfirm } = config
+    const { title, content, dismissible, onConfirm, size = 'md' } = config
 
     setDialogs((before) => {
       const id = before[before.length - 1]?.id + 1 || 0
@@ -50,13 +52,16 @@ const DialogProvider: React.FC<DialogProviderProps> = ({ children }) => {
         {
           id,
           content,
+          size,
           title,
           backdrop: 'blur',
           showCancel: false,
           dismissible: dismissible,
           onConfirm: () => {
             onConfirm?.()
-            setDialogs((before) => before.filter((item) => item.id !== id))
+            setTimeout(() => {
+              setDialogs((before) => before.filter((item) => item.id !== id))
+            }, 300)
           }
         }
       ]
@@ -64,7 +69,14 @@ const DialogProvider: React.FC<DialogProviderProps> = ({ children }) => {
   }
 
   const confirm = (config: ConfirmProps) => {
-    const { title, content, dismissible, onConfirm, onCancel } = config
+    const {
+      title,
+      content,
+      dismissible,
+      onConfirm,
+      onCancel,
+      size = 'md'
+    } = config
 
     setDialogs((before) => {
       const id = before[before.length - 1]?.id + 1 || 0
@@ -74,6 +86,7 @@ const DialogProvider: React.FC<DialogProviderProps> = ({ children }) => {
         {
           id,
           content,
+          size,
           title,
           backdrop: 'blur',
           showCancel: true,

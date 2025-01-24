@@ -1,3 +1,9 @@
+# WebUI 目前已经合并进 NapCat 仓库，本仓库不再更新。
+
+# WebUI 目前已经合并进 NapCat 仓库，本仓库不再更新。
+
+# WebUI 目前已经合并进 NapCat 仓库，本仓库不再更新。
+
 # NapCat WebUI
 
 ## 功能

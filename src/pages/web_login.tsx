@@ -56,21 +56,10 @@ export default function WebLoginPage() {
     toast(
       (t: Toast) => (
         <div>
-          <div className="font-bold text-center">遇到网络错误？</div>
+          <div className="font-bold text-center">迁移到最新版本</div>
           <div>
             <p>
-              由于浏览器自身限制，不支持<Code>HTTPS</Code>对<Code>HTTP</Code>
-              发起请求。需要您手动同意不安全的连接。
-              <Link
-                isExternal
-                showAnchorIcon
-                href="https://blog.csdn.net/qq_17627195/article/details/129203873#_18"
-              >
-                点击查看设置方法
-              </Link>
-            </p>
-            <p>
-              注意，直接看<b>方法二（针对单一网站）</b>
+              在线版webui将不再提供，webui已内置进NapCat，请升级至新版NapCat使用。
             </p>
           </div>
           <div className="flex justify-end">
